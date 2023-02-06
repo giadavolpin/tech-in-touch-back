@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -14,6 +13,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('professionist_technology', function (Blueprint $table) {
+            $table->id();
 
             $table->unsignedBigInteger('professionist_id')->nullable();
             $table->foreign('professionist_id')->references('id')->on('professionists')->cascadeOnDelete();
@@ -21,8 +21,8 @@ return new class extends Migration
             $table->unsignedBigInteger('technology_id')->nullable();
             $table->foreign('technology_id')->references('id')->on('technologies')->cascadeOnDelete();
 
+            $table->timestamps();
         });
-
     }
 
     /**
