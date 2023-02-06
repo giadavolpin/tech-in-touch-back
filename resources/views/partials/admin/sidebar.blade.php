@@ -15,7 +15,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.projects.index') }}"
+            <a href="{{ route('admin.professionists.index') }}"
                 class="nav-link text-white {{ Route::currentRouteName() == 'admin.professionist.index' ? 'bg-secondary' : '' }}"
                 aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
@@ -24,7 +24,7 @@
             </a>
         </li>
 
-        @if (Auth::check() && Auth::user()->isAdmin())
+        {{-- @if (Auth::check() && Auth::user()->isAdmin()) --}}
         {{-- <li class="nav-item">
             <a href="{{ route('admin.categories.index') }}"
                 class="nav-link text-white {{ Route::currentRouteName() == 'admin.categories.index' ? 'bg-secondary' : '' }}"
@@ -48,7 +48,7 @@
             </a>
         </li> --}}
 
-        @endif
+        {{-- @endif --}}
 
 
 

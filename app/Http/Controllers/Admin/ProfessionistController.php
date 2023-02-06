@@ -16,9 +16,9 @@ class ProfessionistController extends Controller
      */
     public function index()
     {
-        $professionist = Professionist::all();
+        $professionists = Professionist::all();
 
-        return view('admin.professionists.index', compact('professionist'));
+        return view('admin.professionists.index', compact('professionists'));
     }
 
     /**
