@@ -4,16 +4,20 @@ return [
     'professionists' => [
         [
             "nickname" => "Fasulino",
+            "name" => "Mattia",
+            "surname" => "Fasulo",
             "job_address" => "123 Anywhere St., Potenza",
             "profile_image" => "https://media.licdn.com/dms/image/D4D03AQHRxgN2NdfHFQ/profile-displayphoto-shrink_800_800/0/1675169063591?e=1680739200&v=beta&t=0FPPCQwp9HpE5ZTKlQ_LDaZwyl2n16vPvDczuW1IqqQ",
-            "description" => "La comunicazione è il mio punto di forza.
+            "bio" => "La comunicazione è il mio punto di forza.
             Lavoro nel settore da oltre 10 anni, maturando esperienza, contatti e capacità di gestione dei clienti. Lavorando in aziende appartenenti a settori diversi, ho imparato ad essere flessibile e promuovere prodotti e servizi a 360°, sia online che offline.
             Ho vissuto all'estero due anni, perfezionando il mio inglese e raccogliendo esperienza in grandi agenzie di comunicazione tessendo relazioni internazionali.",
             "phone_number" => "+123-456-7890",
-            "cv_link" => "foto_cv.jpg",
+            "cv_path" => "https://www.ilcvperfetto.it/wp-content/uploads/sites/3/2022/05/esempio-di-CV-da-addetto-al-recupero-crediti-con-un-design-contemporaneo.svg",
             "linkedin_page" => "https://www.linkedin.com/in/mattia-fasulo/",
             "github_page" => "https://github.com/Mattia-Fasulo",
-            "average_rate" => ""
+            "average_rate" => null,
+            "user_id"=>1
+
         ],
     ],
     // 'user_types' => [
