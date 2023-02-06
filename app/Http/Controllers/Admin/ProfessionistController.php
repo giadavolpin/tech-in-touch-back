@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Review;
-use App\Http\Requests\StoreReviewRequest;
-use App\Http\Requests\UpdateReviewRequest;
+use App\Models\Professionist;
+use App\Http\Requests\StoreProfessionistRequest;
+use App\Http\Requests\UpdateProfessionistRequest;
 
-class ReviewController extends Controller
+class ProfessionistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class ReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreReviewRequest  $request
+     * @param  \App\Http\Requests\StoreProfessionistRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreReviewRequest $request)
+    public function store(StoreProfessionistRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class ReviewController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Review  $review
+     * @param  \App\Models\Professionist  $professionist
      * @return \Illuminate\Http\Response
      */
-    public function show(Review $review)
+    public function show(Professionist $professionist)
     {
         //
     }
@@ -53,10 +53,10 @@ class ReviewController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Review  $review
+     * @param  \App\Models\Professionist  $professionist
      * @return \Illuminate\Http\Response
      */
-    public function edit(Review $review)
+    public function edit(Professionist $professionist)
     {
         //
     }
@@ -64,11 +64,11 @@ class ReviewController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateReviewRequest  $request
-     * @param  \App\Models\Review  $review
+     * @param  \App\Http\Requests\UpdateProfessionistRequest  $request
+     * @param  \App\Models\Professionist  $professionist
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateReviewRequest $request, Review $review)
+    public function update(UpdateProfessionistRequest $request, Professionist $professionist)
     {
         //
     }
@@ -76,10 +76,10 @@ class ReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Review  $review
+     * @param  \App\Models\Professionist  $professionist
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Review $review)
+    public function destroy(Professionist $professionist)
     {
         //
     }
