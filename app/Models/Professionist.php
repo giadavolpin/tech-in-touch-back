@@ -15,9 +15,9 @@ class Professionist extends Model
 
     protected $guarded = [];
 
-    public static function generateSlug($name)
+    public static function generateSlug($name, $surname)
     {
-        return Str::slug($name, '-');
+        return Str::slug($name . '' . $surname, '-');
 
     }
 
