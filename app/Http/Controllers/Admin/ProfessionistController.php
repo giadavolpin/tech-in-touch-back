@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+
+use Illuminate\Routing\Controller;
 use App\Models\Professionist;
 use App\Http\Requests\StoreProfessionistRequest;
 use App\Http\Requests\UpdateProfessionistRequest;
@@ -11,17 +13,17 @@ class ProfessionistController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $professionist = Professionist::all();
+
+        return view('admin.professionists.index', compact('professionist'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -32,7 +34,6 @@ class ProfessionistController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreProfessionistRequest  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(StoreProfessionistRequest $request)
     {
@@ -43,7 +44,6 @@ class ProfessionistController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Professionist  $professionist
-     * @return \Illuminate\Http\Response
      */
     public function show(Professionist $professionist)
     {
@@ -54,7 +54,6 @@ class ProfessionistController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Professionist  $professionist
-     * @return \Illuminate\Http\Response
      */
     public function edit(Professionist $professionist)
     {
@@ -66,7 +65,6 @@ class ProfessionistController extends Controller
      *
      * @param  \App\Http\Requests\UpdateProfessionistRequest  $request
      * @param  \App\Models\Professionist  $professionist
-     * @return \Illuminate\Http\Response
      */
     public function update(UpdateProfessionistRequest $request, Professionist $professionist)
     {
@@ -77,7 +75,6 @@ class ProfessionistController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Professionist  $professionist
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Professionist $professionist)
     {
