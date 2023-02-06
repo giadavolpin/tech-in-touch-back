@@ -15,32 +15,39 @@ class Professionist extends Model
 
     protected $guarded = [];
 
-    public static function generateSlug($name, $surname){
-        return Str::slug($name.''.$surname, '-');
+    public static function generateSlug($name, $surname)
+    {
+        return Str::slug($name . '-' . $surname, '-');
 
     }
 
-    public function user():BelongsTo{
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function lead():HasMany{
+    public function lead(): HasMany
+    {
         return $this->HasMany(Lead::class);
     }
 
-    public function project():HasMany{
+    public function project(): HasMany
+    {
         return $this->hasMany(Project::class);
     }
 
-    public function technologies():BelongsToMany{
+    public function technologies(): BelongsToMany
+    {
         return $this->belongsToMany(Technology::class);
     }
 
-    public function plans():BelongsToMany{
-        return $this->belongsToMany(Plan::class)->withPivot('subscription_start','subscription_end');
+    public function plans(): BelongsToMany
+    {
+        return $this->belongsToMany(Plan::class)->withPivot('subscription_start', 'subscription_end');
     }
 
-    public function votes():BelongsToMany{
+    public function votes(): BelongsToMany
+    {
         return $this->belongsToMany(Vote::class)->withPivot('comment');
     }
 }
