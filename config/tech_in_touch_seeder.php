@@ -16,7 +16,7 @@ return [
             "linkedin_page" => "https://www.linkedin.com/in/mattia-fasulo/",
             "github_page" => "https://github.com/Mattia-Fasulo",
             "average_rate" => null,
-            "user_id"=>1
+            "user_id" => 1
 
         ],
     ],
@@ -122,11 +122,11 @@ return [
             "icon" => '<i class="fa-brands fa-golang"></i>'
         ],
         [
-            "name" => "Adobe Photoshop",
+            "name" => "Photoshop",
             "icon" => '<i class="fi fi-brands-photoshop"></i>'
         ],
         [
-            "name" => "Adobe Illustrator",
+            "name" => "Illustrator",
             "icon" => '<i class="fi fi-brands-illustrator"></i>'
         ],
         [
@@ -149,27 +149,28 @@ return [
     'plans' => [
         [
             "name" => "Standard",
-            "price" => "2,99",
+            "price" => 2.99,
             "price_sign" => "€",
-            "duration" => "1"
+            "duration" => 1
         ],
         [
             "name" => "Plus",
-            "price" => "5,99",
+            "price" => 5.99,
             "price_sign" => "€",
-            "duration" => "2"
+            "duration" => 2
         ],
         [
             "name" => "Ultra",
-            "price" => "9,99",
+            "price" => 9.99,
             "price_sign" => "€",
-            "duration" => "3"
+            "duration" => 3
         ],
     ],
     'projects' => [
         [
             "name" => "Spotify Web",
             "description" => "Riproduzione del layout in HTML/CSS di Spotify",
+            "professionist_id" => 1,
             "cover_image" => "https://s3-us-west-1.amazonaws.com/coppertino/seo-photos/spotify-web-player-vs-loop-web.jpg"
         ]
     ],
