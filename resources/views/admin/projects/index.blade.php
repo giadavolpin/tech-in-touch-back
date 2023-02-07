@@ -29,7 +29,7 @@
                             <th scope="row">{{ $project->id }}</th>
                             <td>{{ $project->name }}</td>
                             <td>{{ Str::limit($project->description, 20) }}</td>
-                            <td>{{ $project->cover_img }}</td>
+                            <td>{{ $project->cover_image }}</td>
 
                             <td class="text-center"><a class="link-secondary" href=""
                                     title="Edit project"><i class="fa-solid fa-pen"></i></a></td>
