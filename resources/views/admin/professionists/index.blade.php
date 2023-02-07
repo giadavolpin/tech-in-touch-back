@@ -4,7 +4,7 @@
     <div>
         <h1 class="m-3">Professionist</h1>
         <div class="text-end">
-            <a class="btn btn-dark mx-3 mb-3" href="">New Professionist</a>
+            <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.professionists.create')}}">New Professionist</a>
         </div>
         @if (session()->has('message'))
             <div class="alert alert-success mx-3 mb-3">
@@ -46,11 +46,11 @@
                             <td class="text-center"><a class="link-secondary" href=""
                                     title="Edit professionist"><i class="fa-solid fa-pen"></i></a></td>
                             <td class="text-center">
-                                <form action="" method="POST">
+                                <form action="{{route('admin.professionists.destroy', $professionist->slug)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="delete-button btn btn-danger "
-                                        data-item-title=""><i
+                                        data-item-title="{{$professionist->slug}}"><i
                                             class="fa-solid fa-trash-can"></i></button>
                                 </form>
                             </td>
