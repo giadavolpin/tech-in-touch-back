@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Models\Technology;
 use Illuminate\Routing\Controller;
 
 
@@ -57,7 +58,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        $technologies = Technology::all();
+        return view("admin . projects . edit", compact('project, technologies'));
     }
 
     /**
