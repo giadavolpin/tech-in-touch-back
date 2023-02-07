@@ -1,15 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="m-3">technologies</h1>
-    <form class=" action="{{route('admin.technologies.store')}}" method="post" class="d-flex align-items-center m-4">
+    <h1 class="m-3">Technologies</h1>
+    {{-- <form class=" action="{{route('admin.technologies.store')}}" method="post" class="d-flex align-items-center m-4">
         @csrf
         <div class="input-group m-3 w-50">
             <input type="text" name="name" class="form-control" placeholder="
             Add a tag name here " aria-label="Recipient's username" aria-describedby="button-addon2">
             <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Add</button>
         </div>
-    </form>
+    </form> --}}
     @if(session()->has('message'))
     <div class="alert alert-success m-3">
         {{ session()->get('message') }}
@@ -22,7 +22,7 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Icon</th>
-            <th class="text-center" scope="col">Posts</th>
+
             <th class="text-center" scope="col">Delete</th>
         </tr>
         </thead>

@@ -33,7 +33,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.technlogies.index') }}"
+            <a href="{{ route('admin.technologies.index') }}"
                 class="nav-link text-white {{ Route::currentRouteName() == 'admin.technlogies.index' ? 'bg-secondary' : '' }}"
                 aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>

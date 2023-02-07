@@ -2,9 +2,9 @@
 
 @section('content')
     <div>
-        <h1 class="m-3">Professionist</h1>
+        <h1 class="m-3">Projects</h1>
         <div class="text-end">
-            <a class="btn btn-dark mx-3 mb-3" href="">New Professionist</a>
+            <a class="btn btn-dark mx-3 mb-3" href="">New Project</a>
         </div>
         @if (session()->has('message'))
             <div class="alert alert-success mx-3 mb-3">
