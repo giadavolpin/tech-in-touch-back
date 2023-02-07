@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProfessionistController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\Admin\DashboardController;
 
 /*
@@ -30,7 +32,9 @@ Route::middleware(['auth', 'verified'])
     ->prefix('admin')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('professionists', ProfessionistController::class)->parameters(['professionists' => 'professionist:slug']);
+        Route::resource('professionists', ProfessionistController::class)->parameters(['professionists' => 'professionist:id']);
+        Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:id']);
+        Route::resource('technologies', TechnologyController::class)->parameters(['technologies' => 'technology:slug']);
 
     });
 

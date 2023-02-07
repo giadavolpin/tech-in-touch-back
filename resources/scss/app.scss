@@ -32,13 +32,14 @@ $fa-font-path: "../fonts/font-awesome" !default;
     display: flex;
     overflow: hidden;
     #wrapper-left {
-        width: 280px;
+        width: 230px;
         height: 100vh;
 
 
         //------------sidebar------------//
         #sidebar {
             height: 100%;
+
 
             #logo-sidebar{
                 margin-left: 1rem;
@@ -50,7 +51,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
     }
 
     #wrapper-right {
-        width: calc(100% - 280px);
+        width: calc(100% - 230px);
         height: 100vh;
 
         .navbar {

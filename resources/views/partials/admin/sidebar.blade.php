@@ -1,4 +1,4 @@
-<div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+<div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 230px;">
     <a href="/" id="logo-sidebar"
         class="d-flex align-items-center  mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 
@@ -20,7 +20,25 @@
                 aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
 
-                Professionist
+                Professionists
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.projects.index') }}"
+                class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary' : '' }}"
+                aria-current="page">
+                <i class="fa-solid fa-book mx-1"></i>
+
+                Projects
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.technlogies.index') }}"
+                class="nav-link text-white {{ Route::currentRouteName() == 'admin.technlogies.index' ? 'bg-secondary' : '' }}"
+                aria-current="page">
+                <i class="fa-solid fa-book mx-1"></i>
+
+                Technlogies
             </a>
         </li>
 
