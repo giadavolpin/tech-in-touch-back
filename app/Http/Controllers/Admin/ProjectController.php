@@ -7,6 +7,8 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Technology;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProjectController extends Controller
@@ -28,7 +30,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $technologies = Technology::all();
+        return view("admin . projects . edit", compact('project, technologies'));
+
     }
 
     /**
@@ -38,7 +42,21 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //
+        $userId = Auth::id();
+        $data = $request->validated();
+        $slug = Project::generateSlug($request->name);
+        $data['slug'] = $slug;
+        $data['user_id'] = $userId;
+        if ($request->hasFile('cover_image')) {
+            $path = Storage::put('project_image', $request->cover_image);
+            $data['project_image'] = $path;
+        }
+        $newProject = Project::create($data);
+        if ($request->has('technologies')) {
+            $newProject->technologies()->attach($request->technologies);
+        }
+        return redirect()->route('admin.projects.show', $newProject->slug);
+
     }
 
     /**
@@ -48,7 +66,8 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('admin.projects.show', compact('project'));
+
     }
 
     /**
@@ -70,7 +89,26 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        
+        $data = $request->validated();
+        $slug = Project::generateSlug($request->name);
+        $data['slug'] = $slug;
+        if ($request->hasFile('cover_image')) {
+            if ($project->cover_image) {
+                Storage::delete($project->cover_image);
+            }
+            $path = Storage::put('project_image', $request->cover_image);
+            $data['project_image'] = $path;
+            
+        }
+        $project->update($data);
+
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($request->technologies);
+        } else {
+            $project->technologies()->sync([]);
+        }
+        return redirect()->route('admin.projects.index')->with('message', "$project->slug updated successfully");
     }
 
     /**
@@ -80,6 +118,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+
+        return redirect()->route('admin.projects.index')->with('message', "$project->slug deleted successfully");
     }
 }
