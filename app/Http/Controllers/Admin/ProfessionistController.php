@@ -7,6 +7,10 @@ use Illuminate\Routing\Controller;
 use App\Models\Professionist;
 use App\Http\Requests\StoreProfessionistRequest;
 use App\Http\Requests\UpdateProfessionistRequest;
+use App\Models\Project;
+use App\Models\Technology;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProfessionistController extends Controller
 {
@@ -27,7 +31,9 @@ class ProfessionistController extends Controller
      */
     public function create()
     {
-        //
+        $projects = Project::all();
+        $technologies = Technology::all();
+        return view('admin.professionists.create', compact('projects', 'technologies'));
     }
 
     /**
@@ -37,7 +43,27 @@ class ProfessionistController extends Controller
      */
     public function store(StoreProfessionistRequest $request)
     {
-        //
+        $userId = Auth::id();
+        $data = $request->validated();
+        $slug = Professionist::generateSlug($request->name, $request->surname);
+        $data['slug'] = $slug;
+        $data['user_id'] = $userId;
+        if ($request->hasFile('profile_image')) {
+            $path = Storage::put('professionists_images', $request->profile_image);
+            $data['profile_image'] = $path;
+        }
+        if ($request->hasFile('cv_path')) {
+            $path = Storage::put('professionists_images', $request->cv_path);
+            $data['cv_path'] = $path;
+        }
+
+        $new_professionist= Professionist::create($data);
+
+        if ($request->has('technologies')) {
+            $new_professionist->technologies()->attach($request->technologies);
+        }
+
+        return redirect()->route('admin.professionists.index', $new_professionist->slug);
     }
 
     /**
@@ -47,7 +73,10 @@ class ProfessionistController extends Controller
      */
     public function show(Professionist $professionist)
     {
-        //
+        // if ( $professionist->user_id !== Auth::id()) {
+        //     abort(403);
+        // }
+        return view('admin.professionists.show', compact('professionist'));
     }
 
     /**
@@ -57,7 +86,15 @@ class ProfessionistController extends Controller
      */
     public function edit(Professionist $professionist)
     {
-        //
+        // if (!Auth::user()->isAdmin() && $professionist->user_id !== Auth::id()) {
+        //     abort(403);
+        // }
+        $projects = Project::all();
+        $technologies = Technology::all();
+        // if (!Auth::user()->isAdmin() && $professionist->user_id !== Auth::id()) {
+        //     abort(403);
+        // }
+        return view('admin.professionists.edit', compact('professionist', 'projects', 'technologies'));
     }
 
     /**
@@ -68,7 +105,30 @@ class ProfessionistController extends Controller
      */
     public function update(UpdateProfessionistRequest $request, Professionist $professionist)
     {
-        //
+        // if (!Auth::user()->isAdmin() && $professionist->user_id !== Auth::id()) {
+        //     abort(403);
+        // }
+        $data = $request->validated();
+        $slug = Professionist::generateSlug($request->name, $request->surname);
+        $data['slug'] = $slug;
+        if ($request->hasFile('profile_image')) {
+            if ($professionist->profile_image) {
+                Storage::delete($professionist->profile_image);
+            }
+
+            $path = Storage::put('professionist_images', $request->profile_image);
+            $data['profile_image'] = $path;
+        }
+
+
+        $professionist->update($data);
+
+        if ($request->has('technologies')) {
+            $professionist->technologies()->sync($request->technologies);
+        } else {
+            $professionist->technologies()->sync([]);
+        }
+        return redirect()->route('admin.professionists.index')->with('message', "$professionist->slug updated successfully");
     }
 
     /**
@@ -78,6 +138,17 @@ class ProfessionistController extends Controller
      */
     public function destroy(Professionist $professionist)
     {
-        //
+        // if (!Auth::user()->isAdmin() && $professionist->user_id !== Auth::id()) {
+        //     abort(403);
+        // }
+        if ($professionist->profile_image) {
+            Storage::delete($professionist->profile_image);
+        }
+        if ($professionist->cv_path) {
+            Storage::delete($professionist->cv_path);
+        }
+        $professionist->delete();
+
+        return redirect()->route('admin.professionists.index')->with('message', "$professionist->slug deleted successfully");
     }
 }
