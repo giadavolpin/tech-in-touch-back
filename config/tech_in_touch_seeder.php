@@ -11,7 +11,7 @@ return [
             "bio" => "La comunicazione è il mio punto di forza.
             Lavoro nel settore da oltre 10 anni, maturando esperienza, contatti e capacità di gestione dei clienti. Lavorando in aziende appartenenti a settori diversi, ho imparato ad essere flessibile e promuovere prodotti e servizi a 360°, sia online che offline.
             Ho vissuto all'estero due anni, perfezionando il mio inglese e raccogliendo esperienza in grandi agenzie di comunicazione tessendo relazioni internazionali.",
-            "phone_number" => "+123-456-7890",
+            "phone_number" => "+123-456-7005",
             "cv_path" => "https://www.ilcvperfetto.it/wp-content/uploads/sites/3/2022/05/esempio-di-CV-da-addetto-al-recupero-crediti-con-un-design-contemporaneo.svg",
             "linkedin_page" => "https://www.linkedin.com/in/mattia-fasulo/",
             "github_page" => "https://github.com/Mattia-Fasulo",
@@ -24,10 +24,10 @@ return [
             "surname" => "Volpin",
             "job_address" => "145 Anywher St., Padova",
             "profile_image" => "https://media.licdn.com/dms/image/D4D03AQHRxgN2NdfHFQ/profile-displayphoto-shrink_800_800/0/1675169063591?e=1680739200&v=beta&t=0FPPCQwp9HpE5ZTKlQ_LDaZwyl2n16vPvDczuW1IqqQ",
-            "bio" => "Sono una persona determinata e raggiungo sempre gli obiettivi che mi sono prefissa. 
+            "bio" => "Sono una persona determinata e raggiungo sempre gli obiettivi che mi sono prefissa.
             Ho vissuto esperienze in ambienti multiculturali e ho imparato a dialogare con persone di tutte le etnie, culture, età e religioni diverse.
             Vorrei imparare di più nell'ambito della programmazione.",
-            "phone_number" => "+123-456-7890",
+            "phone_number" => "+123-456-7810",
             "cv_path" => "https://www.ilcvperfetto.it/wp-content/uploads/sites/3/2022/05/esempio-di-CV-da-addetto-al-recupero-crediti-con-un-design-contemporaneo.svg",
             "linkedin_page" => "https://www.linkedin.com/in/giada-volpin-42668a263/",
             "github_page" => "https://github.com/giadavolpin",
@@ -67,6 +67,7 @@ return [
             "nickname" => "Stefi",
             "name" => "Stefania",
             "surname" => "Sgreva",
+            "phone_number" => "+369-443-2561",
             "job_address" => "Wonderland, Somewhere over the Rainbow",
             "profile_image" => "https://static.vecteezy.com/system/resources/previews/000/550/731/original/user-icon-vector.jpg",
             "bio" => "Sono un’artista digitale che ha trovato nell’ideazione e sviluppo di siti web e web app il luogo ideale dove unire tutte le competenze artistiche e tecniche maturate nel corso degli anni. Usare l’arte per rendere visibili e fruibili delle idee che possono essere utili o di intrattenimento per le persone é ciò che mi rende felice nel fare questo lavoro.
@@ -81,6 +82,7 @@ return [
             "nickname" => "CarlCode",
             "name" => "Carlo",
             "surname" => "Giddi",
+            "phone_number" => "+369-443-2562",
             "job_address" => "via Roma, 365 -22100, Modena",
             "profile_image" => "https://static.vecteezy.com/system/resources/previews/000/550/731/original/user-icon-vector.jpg",
             "bio" => "Ingegnere informatico con esperienza concreta in tutti i livelli di test, incluso test di prestazione, funzionale, integrazione, sistema e accettazione utente.",
@@ -95,7 +97,8 @@ return [
             "nickname" => null,
             "name" => "Laura",
             "surname" => "Rossi",
-            "job_address" => null,
+            "job_address" => "via paoloni 2, treviso",
+            "phone_number" => "+369-443-2563",
             "profile_image" => "https://static.vecteezy.com/system/resources/previews/000/550/731/original/user-icon-vector.jpg",
             "bio" => "Sono una copywriter con anni di esperienza e formazione, specializzata nel copy creativo e innovativo. In costante evoluzione e costruzione, negli ultimi hanno sono entrata anche nel mondo dello sviluppo di interfacce web.",
             "cv_path" => "https://craftmycv.com/storage/production/profiles/cvs/38/1592915668/pdf/1.jpg",
@@ -109,7 +112,8 @@ return [
             "nickname" => null,
             "name" => "Mei",
             "surname" => "Ling",
-            "job_address" => null,
+            "job_address" => "via salvo d'acquisto 4, napoli",
+            "phone_number" => "+369-443-1077",
             "profile_image" => "https://static.vecteezy.com/system/resources/previews/000/550/731/original/user-icon-vector.jpg",
             "bio" => "Innovativa, creativa e profesionale. Specializzata in Digital Marketing e SM Marketing. Ricopro ora il ruolo di Full Stack Developer per lo sviluppo di campagne innovative.",
             "cv_path" => "https://craftmycv.com/storage/production/profiles/cvs/38/1592915668/pdf/1.jpg",
@@ -212,7 +216,7 @@ return [
             "job_address" => "Via Tenedo 20, Matera",
             "profile_image" => "https://media.licdn.com/dms/image/D4D03AQHRxgN2NdfHFQ/profile-displayphoto-shrink_800_800/0/1675169063591?e=1680739200&v=beta&t=0FPPCQwp9HpE5ZTKlQ_LDaZwyl2n16vPvDczuW1IqqQ",
             "bio" => "Sono specializzata in Content Marketing: ovvero, strategie di marketing basate sulla creazione e diffusione di contenuti di valore, al fine di aumentare visibilità, traffico e conversioni. Aiuto aziende e PMI a scrivere contenuti di impatto per i loro siti web e campagne di comunicazione online e offline.",
-            "phone_number" => "+123-456-7890",
+            "phone_number" => "+123-456-7891",
             "cv_path" => "https://www.ilcvperfetto.it/wp-content/uploads/sites/3/2022/05/esempio-di-CV-da-addetto-al-recupero-crediti-con-un-design-contemporaneo.svg",
             "linkedin_page" => "https://www.linkedin.com/in/Mario-Rossi/",
             "github_page" => "https://github.com/Mario-Rossi",
@@ -227,7 +231,7 @@ return [
             "job_address" => "178 Anywhere St., Torino",
             "profile_image" => "https://media.licdn.com/dms/image/D4D03AQHRxgN2NdfHFQ/profile-displayphoto-shrink_800_800/0/1675169063591?e=1680739200&v=beta&t=0FPPCQwp9HpE5ZTKlQ_LDaZwyl2n16vPvDczuW1IqqQ",
             "bio" => "Sono una professionista dei social media in cerca di una posizione a tempo pieno dove poter migliorare le mie competenze nella comunicazione social e marketing.",
-            "phone_number" => "+123-456-7890",
+            "phone_number" => "+123-456-7892",
             "cv_path" => "https://www.ilcvperfetto.it/wp-content/uploads/sites/3/2022/05/esempio-di-CV-da-addetto-al-recupero-crediti-con-un-design-contemporaneo.svg",
             "linkedin_page" => "https://www.linkedin.com/in/Claudia70/",
             "github_page" => "https://github.com/Claudia70",
@@ -242,7 +246,7 @@ return [
             "job_address" => "Via Garibaldi 80, Mantova",
             "profile_image" => "https://media.licdn.com/dms/image/D4D03AQHRxgN2NdfHFQ/profile-displayphoto-shrink_800_800/0/1675169063591?e=1680739200&v=beta&t=0FPPCQwp9HpE5ZTKlQ_LDaZwyl2n16vPvDczuW1IqqQ",
             "bio" => "Sono una ragazza curiosa, interessata al mondo dell'arte. Vivo a Milano e mi piace viaggiare. I miei hobby principali sono leggere e andare a correre di prima mattina. Amo la natura.",
-            "phone_number" => "+123-456-7890",
+            "phone_number" => "+123-456-7893",
             "cv_path" => "https://www.ilcvperfetto.it/wp-content/uploads/sites/3/2022/05/esempio-di-CV-da-addetto-al-recupero-crediti-con-un-design-contemporaneo.svg",
             "linkedin_page" => "https://www.linkedin.com/in/Moreno-rimesio/",
             "github_page" => "https://github.com/Moreno-rimesio",
@@ -257,7 +261,7 @@ return [
             "job_address" => "Via Firenze 50,Lucca",
             "profile_image" => "https://media.licdn.com/dms/image/D4D03AQHRxgN2NdfHFQ/profile-displayphoto-shrink_800_800/0/1675169063591?e=1680739200&v=beta&t=0FPPCQwp9HpE5ZTKlQ_LDaZwyl2n16vPvDczuW1IqqQ",
             "bio" => "Sono una persona molto estroversa che ama il contatto col pubblico. Adoro creare campagne di marketing efficaci per promuovere i prodotti che mi stanno a cuore.",
-            "phone_number" => "+123-456-7890",
+            "phone_number" => "+123-456-7894",
             "cv_path" => "https://www.ilcvperfetto.it/wp-content/uploads/sites/3/2022/05/esempio-di-CV-da-addetto-al-recupero-crediti-con-un-design-contemporaneo.svg",
             "linkedin_page" => "https://www.linkedin.com/in/PippoRollo/",
             "github_page" => "https://github.com/PippoRollo",
@@ -444,6 +448,27 @@ return [
         ],
     ],
     'projects' => [
+        // mattia fasulo
+
+        [
+            "name" => "Spotify Web",
+            "description" => "Riproduzione del layout in HTML/CSS di Spotify",
+            "professionist_id" => 1,
+            "cover_image" => "https://s3-us-west-1.amazonaws.com/coppertino/seo-photos/spotify-web-player-vs-loop-web.jpg"
+        ],
+        [
+            "name" => "Comics",
+            "description" => "Riproduzione del layout in HTML/CSS",
+            "professionist_id" => 1,
+            "cover_image" => "https://s3-us-west-1.amazonaws.com/coppertino/seo-photos/spotify-web-player-vs-loop-web.jpg"
+        ],
+        [
+            "name" => "toboolist",
+            "description" => "Riproduzione del layout in HTML/CSS",
+            "professionist_id" => 1,
+            "cover_image" => "https://s3-us-west-1.amazonaws.com/coppertino/seo-photos/spotify-web-player-vs-loop-web.jpg"
+        ],
+
         /* giada volpin */
         [
             "name" => "Spotify Web",

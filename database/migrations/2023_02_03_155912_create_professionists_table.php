@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -20,7 +19,7 @@ return new class extends Migration
             $table->string('job_address')->nullable();
             $table->string('profile_image')->nullable();
             $table->text('bio')->nullable();
-            $table->string('phone_number', 15)->nullable();
+            $table->string('phone_number', 15)->nullable()->unique();
             $table->string('cv_path');
             $table->string('linkedin')->nullable();
             $table->string('github')->nullable();
