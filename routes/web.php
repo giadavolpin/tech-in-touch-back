@@ -32,8 +32,8 @@ Route::middleware(['auth', 'verified'])
     ->prefix('admin')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('professionists', ProfessionistController::class)->parameters(['professionists' => 'professionist:id']);
-        Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:id']);
+        Route::resource('professionists', ProfessionistController::class)->parameters(['professionists' => 'professionist:slug']);
+        Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
         Route::resource('technologies', TechnologyController::class)->parameters(['technologies' => 'technologies:slug'])->except('show', 'create','edit');
 
     });
