@@ -13,7 +13,7 @@ class StoreProfessionistRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,19 @@ class StoreProfessionistRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nickname' => 'required|unique:professionists|max:15|min:3',
+            'name' => 'required|max:15|min:3',
+            'surname' => 'required|max:15|min:3',
+            'job_address' => 'nullable',
+            'bio' => 'nullable',
+            'profile_image' => 'nullable|image',
+            'cv_path' => 'nullable|image',
+            'user_id' => 'nullable|exists:user,id',
+            'technologies_id' => 'nullable',
+            'phone_number' => 'nullable',
+            'linkedin' => 'nullable',
+            'github' => 'nullable',
+
         ];
     }
 }

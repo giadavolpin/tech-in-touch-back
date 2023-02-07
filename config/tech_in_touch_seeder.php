@@ -17,7 +17,6 @@ return [
             "github_page" => "https://github.com/Mattia-Fasulo",
             "average_rate" => null,
             "user_id" => 1
-
         ],
     ],
     // 'user_types' => [
