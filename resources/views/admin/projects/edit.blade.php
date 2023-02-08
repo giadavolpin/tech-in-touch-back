@@ -21,7 +21,7 @@
                 <form action="{{ route('admin.projects.update', $project->slug) }}" method="POST" class="p-4"
                     enctype="multipart/form-data">
                     @csrf
-
+                    @method('PUT')
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome</label>
 
@@ -38,6 +38,7 @@
                         <label for="description" class="form-label">Descrizione</label>
                         <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
                             value="{{ old('description', $project->description) }}" required minlength="15"></textarea>
+
                         @error('description')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -51,8 +52,8 @@
                             class="form-control  @error('cover_image') is-invalid @enderror"> --}}
                         <div class=" mb-3 w-50">
 
-                            <img class="d-block mb-2" id="uploadPreview" width="100"
-                                src="https://via.placeholder.com/300x200">
+                            <img class="d-block mb-2" id="cover_image" width="100"
+                                src="{{ asset('storage/' . $project->cover_image) }}">
                             <div>
 
                                 <input type="file" name="cover_image" id="create_cover_image"
