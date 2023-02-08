@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Professionist;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
@@ -31,8 +32,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $technologies = Technology::all();
-        return view("admin . projects . edit", compact('project, technologies'));
+        $professionists = Professionist::all();
+        return view("admin.projects.create", compact('professionists'));
 
     }
 
@@ -47,15 +48,13 @@ class ProjectController extends Controller
         $data = $request->validated();
         $slug = Project::generateSlug($request->name);
         $data['slug'] = $slug;
-        $data['user_id'] = $userId;
+        $data['professionist_id'] = $userId;
         if ($request->hasFile('cover_image')) {
             $path = Storage::put('project_image', $request->cover_image);
-            $data['project_image'] = $path;
+            $data['cover_image'] = $path;
         }
         $newProject = Project::create($data);
-        if ($request->has('technologies')) {
-            $newProject->technologies()->attach($request->technologies);
-        }
+        
         return redirect()->route('admin.projects.show', $newProject->slug);
 
     }
