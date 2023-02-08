@@ -25,8 +25,8 @@ class StoreProfessionistRequest extends FormRequest
     {
         return [
             'nickname' => 'required|unique:professionists|max:15|min:3',
-            'name' => 'required|max:15|min:3',
-            'surname' => 'required|max:15|min:3',
+            'name' => 'required|max:50|min:3',
+            'surname' => 'required|max:50|min:3',
             'job_address' => 'nullable',
             'bio' => 'nullable',
             'profile_image' => 'nullable|image',
@@ -36,7 +36,7 @@ class StoreProfessionistRequest extends FormRequest
             'phone_number' => 'nullable',
             'linkedin' => 'nullable',
             'github' => 'nullable',
-
+            'visible' => 'required'
         ];
     }
 }

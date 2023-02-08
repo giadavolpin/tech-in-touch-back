@@ -5,7 +5,7 @@
         <h1 class="m-3">I miei Profili</h1>
         <div class="text-end">
 
-                <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.professionists.create')}}">Aggiungi Profilo</a>
+            <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.professionists.create') }}">Aggiungi Profilo</a>
 
 
         </div>
@@ -15,7 +15,7 @@
             </div>
         @endif
         <div class="table-responsive mx-3">
-            <table  class="my-table table table-striped">
+            <table class="my-table table table-striped">
                 <thead class="table-dark">
                     <tr>
 
@@ -28,6 +28,7 @@
                         <th scope="col">CV</th>
                         <th scope="col">Linkedin</th>
                         <th scope="col">Github</th>
+                        <th scope="col">Visibile</th>
                         <th scope="col">Modifica</th>
                         <th class="text-center" scope="col">Elimina</th>
                     </tr>
@@ -45,15 +46,23 @@
                             <td>{{ Str::limit($professionist->cv_path, 20) }}</td>
                             <td>{{ $professionist->linkedin }}</td>
                             <td>{{ $professionist->github }}</td>
-
-                            <td class="text-center"><a class="link-secondary" href=""
-                                    title="Edit professionist"><i class="fa-solid fa-pen"></i></a></td>
                             <td class="text-center">
-                                <form action="{{route('admin.professionists.destroy', $professionist->slug)}}" method="POST">
+                                <input type="checkbox" class="form-check-input rounded-pill" id="" name="visible"
+                                    value="{{old($professionist->visible)}}">
+
+
+
+                            </td>
+
+                            <td class="text-center"><a class="link-secondary" href="" title="Edit professionist"><i
+                                        class="fa-solid fa-pen"></i></a></td>
+                            <td class="text-center">
+                                <form action="{{ route('admin.professionists.destroy', $professionist->slug) }}"
+                                    method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="delete-button btn btn-danger "
-                                        data-item-title="{{$professionist->slug}}"><i
+                                        data-item-title="{{ $professionist->slug }}"><i
                                             class="fa-solid fa-trash-can"></i></button>
                                 </form>
                             </td>

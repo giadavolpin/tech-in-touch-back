@@ -57,8 +57,8 @@
 
                     <div class="mb-3">
                         <label for="job_address" class="form-label">Indirizzo</label>
-                        <input type="text" class="form-control @error('job_address') is-invalid @enderror" id="job_address"
-                            name="job_address" >
+                        <input type="text" class="form-control @error('job_address') is-invalid @enderror"
+                            id="job_address" name="job_address">
                         @error('job_address')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -131,10 +131,11 @@
                                 <div class="form-check form-check-inline">
 
 
-                                    <input type="checkbox" class="form-check-input" id="{{ $technology->slug }}" name="technologies[]"
-                                        value="{{ $technology->id }}">
+                                    <input type="checkbox" class="form-check-input" id="{{ $technology->slug }}"
+                                        name="technologies[]" value="{{ $technology->id }}">
 
-                                    <label class="form-check-label" for="{{ $technology->slug }}">{{ $technology->name }}</label>
+                                    <label class="form-check-label"
+                                        for="{{ $technology->slug }}">{{ $technology->name }}</label>
                                 </div>
                             @endforeach
                             @error('technologies')
@@ -144,8 +145,8 @@
 
                         <div class="mb-3">
                             <label for="phone_number" class="form-label">Numero di Telefono</label>
-                            <input type="tel" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number"
-                                name="phone_number" >
+                            <input type="tel" class="form-control @error('phone_number') is-invalid @enderror"
+                                id="phone_number" name="phone_number">
                             @error('phone_number')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -153,8 +154,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="linkedin" class="form-label">Linkedin</label>
-                            <input type="text" class="form-control @error('linkedin') is-invalid @enderror" id="linkedin"
-                                name="linkedin" >
+                            <input type="text" class="form-control @error('linkedin') is-invalid @enderror"
+                                id="linkedin" name="linkedin">
                             @error('linkedin')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -162,12 +163,23 @@
                         </div>
                         <div class="mb-3">
                             <label for="github" class="form-label">Github</label>
-                            <input type="text" class="form-control @error('github') is-invalid @enderror" id="github"
-                                name="github" >
+                            <input type="text" class="form-control @error('github') is-invalid @enderror"
+                                id="github" name="github">
                             @error('github')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                             {{-- <div class="form-text">*Minimo 3 caratteri e massimo 15 </div> --}}
+                        </div>
+                        <div class="mb-3">
+                            <label for="visible" class="form-label ">Desideri che il tuo profilo sia visile?</label>
+                            <select name="visible" id="visible"
+                                class="w-25 form-control @error('visible') is-invalid @enderror" required>
+                                <option selected>Seleziona un opzione</option>
+                                <option value="0">Invisibile</option>
+                                <option value="1">Visibile</option>
+
+                            </select>
+
                         </div>
 
 
