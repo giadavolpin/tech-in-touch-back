@@ -55,7 +55,7 @@ class ProjectController extends Controller
         }
         $newProject = Project::create($data);
         
-        return redirect()->route('admin.projects.show', $newProject->slug);
+        return redirect()->route('admin.projects.index', $newProject->slug);
 
     }
 
@@ -97,16 +97,12 @@ class ProjectController extends Controller
                 Storage::delete($project->cover_image);
             }
             $path = Storage::put('project_image', $request->cover_image);
-            $data['project_image'] = $path;
+            $data['cover_image'] = $path;
 
         }
         $project->update($data);
 
-        if ($request->has('technologies')) {
-            $project->technologies()->sync($request->technologies);
-        } else {
-            $project->technologies()->sync([]);
-        }
+        
         return redirect()->route('admin.projects.index')->with('message', "$project->slug updated successfully");
     }
 
@@ -117,6 +113,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if ($project->cover_image) {
+            Storage::delete($project->cover_image);
+        }
         $project->delete();
 
         return redirect()->route('admin.projects.index')->with('message', "$project->slug deleted successfully");
