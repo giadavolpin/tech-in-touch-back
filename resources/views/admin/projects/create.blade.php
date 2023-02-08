@@ -50,8 +50,8 @@
                             class="form-control  @error('cover_image') is-invalid @enderror"> --}}
                         <div class=" mb-3 w-50">
 
-                            <img class="d-block mb-2" id="uploadPreview" width="100"
-                                src="https://via.placeholder.com/300x200">
+                            {{-- <img class="d-block mb-2" id="uploadPreview" width="100"
+                                src="https://via.placeholder.com/300x200"> --}}
                             <div>
 
                                 <input type="file" name="cover_image" id="create_cover_image"
