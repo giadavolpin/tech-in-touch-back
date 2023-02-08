@@ -28,6 +28,7 @@
                         <th scope="col">CV</th>
                         <th scope="col">Linkedin</th>
                         <th scope="col">Github</th>
+                        <th scope="col">Visibile</th>
                         <th scope="col">Modifica</th>
                         <th class="text-center" scope="col">Elimina</th>
                     </tr>
@@ -45,10 +46,19 @@
                             <td>{{ Str::limit($professionist->cv_path, 20) }}</td>
                             <td>{{ $professionist->linkedin }}</td>
                             <td>{{ $professionist->github }}</td>
+                            <td class="text-center">
+                                <input type="checkbox" class="form-check-input rounded-pill" id="" name="visible"
+                                    value="{{old($professionist->visible)}}">
+
+
+
+                            </td>
+
 
                             <td class="text-center"><a class="link-secondary"
                                     href="{{ route('admin.professionists.edit', ['professionist' => $professionist->slug]) }}"
                                     title="Edit professionist"><i class="fa-solid fa-pen"></i></a></td>
+
                             <td class="text-center">
                                 <form action="{{ route('admin.professionists.destroy', $professionist->slug) }}"
                                     method="POST">

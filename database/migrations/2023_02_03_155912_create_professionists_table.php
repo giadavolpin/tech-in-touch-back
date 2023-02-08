@@ -24,7 +24,7 @@ return new class extends Migration {
             $table->string('linkedin')->nullable();
             $table->string('github')->nullable();
             $table->float('avg_vote')->nullable();
-            $table->boolean('visible')->default(1);
+            $table->boolean('visible');
 
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
