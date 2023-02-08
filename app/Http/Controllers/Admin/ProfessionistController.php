@@ -20,7 +20,9 @@ class ProfessionistController extends Controller
      */
     public function index()
     {
-        $professionists = Professionist::all();
+
+        $userId = Auth::id();
+        $professionists = Professionist::where('user_id',$userId)->get();
 
         return view('admin.professionists.index', compact('professionists'));
     }

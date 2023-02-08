@@ -19,7 +19,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $userId = Auth::id();
+        $projects = Project::where('professionist_id',$userId)->get();
 
         return view('admin.projects.index', compact('projects'));
     }
@@ -89,7 +90,7 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        
+
         $data = $request->validated();
         $slug = Project::generateSlug($request->name);
         $data['slug'] = $slug;
@@ -99,7 +100,7 @@ class ProjectController extends Controller
             }
             $path = Storage::put('project_image', $request->cover_image);
             $data['project_image'] = $path;
-            
+
         }
         $project->update($data);
 

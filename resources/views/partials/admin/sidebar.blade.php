@@ -20,7 +20,7 @@
                 aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
 
-                Professionists
+                Profili
             </a>
         </li>
         <li class="nav-item">
@@ -29,7 +29,7 @@
                 aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
 
-                Projects
+                Progetti
             </a>
         </li>
         <li class="nav-item">
