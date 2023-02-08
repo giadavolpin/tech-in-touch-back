@@ -29,13 +29,15 @@
                             <td>{{ Str::limit($project->description, 30) }}</td>
                             <td>{{ $project->cover_image }}</td>
 
-                            <td class="text-center"><a class="link-secondary" href="" title="Edit project"><i
+                            <td class="text-center"><a class="link-secondary"
+                                    href="{{ route('admin.projects.edit', $project->slug) }}" title="Edit project"><i
                                         class="fa-solid fa-pen"></i></a></td>
                             <td class="text-center">
-                                <form action="" method="POST">
+                                <form action=""{{ route('admin.projects.destroy', $project->slug) }}"" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="delete-button btn btn-danger " data-item-title=""><i
+                                    <button type="submit" class="delete-button btn btn-danger "
+                                        data-item-title="{{ $project->slug }}"><i
                                             class="fa-solid fa-trash-can"></i></button>
                                 </form>
                             </td>
