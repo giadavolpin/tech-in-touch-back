@@ -93,10 +93,10 @@
                 class="rounded-circle me-2">
             <strong>{{ Auth::user()->name }}</strong>
         </a>
-        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+        <ul class="dropdown-menu dropdown-menu-dark text-small" aria-labelledby="dropdownUser1">
             {{-- <li><a class="dropdown-item" href="{{ route('admin.projects.create') }}">New project...</a></li> --}}
-            <li><a class="dropdown-item" href="#">Impostazioni</a></li>
-            <li><a class="dropdown-item" href="#">Profilo</a></li>
+            {{-- <li><a class="dropdown-item" href="#">Impostazioni</a></li>
+            <li><a class="dropdown-item" href="#">Profilo</a></li> --}}
             <li>
                 <hr class="dropdown-divider">
             </li>
