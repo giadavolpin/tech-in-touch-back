@@ -54,8 +54,11 @@
 
                             </td>
 
-                            <td class="text-center"><a class="link-secondary" href="" title="Edit professionist"><i
-                                        class="fa-solid fa-pen"></i></a></td>
+
+                            <td class="text-center"><a class="link-secondary"
+                                    href="{{ route('admin.professionists.edit', ['professionist' => $professionist->slug]) }}"
+                                    title="Edit professionist"><i class="fa-solid fa-pen"></i></a></td>
+
                             <td class="text-center">
                                 <form action="{{ route('admin.professionists.destroy', $professionist->slug) }}"
                                     method="POST">
