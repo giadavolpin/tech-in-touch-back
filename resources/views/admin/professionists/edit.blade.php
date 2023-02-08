@@ -40,7 +40,7 @@
                         <label for="name" class="form-label">Nome</label>
 
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                            name="name" required maxlength="15" minlength="3"
+                            name="name" required maxlength="50" minlength="3"
                             value="{{ old('name', $professionist->name) }}">
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -51,7 +51,7 @@
                     <div class="mb-3">
                         <label for="surname" class="form-label">Cognome</label>
                         <input type="text" class="form-control @error('surname') is-invalid @enderror" id="surname"
-                            name="surname" required maxlength="15" minlength="3"
+                            name="surname" required maxlength="50" minlength="3"
                             value="{{ old('surname', $professionist->surname) }}">
                         @error('surname')
                             <div class="invalid-feedback">{{ $message }}</div>

@@ -16,7 +16,7 @@
         @endif
 
         <div class="text-end mt-4">
-            <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-light border-dark">Edit</a>
+            <a href="{{ route('admin.projects.edit', $project->slug) }}" class="btn btn-light border-dark">Edit</a>
         </div>
     </div>
 @endsection
