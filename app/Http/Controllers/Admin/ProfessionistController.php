@@ -22,7 +22,7 @@ class ProfessionistController extends Controller
     {
 
         $userId = Auth::id();
-        $professionists = Professionist::where('user_id',$userId)->get();
+        $professionists = Professionist::where('user_id', $userId)->get();
 
         return view('admin.professionists.index', compact('professionists'));
     }
@@ -59,13 +59,14 @@ class ProfessionistController extends Controller
             $data['cv_path'] = $path;
         }
 
-        $new_professionist= Professionist::create($data);
+        $new_professionist = Professionist::create($data);
 
         if ($request->has('technologies')) {
             $new_professionist->technologies()->attach($request->technologies);
         }
 
-        return redirect()->route('admin.professionists.index', $new_professionist->slug);
+        return redirect()->route('admin.professionists.index', $new_professionist->slug)->with('message', "Profilo creato con successo");
+        ;
     }
 
     /**
@@ -130,7 +131,7 @@ class ProfessionistController extends Controller
         } else {
             $professionist->technologies()->sync([]);
         }
-        return redirect()->route('admin.professionists.index')->with('message', "$professionist->slug updated successfully");
+        return redirect()->route('admin.professionists.index')->with('message', "$professionist->slug aggiornato con successo");
     }
 
     /**
@@ -151,6 +152,6 @@ class ProfessionistController extends Controller
         }
         $professionist->delete();
 
-        return redirect()->route('admin.professionists.index')->with('message', "$professionist->slug deleted successfully");
+        return redirect()->route('admin.professionists.index')->with('message', "$professionist->slug cancellato con successo");
     }
 }
