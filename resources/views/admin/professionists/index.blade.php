@@ -5,7 +5,7 @@
         <h1 class="m-3">I miei Profili</h1>
         <div class="text-end">
 
-                <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.professionists.create')}}">Aggiungi Profilo</a>
+            <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.professionists.create') }}">Aggiungi Profilo</a>
 
 
         </div>
@@ -15,7 +15,7 @@
             </div>
         @endif
         <div class="table-responsive mx-3">
-            <table  class="my-table table table-striped">
+            <table class="my-table table table-striped">
                 <thead class="table-dark">
                     <tr>
 
@@ -46,14 +46,16 @@
                             <td>{{ $professionist->linkedin }}</td>
                             <td>{{ $professionist->github }}</td>
 
-                            <td class="text-center"><a class="link-secondary" href=""
+                            <td class="text-center"><a class="link-secondary"
+                                    href="{{ route('admin.professionists.edit', ['professionist' => $professionist->slug]) }}"
                                     title="Edit professionist"><i class="fa-solid fa-pen"></i></a></td>
                             <td class="text-center">
-                                <form action="{{route('admin.professionists.destroy', $professionist->slug)}}" method="POST">
+                                <form action="{{ route('admin.professionists.destroy', $professionist->slug) }}"
+                                    method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="delete-button btn btn-danger "
-                                        data-item-title="{{$professionist->slug}}"><i
+                                        data-item-title="{{ $professionist->slug }}"><i
                                             class="fa-solid fa-trash-can"></i></button>
                                 </form>
                             </td>

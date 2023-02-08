@@ -16,7 +16,7 @@
         </li>
         <li class="nav-item">
             <a href="{{ route('admin.professionists.index') }}"
-                class="nav-link text-white {{ Route::currentRouteName() == 'admin.professionist.index' ? 'bg-secondary' : '' }}"
+                class="nav-link text-white {{ Route::currentRouteName() == 'admin.professionists.index' ? 'bg-secondary' : '' }}"
                 aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
 
@@ -34,7 +34,7 @@
         </li>
         <li class="nav-item">
             <a href="{{ route('admin.technologies.index') }}"
-                class="nav-link text-white {{ Route::currentRouteName() == 'admin.technlogies.index' ? 'bg-secondary' : '' }}"
+                class="nav-link text-white {{ Route::currentRouteName() == 'admin.technologies.index' ? 'bg-secondary' : '' }}"
                 aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
 
