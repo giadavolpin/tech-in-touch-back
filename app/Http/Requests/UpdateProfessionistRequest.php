@@ -26,14 +26,17 @@ class UpdateProfessionistRequest extends FormRequest
     public function rules()
     {
         return [
-            'nickname' => 'nullable' | 'min:3' | 'max:15' | Rule::unique('professionists')->ignore($this->professionist),
+            'nickname' => 'nullable',
+            'string',
+            'min:3',
+            'max:15', Rule::unique('professionists')->ignore($this->professionist),
             'name' => ['required', 'string', 'min:3', 'max: 50'],
             'surname' => ['required', 'string', 'min:3', 'max: 50'],
             'job_address' => ['nullable', 'string', 'min:3', 'max: 50'],
             'phone_number' => ['nullable', 'max: 15', Rule::unique('professionists')->ignore($this->professionist)],
             'bio' => ['nullable'],
             'profile_image' => ['nullable', 'image'],
-            'cv_path' => ['required', 'string'],
+            'cv_path' => ['required'],
             'linkedin' => ['nullable'],
             'github' => ['nullable']
         ];

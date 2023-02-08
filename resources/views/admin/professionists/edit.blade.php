@@ -18,9 +18,10 @@
         <h1 class="mx-4">Modifica Profilo</h1>
         <div class="row bg-white">
             <div class="col-12">
-                <form action="{{ route('admin.professionists.store') }}" method="POST" class="p-4"
+                <form action="{{ route('admin.professionists.update', $professionist->slug) }}" method="POST" class="p-4"
                     enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
 
                     <div class="mb-3">
                         <label for="nickname" class="form-label">Nickname</label>
