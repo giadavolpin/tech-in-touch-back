@@ -15,7 +15,7 @@
             @endif
         </div> --}}
     <div class="mt-3 ">
-        <h1 class="mx-4">Create Professionist</h1>
+        <h1 class="mx-4">Creazione Profilo Professionista</h1>
         <div class="row bg-white">
             <div class="col-12">
                 <form action="{{ route('admin.professionists.store') }}" method="POST" class="p-4"
@@ -35,7 +35,7 @@
 
                     <div class="mb-3">
 
-                        <label for="name" class="form-label">Name</label>
+                        <label for="name" class="form-label">Nome</label>
 
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                             name="name" required maxlength="15" minlength="3">
@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="surname" class="form-label">Surname</label>
+                        <label for="surname" class="form-label">Cognome</label>
                         <input type="text" class="form-control @error('surname') is-invalid @enderror" id="surname"
                             name="surname" required maxlength="15" minlength="3">
                         @error('surname')
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="job_address" class="form-label">Address</label>
+                        <label for="job_address" class="form-label">Indirizzo</label>
                         <input type="text" class="form-control @error('job_address') is-invalid @enderror" id="job_address"
                             name="job_address" >
                         @error('job_address')
@@ -72,7 +72,7 @@
 
                     <div>
 
-                        <label for="profile_image" class="form-label">Insert an Image</label>
+                        <label for="profile_image" class="form-label">Inserisci un Immagine</label>
                         {{-- <input type="file" name="profile_image" id="create_profile_image"
                             class="form-control  @error('profile_image') is-invalid @enderror"> --}}
                         <div class=" mb-3 w-50">
@@ -90,7 +90,7 @@
 
                         </div>
 
-                        <label for="cv_path" class="form-label">Insert an CV</label>
+                        <label for="cv_path" class="form-label">inserisci un CV</label>
                         {{-- <input type="file" name="cv_path" id="create_cv_path"
                             class="form-control  @error('cv_path') is-invalid @enderror"> --}}
                         <div class=" mb-3 w-50">
@@ -143,7 +143,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="phone_number" class="form-label">phone_number</label>
+                            <label for="phone_number" class="form-label">Numero di Telefono</label>
                             <input type="tel" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number"
                                 name="phone_number" >
                             @error('phone_number')
@@ -152,7 +152,7 @@
                             {{-- <div class="form-text">*Minimo 3 caratteri e massimo 15 </div> --}}
                         </div>
                         <div class="mb-3">
-                            <label for="linkedin" class="form-label">linkedin</label>
+                            <label for="linkedin" class="form-label">Linkedin</label>
                             <input type="text" class="form-control @error('linkedin') is-invalid @enderror" id="linkedin"
                                 name="linkedin" >
                             @error('linkedin')
@@ -161,7 +161,7 @@
                             {{-- <div class="form-text">*Minimo 3 caratteri e massimo 15 </div> --}}
                         </div>
                         <div class="mb-3">
-                            <label for="github" class="form-label">github</label>
+                            <label for="github" class="form-label">Github</label>
                             <input type="text" class="form-control @error('github') is-invalid @enderror" id="github"
                                 name="github" >
                             @error('github')
@@ -172,7 +172,7 @@
 
 
 
-                        <button type="submit" class="btn btn-dark">Submit</button>
+                        <button type="submit" class="btn btn-dark">Invia</button>
                         <button type="reset" class="btn btn-light border-dark">Reset</button>
                 </form>
             </div>
