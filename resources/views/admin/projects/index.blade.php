@@ -25,7 +25,8 @@
                 <tbody>
                     @foreach ($projects as $project)
                         <tr>
-                            <td>{{ $project->name }}</td>
+                            <td><a href="{{ route('admin.projects.show', $project->slug) }}" title="Vedi Progetto">
+                                    {{ $project->name }} </a></td>
                             <td>{{ Str::limit($project->description, 30) }}</td>
                             <td>{{ $project->cover_image }}</td>
 
