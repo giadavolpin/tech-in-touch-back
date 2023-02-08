@@ -101,7 +101,7 @@
 
                 <div class="links_register">
                     <span>Sei già registrato ?</span>
-                    <a href="#">Accedi</a>
+                    <a href="http://127.0.0.1:8000/login">Accedi</a>
                 </div>
                 
                 <button type="submit" class="register">

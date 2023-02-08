@@ -39,7 +39,7 @@
 
             <div class="links_login">
                 <span>Non hai ancora un account ?</span>
-                <a href="#">Registrati</a>
+                <a href="http://127.0.0.1:8000/register">Registrati</a>
             </div>
             <button type="submit" class="btn_login">{{ __('Login') }}</button>
 {{-- 
