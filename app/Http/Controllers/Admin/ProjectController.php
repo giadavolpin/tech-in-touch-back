@@ -77,8 +77,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        $technologies = Technology::all();
-        return view("admin . projects . edit", compact('project, technologies'));
+        return view("admin.projects.edit", compact('project'));
     }
 
     /**
