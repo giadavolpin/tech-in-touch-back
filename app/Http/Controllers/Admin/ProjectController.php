@@ -21,7 +21,8 @@ class ProjectController extends Controller
     public function index()
     {
         $userId = Auth::id();
-        $projects = Project::where('professionist_id',$userId)->get();
+        $professionistID = Professionist::where('user_id', $userId)->pluck('id');
+        $projects = Project::where('professionist_id', $professionistID[0])->get();
 
         return view('admin.projects.index', compact('projects'));
     }
@@ -45,16 +46,18 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $userId = Auth::id();
+        $professionistID = Professionist::where('user_id', $userId)->pluck('id');
+        // dd($professionistID);
         $data = $request->validated();
         $slug = Project::generateSlug($request->name);
         $data['slug'] = $slug;
-        $data['professionist_id'] = $userId;
+        $data['professionist_id'] = $professionistID[0];
         if ($request->hasFile('cover_image')) {
             $path = Storage::put('project_image', $request->cover_image);
             $data['cover_image'] = $path;
         }
         $newProject = Project::create($data);
-        
+
         return redirect()->route('admin.projects.index', $newProject->slug);
 
     }
@@ -102,7 +105,7 @@ class ProjectController extends Controller
         }
         $project->update($data);
 
-        
+
         return redirect()->route('admin.projects.index')->with('message', "$project->slug updated successfully");
     }
 

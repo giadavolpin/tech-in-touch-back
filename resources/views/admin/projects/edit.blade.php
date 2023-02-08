@@ -41,7 +41,7 @@
                         @error('description')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                        <div class="form-text">*Minimo 15 caratteri</div>
+
                     </div>
 
                     <div>
@@ -83,7 +83,7 @@
                             @enderror
                         </div> --}}
 
-                        {{-- 
+                        {{--
                         <div class="mb-3">
                             <label for="tags" class="form-label">Seleziona le tecnologie usate</label> <br>
                             @foreach ($technologies as $technology)
@@ -106,7 +106,7 @@
 
 
 
-                        <button type="submit" class="btn btn-dark">Submit</button>
+                        <button type="submit" class="btn btn-dark">Invia</button>
                         <button type="reset" class="btn btn-light border-dark">Reset</button>
                 </form>
             </div>

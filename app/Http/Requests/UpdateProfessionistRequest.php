@@ -40,7 +40,8 @@ class UpdateProfessionistRequest extends FormRequest
             'profile_image' => ['nullable', 'image'],
             'cv_path' => ['nullable'],
             'linkedin' => ['nullable', 'string'],
-            'github' => ['nullable', 'string']
+            'github' => ['nullable', 'string'],
+            'visible' => ['nullable']
         ];
     }
     public function messages()

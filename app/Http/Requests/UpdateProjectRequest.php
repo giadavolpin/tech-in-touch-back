@@ -25,19 +25,18 @@ class UpdateProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', Rule::unique('projects')->ignore($this->project), 'min:3','max:50'],
-            'description' => ['required','min:15'],
+            'name' => ['required', Rule::unique('projects')->ignore($this->project), 'min:3', 'max:50'],
+            'description' => ['required'],
             'cover_image' => ['nullable'],
-            'professionist_id' => 'exists:professionist,id'
         ];
     }
-    public function messages(){
+    public function messages()
+    {
         return [
             'name.required' => 'Il nome è obbligatorio.',
             'name.min' => 'Il nome deve avere almeno :min caratteri.',
             'name.max' => 'Il nome non può superare i :max caratteri.',
             'description.required' => 'La descrizione è obbligatoria.',
-            'description.min' => 'La descrizione deve avere almeno :min caratteri.',
         ];
     }
 }

@@ -27,7 +27,7 @@
                         <label for="nickname" class="form-label">Nickname</label>
 
                         <input type="text" class="form-control @error('nickname') is-invalid @enderror" id="nickname"
-                            name="nickname" required maxlength="15" minlength="3"
+                            name="nickname" maxlength="15" minlength="3"
                             value="{{ old('nickname', $professionist->nickname) }}">
                         @error('nickname')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -190,8 +190,12 @@
                             <select name="visible" id="visible"
                                 class="w-25 form-control @error('visible') is-invalid @enderror" required>
                                 <option selected>Seleziona un opzione</option>
-                                <option value="0" {{ $professionist->visible == old('visible', $professionist->visible) ? 'selected' : '' }}>Invisibile</option>
-                                <option value="1" {{ $professionist->visible == old('visible', $professionist->visible) ? 'selected' : '' }}>Visibile</option>
+                                <option value="0"
+                                    {{ $professionist->visible == old('visible', $professionist->visible) ? 'selected' : '' }}>
+                                    Invisibile</option>
+                                <option value="1"
+                                    {{ $professionist->visible == old('visible', $professionist->visible) ? 'selected' : '' }}>
+                                    Visibile</option>
 
                             </select>
 
@@ -209,5 +213,4 @@
     <script type="text/javascript">
         bkLib.onDomLoaded(nicEditors.allTextAreas);
     </script>
-
 @endsection

@@ -25,19 +25,20 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:50',
-            'description' => 'required|min:15',
+            'description' => 'required',
             'cover_image' => 'nullable',
             'professionist_id' => 'exists:professionist,id'
         ];
     }
-    public function messages(){
+    public function messages()
+    {
         return [
             'name.required' => 'Il nome è obbligatorio.',
             'name.min' => 'Il nome deve avere almeno :min caratteri.',
             'name.max' => 'Il nome non può superare i :max caratteri.',
             'description.required' => 'La descrizione è obbligatoria.',
-            'description.min' => 'La descrizione deve avere almeno :min caratteri.',
-            
+
+
         ];
     }
 }
