@@ -26,7 +26,7 @@
                         <label for="name" class="form-label">Nome</label>
 
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                            name="name" value="{{ old('name', $project->name) }}" required maxlength="15" minlength="3">
+                            name="name" value="{{ old('name', $project->name) }}" maxlength="50" minlength="3">
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -36,8 +36,7 @@
 
                     <div class="mb-3">
                         <label for="description" class="form-label">Descrizione</label>
-                        <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" required
-                            minlength="15">{{ old('description', $project->description) }} </textarea>
+                        <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description">{{ old('description', $project->description) }} </textarea>
 
                         @error('description')
                             <div class="invalid-feedback">{{ $message }}</div>
