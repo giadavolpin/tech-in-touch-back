@@ -8,7 +8,7 @@
                 
                 @csrf
 
-                <h2>{{ __('Register') }}</h2>
+                <h2>{{ __('Registrati') }}</h2>
 
                 <div class="inputBox_register">
                     {{-- <label for="name">{{ __('Name') }}</label> --}}
