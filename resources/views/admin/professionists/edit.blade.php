@@ -15,7 +15,7 @@
             @endif
         </div> --}}
     <div class="mt-3 ">
-        <h1 class="mx-4">Modifica Profilo</h1>
+        <h1 class="mx-4">Modifica {{ $professionist->nickname }}</h1>
         <div class="row bg-white">
             <div class="col-12">
                 <form action="{{ route('admin.professionists.update', $professionist->slug) }}" method="POST" class="p-4"
@@ -83,11 +83,12 @@
                         <div class=" mb-3 w-50">
 
                             <img class="d-block mb-2" id="uploadPreview" width="100"
-                                src="https://via.placeholder.com/300x200">
+                                src="{{ asset('storage/' . $professionist->profile_image) }}">
                             <div>
 
-                                <input type="file" name="profile_image" id="create_profile_image"
-                                    class="form-control  @error('profile_image') is-invalid @enderror">
+                                <input type="file" name="profile_image" id="create_profile_image" class="form-control"
+                                    value="{{ old('cover_image', $professionist->profile_image) }}"
+                                    @error('profile_image') is-invalid @enderror">
                                 @error('profile_image')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -101,11 +102,12 @@
                         <div class=" mb-3 w-50">
 
                             <img class="d-block mb-2" id="uploadPreview" width="100"
-                                src="https://via.placeholder.com/300x200">
+                                src="{{ asset('storage/' . $professionist->cv_path) }}">
                             <div>
 
-                                <input type="file" name="cv_path" id="create_cv_path"
-                                    class="form-control  @error('cv_path') is-invalid @enderror">
+                                <input type="file" name="cv_path" id="create_cv_path" class="form-control"
+                                    value="{{ old('cv_path', $professionist->cv_path) }}"
+                                    @error('cv_path') is-invalid @enderror">
                                 @error('cv_path')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
