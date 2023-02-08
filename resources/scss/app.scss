@@ -363,51 +363,55 @@ $fa-font-path: "../fonts/font-awesome" !default;
                 input{
                     position: relative;
                     width: 100%;
-                    padding: 20px 10px 12px;
-                    background: transparent;
-                    border: none;
+                    padding: 20px 10px 15px;
+                    // background: transparent;
+                    background: #47F3FF;
+                    border-radius: 8px;
+                    // border: 1px solid red;
                     outline: none;
                     color: #1C1C1C;
-                    font-size: .85rem;
+                    font-size: .65rem;
                     font-weight: 600;
                     letter-spacing: 0.1rem;
-                    z-index: 10;
+                    // z-index: 10;
                 }
                 span{
                     position: absolute;
-                    left: 0;
+                    // left: 0;
+                    left: 5px;
+                    top: -42px;
                     padding: 20px 0px 10px;
-                    font-size: .85rem;
-                    color: #bfbfbf;
+                    font-size: .65rem;
+                    color: #47F3FF;
                     pointer-events: none;
                     letter-spacing: 0.2rem;
-                    transition: 0.5s;
+                    // transition: 0.5s;
                 }
-                i{
-                    position: absolute;
-                    left: 0;
-                    bottom: 0;
-                    width: 100%;
-                    height: 2px;
-                    background: #BB2649;
-                    border-radius: 4px;
-                    transition: 0.5s;
-                    pointer-events: none;
-                    z-index: 9;
-                }
+                // i{
+                //     position: absolute;
+                //     left: 0;
+                //     bottom: 0;
+                //     width: 100%;
+                //     height: 2px;
+                //     background: #BB2649;
+                //     border-radius: 4px;
+                //     transition: 0.5s;
+                //     pointer-events: none;
+                //     z-index: 9;
+                // }
             }
-            .inputBox_login input:valid ~ span,
-            .inputBox_login input:focus ~ span{
-                color: #47F3FF;
-                transform: translateX(0px) translateY(-34px);
-                font-size: 0.65rem;
-            }
-            .inputBox_login input:valid ~ i,
-            .inputBox_login input:focus ~ i{
-                height: 44px;
-                background: #47F3FF;
+            // .inputBox_login input:valid ~ span,
+            // .inputBox_login input:focus ~ span{
+            //     color: #47F3FF;
+            //     transform: translateX(0px) translateY(-34px);
+            //     font-size: 0.65rem;
+            // }
+            // .inputBox_login input:valid ~ i,
+            // .inputBox_login input:focus ~ i{
+            //     height: 44px;
+            //     background: #47F3FF;
 
-            }
+            // }
 
             .links_login{
                 display: flex;
@@ -470,4 +474,24 @@ $fa-font-path: "../fonts/font-awesome" !default;
     transition: background-color 5000s ease-in-out 0s;
     }
 
+}
+
+// WELCOME TEMP
+
+.welcome{
+    width: 100%;
+    height: 90vh;
+    background-color: #0E0824;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    h1{
+        font-size: 4rem;
+        font-family: 'Chakra Petch', sans-serif;
+        letter-spacing: .4rem;
+        text-align: center;
+        line-height: 6rem;
+    }
 }

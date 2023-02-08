@@ -105,7 +105,7 @@
                 </div>
                 
                 <button type="submit" class="register">
-                    {{ __('Register') }}
+                    {{ __('Registrati') }}
                 </button>
                     
                 </div>

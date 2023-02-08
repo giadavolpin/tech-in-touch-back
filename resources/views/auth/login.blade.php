@@ -4,7 +4,7 @@
 <div class="dev_login_full_page">
     <div class="box_login">
         
-        <form method="POST" action="{{ route('login') }}" class="form_login">
+        <form method="POST" action="{{ route('login') }}" class="form_login" id="login-form">
             @csrf
             
             <h2>{{ __('Login') }} <i class="fa-solid fa-arrow-right-to-bracket"></i></h2>
@@ -20,12 +20,12 @@
                 @enderror
                 
                 <span>Email</span>
-                <i></i>
+                {{-- <i></i> --}}
             </div>
 
             <div class="inputBox_login">
                 {{-- <label for="password">{{ __('Password') }}</label> --}}
-                <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                <input autocomplete="new-password" id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                 @error('password')
                 <span class="invalid-feedback" role="alert">
@@ -34,7 +34,7 @@
                 @enderror
                
                 <span>Password</span>
-                <i></i>
+                {{-- <i></i> --}}
             </div>
 
             <div class="links_login">
@@ -71,4 +71,8 @@
         </form>
     </div>
 </div>
+
+
+
 @endsection
+
