@@ -39,4 +39,23 @@ class StoreProfessionistRequest extends FormRequest
             'visible' => 'required'
         ];
     }
+    public function messages()
+    {
+        return [
+            'nickname.min' => 'Il nickname deve essere almeno :min caratteri',
+            'nickname.max' => 'Il nickname deve essere almeno :max caratteri',
+            'name.required' => 'Compila il campo',
+            'name.min' => 'Il Nome deve essere almeno :min caratteri',
+            'name.max' => 'Il Nome deve essere almeno :max caratteri',
+            'surname.min' => 'Il Cognome deve essere almeno :min caratteri',
+            'surname.max' => 'Il Cognome deve essere almeno :max caratteri',
+            'job_address.min' => 'Indirizzo deve essere almeno :min caratteri',
+            'job_address.max' => 'Indirizzo deve essere almeno :max caratteri',
+            'phone_number.max' => 'Il numero di telefono deve essere massimo :max numeri',
+            'profile_image.image' => 'Il file deve essere una immagine',
+            'cv_path.required' => 'Il campo è obbligatorio',
+            'linkedin.string' => 'Inserisci un URL',
+            'github.string' => 'Inserici un URL'
+        ];
+    }
 }

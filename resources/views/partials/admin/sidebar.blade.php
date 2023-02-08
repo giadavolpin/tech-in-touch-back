@@ -33,6 +33,17 @@
             </a>
         </li>
         <li class="nav-item">
+            <a href="#"
+                class="nav-link text-white {{ Route::currentRouteName() == 'admin.technologies.index' ? 'bg-secondary' : '' }}"
+                aria-current="page">
+                <i class="fa-solid fa-book mx-1"></i>
+
+                Messaggi
+            </a>
+        </li>
+
+
+        {{-- <li class="nav-item">
             <a href="{{ route('admin.technologies.index') }}"
                 class="nav-link text-white {{ Route::currentRouteName() == 'admin.technologies.index' ? 'bg-secondary' : '' }}"
                 aria-current="page">
@@ -40,7 +51,7 @@
 
                 Tecnologie
             </a>
-        </li>
+        </li> --}}
 
         {{-- @if (Auth::check() && Auth::user()->isAdmin()) --}}
         {{-- <li class="nav-item">

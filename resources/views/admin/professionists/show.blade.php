@@ -14,14 +14,18 @@
                     </div>
                 @endif
                 @if ($professionist->nickname)
-                    <h2 class="mb-4"><span class="fs-5 me-3">Nickname:</span>{{ $professionist->nickname }}</h2>
+                    <h2 class="mb-4"><span class="fs-2 me-3">Nickname:</span>{{ $professionist->nickname }}</h2>
                 @endif
                 @if ($professionist->job_address)
-                    <p>Indirizzo : {{ $professionist->job_address }}</p>
+                    <h3>
+                        <p>Indirizzo : {{ $professionist->job_address }}</p>
+                    </h3>
                 @endif
 
                 @if ($professionist->phone_number)
-                    <p>Telefono : {{ $professionist->phone_number }}</p>
+                    <h3>
+                        <p>Telefono : {{ $professionist->phone_number }}</p>
+                    </h3>
                 @endif
                 @if ($professionist->technologies && count($professionist->technologies) > 0)
                     <div class="d-flex">
@@ -59,7 +63,7 @@
         @if ($professionist->bio)
             <div class="mt-5">
                 <span class="text-center d-block">Descrizione</span>
-                <p class="fs-2 ">"{!! $professionist->bio !!}"</p>
+                <p class="fs-4 ">"{!! $professionist->bio !!}"</p>
             </div>
         @endif
 

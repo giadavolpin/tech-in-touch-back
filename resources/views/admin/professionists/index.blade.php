@@ -23,13 +23,10 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Cognome</th>
                         <th scope="col">Indirizzo</th>
-                        <th scope="col">Bio</th>
-                        <th scope="col">Telefono</th>
-                        <th scope="col">CV</th>
-                        <th scope="col">Linkedin</th>
-                        <th scope="col">Github</th>
-                        <th scope="col">Visibile</th>
-                        <th scope="col">Modifica</th>
+                        <th class="text-center" scope="col">Tecnologie</th>
+
+                        <th class="text-center" scope="col">Visibile</th>
+                        <th scope="col" class="text-center">Modifica</th>
                         <th class="text-center" scope="col">Elimina</th>
                     </tr>
                 </thead>
@@ -37,21 +34,19 @@
                     @foreach ($professionists as $professionist)
                         <tr>
 
-                            <td>{{ $professionist->nickname }}</td>
+                            <td><a class="text-black text-decoration-none"
+                                href="{{ route('admin.professionists.show', $professionist->slug) }}">{{ $professionist->nickname }}</a></td>
                             <td>
-                                <a class="text-black"
+                                <a class="text-black text-decoration-none"
                                     href="{{ route('admin.professionists.show', $professionist->slug) }}">{{ $professionist->name }}</a>
                             </td>
-                            <td>{{ $professionist->surname }}</td>
+                            <td><a class="text-black text-decoration-none"
+                                href="{{ route('admin.professionists.show', $professionist->slug) }}">{{ $professionist->surname }}</a></td>
                             <td>{{ $professionist->job_address }}</td>
-                            <td>{{ Str::limit($professionist->bio, 20) }}</td>
-                            <td>{{ $professionist->phone_number }}</td>
-                            <td>{{ Str::limit($professionist->cv_path, 20) }}</td>
-                            <td>{{ $professionist->linkedin }}</td>
-                            <td>{{ $professionist->github }}</td>
+                            <td class="text-center">{{ $professionist->technologies && count($professionist->technologies) > 0 ? count($professionist->technologies) : 0 }}</td>
+
                             <td class="text-center">
-                                <input type="checkbox" class="form-check-input rounded-pill" id="" name="visible"
-                                    value="{{ old($professionist->visible) }}">
+                                <i class="fa-solid fa-circle {{ $professionist->visible == 1 ? 'prof-visible' : 'prof-invisible' }}"></i>
 
 
 
