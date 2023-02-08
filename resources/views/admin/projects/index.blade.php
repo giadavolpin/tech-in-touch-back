@@ -4,7 +4,7 @@
     <div>
         <h1 class="m-3">Progetti</h1>
         <div class="text-end">
-            <a class="btn btn-dark mx-3 mb-3" href="">Nuovo Progetto</a>
+            <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.projects.create') }}">Nuovo Progetto</a>
         </div>
         @if (session()->has('message'))
             <div class="alert alert-success mx-3 mb-3">
@@ -12,7 +12,7 @@
             </div>
         @endif
         <div class="table-responsive mx-3">
-            <table  class="my-table table table-striped">
+            <table class="my-table table table-striped">
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">Nome</th>
@@ -29,14 +29,13 @@
                             <td>{{ Str::limit($project->description, 30) }}</td>
                             <td>{{ $project->cover_image }}</td>
 
-                            <td class="text-center"><a class="link-secondary" href=""
-                                    title="Edit project"><i class="fa-solid fa-pen"></i></a></td>
+                            <td class="text-center"><a class="link-secondary" href="" title="Edit project"><i
+                                        class="fa-solid fa-pen"></i></a></td>
                             <td class="text-center">
                                 <form action="" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="delete-button btn btn-danger "
-                                        data-item-title=""><i
+                                    <button type="submit" class="delete-button btn btn-danger " data-item-title=""><i
                                             class="fa-solid fa-trash-can"></i></button>
                                 </form>
                             </td>
