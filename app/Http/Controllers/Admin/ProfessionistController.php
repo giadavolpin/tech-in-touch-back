@@ -76,9 +76,9 @@ class ProfessionistController extends Controller
      */
     public function show(Professionist $professionist)
     {
-        // if ( $professionist->user_id !== Auth::id()) {
-        //     abort(403);
-        // }
+        if ($professionist->user_id !== Auth::id()) {
+            abort(403);
+        }
         return view('admin.professionists.show', compact('professionist'));
     }
 
@@ -121,6 +121,10 @@ class ProfessionistController extends Controller
 
             $path = Storage::put('professionist_images', $request->profile_image);
             $data['profile_image'] = $path;
+        }
+        if ($request->hasFile('cv_path')) {
+            $path = Storage::put('professionists_images', $request->cv_path);
+            $data['cv_path'] = $path;
         }
 
 

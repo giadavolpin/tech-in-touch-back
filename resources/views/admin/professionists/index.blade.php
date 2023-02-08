@@ -38,7 +38,10 @@
                         <tr>
 
                             <td>{{ $professionist->nickname }}</td>
-                            <td>{{ $professionist->name }}</td>
+                            <td>
+                                <a class="text-black"
+                                    href="{{ route('admin.professionists.show', $professionist->slug) }}">{{ $professionist->name }}</a>
+                            </td>
                             <td>{{ $professionist->surname }}</td>
                             <td>{{ $professionist->job_address }}</td>
                             <td>{{ Str::limit($professionist->bio, 20) }}</td>
@@ -48,7 +51,7 @@
                             <td>{{ $professionist->github }}</td>
                             <td class="text-center">
                                 <input type="checkbox" class="form-check-input rounded-pill" id="" name="visible"
-                                    value="{{old($professionist->visible)}}">
+                                    value="{{ old($professionist->visible) }}">
 
 
 
