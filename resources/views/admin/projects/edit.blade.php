@@ -36,8 +36,8 @@
 
                     <div class="mb-3">
                         <label for="description" class="form-label">Descrizione</label>
-                        <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
-                            value="{{ old('description', $project->description) }}" required minlength="15"></textarea>
+                        <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" required
+                            minlength="15">{{ old('description', $project->description) }} </textarea>
 
                         @error('description')
                             <div class="invalid-feedback">{{ $message }}</div>
