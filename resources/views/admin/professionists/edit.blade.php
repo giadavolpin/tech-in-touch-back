@@ -185,6 +185,18 @@
                             {{-- <div class="form-text">*Minimo 3 caratteri e massimo 15 </div> --}}
                         </div>
 
+                        <div class="mb-3">
+                            <label for="visible" class="form-label ">Desideri che il tuo profilo sia visile?</label>
+                            <select name="visible" id="visible"
+                                class="w-25 form-control @error('visible') is-invalid @enderror" required>
+                                <option selected>Seleziona un opzione</option>
+                                <option value="0" {{ $professionist->visible == old('visible', $professionist->visible) ? 'selected' : '' }}>Invisibile</option>
+                                <option value="1" {{ $professionist->visible == old('visible', $professionist->visible) ? 'selected' : '' }}>Visibile</option>
+
+                            </select>
+
+                        </div>
+
 
 
                         <button type="submit" class="btn btn-dark">Invia</button>
@@ -193,8 +205,9 @@
             </div>
         </div>
     </div>
-    {{-- <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+    <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
     <script type="text/javascript">
         bkLib.onDomLoaded(nicEditors.allTextAreas);
-    </script> --}}
+    </script>
+
 @endsection
