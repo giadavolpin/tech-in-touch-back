@@ -38,7 +38,7 @@
                 aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
 
-                Technlogies
+                Tecnologie
             </a>
         </li>
 
@@ -84,8 +84,8 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
             {{-- <li><a class="dropdown-item" href="{{ route('admin.projects.create') }}">New project...</a></li> --}}
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Impostazioni</a></li>
+            <li><a class="dropdown-item" href="#">Profilo</a></li>
             <li>
                 <hr class="dropdown-divider">
             </li>
