@@ -14,9 +14,8 @@
                 <img width="300" src="{{ asset('storage/' . $project->cover_image) }}">
             </div>
             @else
-            <div>
-                <img class="d-block mb-2" id="uploadPreview" width="300" src="https://via.placeholder.com/300x200%22%3E"
-            </div>
+            <img class="d-block mb-2" id="uploadPreview" width="300"
+                            src="https://via.placeholder.com/700x500">
         @endif
 
         <div class="text-end mt-4">
