@@ -14,12 +14,12 @@
                 <input id="email" type="email" class=" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                 @error('email')
-                <span class="invalid-feedback" role="alert">
+                <span class="dev_error_login" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
                 
-                <span>Email</span>
+                <span class="label">Email</span>
                 {{-- <i></i> --}}
             </div>
 
@@ -28,12 +28,12 @@
                 <input autocomplete="new-password" id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                 @error('password')
-                <span class="invalid-feedback" role="alert">
+                <span class="dev_error_login" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
                
-                <span>Password</span>
+                <span class="label">Password</span>
                 {{-- <i></i> --}}
             </div>
 

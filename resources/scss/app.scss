@@ -1,3 +1,5 @@
+@import './partials/_variables.scss';
+
 @import '~bootstrap/scss/bootstrap';
 
 $fa-font-path: "../fonts/font-awesome" !default;
@@ -22,7 +24,18 @@ $fa-font-path: "../fonts/font-awesome" !default;
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    font-family: 'Space Grotesk', sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-family: 'Chakra Petch', sans-serif;
 
+}
 .my-w-100 {
     width: 100px;
 }
@@ -83,6 +96,16 @@ $fa-font-path: "../fonts/font-awesome" !default;
 /***************************************
   STEFANIA LOGIN E REGISTER FRONT END
 ***************************************/
+// ERRORS REGISTER + LOGIN
+
+.dev_error{
+    position: absolute;
+    top: -25px;
+    left: 0;
+    color: red !important;
+    font-size: 1.5rem;
+}
+
 
 // REGISTER 
 
@@ -92,13 +115,13 @@ $fa-font-path: "../fonts/font-awesome" !default;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #0E0824;
+    background-color: $dev_bkg_blue;
 
     .box_register{
         position: relative;
         width: 580px;
         height: 680px;
-        background: #291240;
+        background: $dev_bkg_purple;
         border-radius: 15px;
         overflow: hidden;
 
@@ -109,7 +132,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
             left: -50%;
             width: 580px;
             height: 680px;
-            background: linear-gradient(0deg, transparent, #47F3FF, #47F3FF);
+            background: linear-gradient(0deg, transparent, $dev_light_blue, $dev_light_blue);
             transform-origin: bottom right;
             animation: animate 6s linear infinite;
         }
@@ -121,7 +144,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
             left: -50%;
             width: 580px;
             height: 680px;
-            background: linear-gradient(0deg, transparent, #BB2649, #BB2649);
+            background: linear-gradient(0deg, transparent, $dev_pantone, $dev_pantone);
             transform-origin: bottom right;
             animation: animate 6s linear infinite;
             animation-delay: -3s;
@@ -139,7 +162,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
     .dev_register_form{
         position: absolute;
         inset: 8px;
-        background: #0E0824;
+        background: $dev_bkg_blue;
         border-radius: 15px;
         z-index: 10;
         padding: 0 40px;
@@ -149,12 +172,11 @@ $fa-font-path: "../fonts/font-awesome" !default;
         align-items: center;
 
         h2{
-            color: #47F3FF;
+            color: $dev_light_blue;
             font-size: 2rem;
             font-weight: 400;
             text-align: center;
             letter-spacing: 0.2rem;
-            font-family: 'Chakra Petch', sans-serif;
             margin-top: 20px;
             margin-bottom: 0;
         }
@@ -162,8 +184,6 @@ $fa-font-path: "../fonts/font-awesome" !default;
             position: relative;
             width: 400px;
             margin-top: 25px;
-            font-family: 'Space Grotesk', sans-serif;
-
 
             input{
                 position: relative;
@@ -172,7 +192,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
                 background: transparent;
                 border: none;
                 outline: none;
-                color: #1C1C1C;
+                color: $dev_black;
                 font-size: .85rem;
                 font-weight: 600;
                 letter-spacing: 0.1rem;
@@ -183,7 +203,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
                 left: 0;
                 padding: 20px 0px 10px;
                 font-size: .75rem;
-                color: #bfbfbf;
+                color: $dev_light_gray;
                 pointer-events: none;
                 letter-spacing: 0.2rem;
                 transition: 0.5s;
@@ -194,7 +214,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
                 bottom: 0;
                 width: 100%;
                 height: 2px;
-                background: #BB2649;
+                background: $dev_pantone;
                 border-radius: 4px;
                 transition: 0.5s;
                 pointer-events: none;
@@ -203,14 +223,14 @@ $fa-font-path: "../fonts/font-awesome" !default;
         }
         .inputBox_register input:valid ~ span,
         .inputBox_register input:focus ~ span{
-            color: #47F3FF;
+            color: $dev_light_blue;
             transform: translateX(0px) translateY(-34px);
             font-size: 0.55rem;
         }
         .inputBox_register input:valid ~ i,
         .inputBox_register input:focus ~ i{
             height: 44px;
-            background: #47F3FF;
+            background: $dev_light_blue;
 
         }
 
@@ -219,14 +239,11 @@ $fa-font-path: "../fonts/font-awesome" !default;
             justify-content: center;
             align-items: center;
             margin-top: 40px;
-            // margin-bottom: 5px;
-            font-family: 'Space Grotesk', sans-serif;
-
 
             a{
                 font-size: 0.75rem;
                 text-decoration: none;
-                color: #47F3FF;
+                color: $dev_light_blue;
 
                 &:hover{
                     text-decoration: underline;
@@ -234,7 +251,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
             }
 
             span{
-                color: #bfbfbf;
+                color: $dev_light_gray;
                 font-size: .75rem;
                 margin-right: .5rem;
                 pointer-events: none;
@@ -245,7 +262,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
         .register{
             border: none;
             outline: none;
-            background: #47F3FF;
+            background: $dev_light_blue;
             padding: 11px 25px;
             width: 100%;
             margin: 20px 0;
@@ -256,7 +273,6 @@ $fa-font-path: "../fonts/font-awesome" !default;
             letter-spacing: 0.2rem;
             color: #1c1c1c;
             transition: transform 250ms ease;
-            font-family: 'Chakra Petch', sans-serif;
             
             &:hover{
                 transform: scale(1.05);
@@ -275,7 +291,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
     input:-webkit-autofill:hover, 
     input:-webkit-autofill:focus {
     border: none;
-    -webkit-text-fill-color: #1C1C1C;
+    -webkit-text-fill-color: $dev_black;
     transition: background-color 5000s ease-in-out 0s;
     }
     
@@ -289,13 +305,14 @@ $fa-font-path: "../fonts/font-awesome" !default;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #0E0824;
+    background-color: $dev_bkg_blue;
+
 
     .box_login{
         position: relative;
         width: 480px;
         height: 520px;
-        background: #291240;
+        background: $dev_bkg_purple;
         border-radius: 15px;
         overflow: hidden;
 
@@ -306,7 +323,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
             left: -50%;
             width: 480px;
             height: 520px;
-            background: linear-gradient(0deg, transparent, #47F3FF, #47F3FF);
+            background: linear-gradient(0deg, transparent, $dev_light_blue, $dev_light_blue);
             transform-origin: bottom right;
             animation: animate 6s linear infinite;
         }
@@ -318,7 +335,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
             left: -50%;
             width: 480px;
             height: 520px;
-            background: linear-gradient(0deg, transparent, #BB2649, #BB2649);
+            background: linear-gradient(0deg, transparent, $dev_pantone, $dev_pantone);
             transform-origin: bottom right;
             animation: animate 6s linear infinite;
             animation-delay: -3s;
@@ -335,7 +352,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
         .form_login{
             position: absolute;
             inset: 8px;
-            background: #0E0824;
+            background: $dev_bkg_blue;
             border-radius: 15px;
             z-index: 10;
             padding: 50px 40px;
@@ -344,8 +361,9 @@ $fa-font-path: "../fonts/font-awesome" !default;
             justify-content: center;
             align-items: center;
 
+
            h2{
-            color: #47F3FF;
+            color: $dev_light_blue;
             font-size: 2rem;
             font-weight: 400;
             text-align: center;
@@ -365,7 +383,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
                     width: 100%;
                     padding: 20px 10px 15px;
                     // background: transparent;
-                    background: #47F3FF;
+                    background: $dev_light_blue;
                     border-radius: 8px;
                     // border: 1px solid red;
                     outline: none;
@@ -374,18 +392,25 @@ $fa-font-path: "../fonts/font-awesome" !default;
                     font-weight: 600;
                     letter-spacing: 0.1rem;
                     // z-index: 10;
+                    font-family: inherit;
                 }
-                span{
+                .label{
                     position: absolute;
                     // left: 0;
                     left: 5px;
                     top: -42px;
                     padding: 20px 0px 10px;
                     font-size: .65rem;
-                    color: #47F3FF;
+                    color: $dev_light_blue;
                     pointer-events: none;
                     letter-spacing: 0.2rem;
                     // transition: 0.5s;
+                }
+                .dev_error_login{
+                    color: red !important;
+                    font-size: .85rem;
+                    font-family: 'Space Grotesk', sans-serif;
+
                 }
                 // i{
                 //     position: absolute;
@@ -422,7 +447,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
                 a{
                     font-size: 0.85rem;
                     text-decoration: none;
-                    color: #47F3FF;
+                    color: $dev_light_blue;
 
                     &:hover{
                         text-decoration: underline;
@@ -430,7 +455,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
                 }
 
                 span{
-                    color: #bfbfbf;
+                    color: $dev_light_gray;
                     font-size: .85rem;
                     margin-right: .5rem;
                     pointer-events: none;
@@ -441,7 +466,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
             .btn_login{
                 border: none;
                 outline: none;
-                background: #47F3FF;
+                background: $dev_light_blue;
                 padding: 11px 25px;
                 width: 100%;
                 margin-top: 60px;
@@ -450,7 +475,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
                 cursor: pointer;
                 align-self: flex-end;
                 letter-spacing: 0.2rem;
-                color: #1c1c1c;
+                color: $dev_black;
                 transition: transform 250ms ease;
 
                 &:hover{
@@ -470,7 +495,7 @@ $fa-font-path: "../fonts/font-awesome" !default;
     input:-webkit-autofill:hover, 
     input:-webkit-autofill:focus {
     border: none;
-    -webkit-text-fill-color: #1C1C1C;
+    -webkit-text-fill-color: $dev_black;
     transition: background-color 5000s ease-in-out 0s;
     }
 
@@ -481,15 +506,14 @@ $fa-font-path: "../fonts/font-awesome" !default;
 .welcome{
     width: 100%;
     height: 90vh;
-    background-color: #0E0824;
+    background-color: $dev_bkg_blue;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: $dev_white;
 
     h1{
         font-size: 4rem;
-        font-family: 'Chakra Petch', sans-serif;
         letter-spacing: .4rem;
         text-align: center;
         line-height: 6rem;
@@ -503,3 +527,4 @@ $fa-font-path: "../fonts/font-awesome" !default;
 .prof-invisible{
     color: red;
 }
+
