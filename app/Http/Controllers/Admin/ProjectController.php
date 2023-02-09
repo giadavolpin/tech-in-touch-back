@@ -58,7 +58,8 @@ class ProjectController extends Controller
         }
         $newProject = Project::create($data);
 
-        return redirect()->route('admin.projects.index', $newProject->slug)->with('message', "$newProject->slug è stato creato con successo");;
+        return redirect()->route('admin.projects.index', $newProject->slug)->with('message', "$newProject->slug è stato creato con successo");
+        ;
 
     }
 
@@ -73,14 +74,10 @@ class ProjectController extends Controller
         $professionistID = Professionist::where('user_id', $userId)->pluck('user_id');
         $id = Auth::id();
         // dd($project->professionist_id == Auth::id() );
-       // dd($id);
+        // dd($id);
         // dd($project->professionist_id);
-       // dd($project->professionist_id == $id);
-        if($project->professionist_id == $id && $project->professionist_id == Auth::id()){
-            return view('admin.projects.show', compact('project'));
-        } else{
-            abort(403);        }
-
+        // dd($project->professionist_id == $id);
+        return view('admin.projects.show', compact('project'));
     }
 
     /**

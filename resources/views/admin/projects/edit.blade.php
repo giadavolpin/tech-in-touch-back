@@ -50,14 +50,20 @@
                         {{-- <input type="file" name="cover_image" id="create_cover_image"
                             class="form-control  @error('cover_image') is-invalid @enderror"> --}}
                         <div class=" mb-3 w-50">
+                            @if ($project->cover_image)
+                                <img class="d-block mb-2" id="cover_image" width="100"
+                                    src="{{ asset('storage/' . $project->cover_image) }}">
+                            @else
+                                <img class="d-block mb-2" id="uploadPreview" width="200"
+                                    src="https://via.placeholder.com/700x500">
+                            @endif
 
-                            <img class="d-block mb-2" id="cover_image" width="100"
-                                src="{{ asset('storage/' . $project->cover_image) }}">
+
                             <div>
 
-                                <input type="file" name="cover_image" id="create_cover_image"
-                                    class="form-control value="{{ old('cover_image', $project->cover_image) }}"
-                                    @error('cover_image') is-invalid @enderror">
+                                <input type="file" name="cover_image" id="create_cover_image" class="form-control"
+                                    value="{{ old('cover_image', $project->cover_image) }}"
+                                    @error('cover_image') is-invalid @enderror>
                                 @error('cover_image')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

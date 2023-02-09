@@ -89,6 +89,8 @@
 
                             <img class="d-block mb-2" id="uploadPreview" width="100"
                                 src="https://via.placeholder.com/300x200">
+
+
                             <div>
 
                                 <input type="file" name="profile_image" id="create_profile_image"
@@ -143,7 +145,7 @@
 
 
                                     <input type="checkbox" class="form-check-input" id="{{ $technology->slug }}"
-                                        name="technologies[]" value="{{ $technology->id }}" >
+                                        name="technologies[]" value="{{ $technology->id }}">
 
                                     <label class="form-check-label"
                                         for="{{ $technology->slug }}">{{ $technology->name }}</label>
@@ -154,7 +156,7 @@
                             @enderror
                         </div>
 
-                     
+
                         <div class="mb-3">
                             <label for="linkedin" class="form-label">Linkedin</label>
                             <input type="text" class="form-control @error('linkedin') is-invalid @enderror"
@@ -174,7 +176,8 @@
                             {{-- <div class="form-text">*Minimo 3 caratteri e massimo 15 </div> --}}
                         </div>
                         <div class="mb-3">
-                            <label for="visible" class="form-label "><strong>*</strong>Scegli la visibilità del tuo profilo</label>
+                            <label for="visible" class="form-label "><strong>*</strong>Scegli la visibilità del tuo
+                                profilo</label>
                             <select name="visible" id="visible"
                                 class="w-25 form-control @error('visible') is-invalid @enderror" required>
                                 <option value="" selected>Seleziona un opzione</option>

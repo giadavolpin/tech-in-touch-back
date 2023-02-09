@@ -31,23 +31,23 @@ Route::middleware(['auth', 'verified'])
     ->name('admin.')
     ->prefix('admin')
     ->group(function () {
-        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/', [ProfessionistController::class, 'create']);
         Route::resource('professionists', ProfessionistController::class)->parameters(['professionists' => 'professionist:slug']);
         Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
-        Route::resource('technologies', TechnologyController::class)->parameters(['technologies' => 'technologies:slug'])->except('show', 'create','edit');
+        Route::resource('technologies', TechnologyController::class)->parameters(['technologies' => 'technologies:slug'])->except('show', 'create', 'edit');
 
     });
 
 
-    // Route::get('{any?}', function () {
-    //     return redirect()->route('admin.dashboard');
-    // })->where('any', '.*');
+// Route::get('{any?}', function () {
+//     return redirect()->route('admin.dashboard');
+// })->where('any', '.*');
 
 
 /* Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 }); */
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

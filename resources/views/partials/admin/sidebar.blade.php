@@ -6,21 +6,21 @@
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
-        <li>
+        {{-- <li>
 
             <a href="{{ route('admin.dashboard') }}"
                 class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}">
                 <i class="fa-solid fa-gauge mx-1"></i>
                 Dashboard
             </a>
-        </li>
+        </li> --}}
         <li class="nav-item">
             <a href="{{ route('admin.professionists.index') }}"
                 class="nav-link text-white {{ Route::currentRouteName() == 'admin.professionists.index' ? 'bg-secondary' : '' }}"
                 aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
 
-                Profili
+                Profilo
             </a>
         </li>
         <li class="nav-item">
@@ -33,18 +33,14 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#"
-                class="nav-link text-white "
-                aria-current="page">
+            <a href="#" class="nav-link text-white " aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
 
                 Messaggi
             </a>
         </li>
         <li class="nav-item">
-            <a href="#"
-                class="nav-link text-white "
-                aria-current="page">
+            <a href="#" class="nav-link text-white " aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
 
                 Recensioni
