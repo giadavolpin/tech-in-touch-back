@@ -12,6 +12,9 @@
                     <div class="py-4">
                         <img width="300" src="{{ asset('storage/' . $professionist->profile_image) }}">
                     </div>
+                @else
+                <img class="d-block mb-2" id="uploadPreview" width="100"
+                src="https://via.placeholder.com/300x200">
                 @endif
                 @if ($professionist->nickname)
                     <h2 class="mb-4"><span class="fs-2 me-3">Nickname:</span>{{ $professionist->nickname }}</h2>
@@ -43,6 +46,9 @@
                     <div class="mb-5">
                         <img width="200" src="{{ asset('storage/' . $professionist->cv_path) }}">
                     </div>
+                    @else
+                    <img class="d-block mb-2" id="uploadPreview" width="200"
+                    src="https://via.placeholder.com/300x390">
                 @endif
                 @if ($professionist->github)
                     <div class="d-flex align-items-center gap-3 mb-3">
@@ -63,7 +69,7 @@
         @if ($professionist->bio)
             <div class="mt-5">
                 <span class="text-center d-block">Descrizione</span>
-                <p class="fs-4 ">"{!! $professionist->bio !!}"</p>
+                <p class="fs-4 ">{!! $professionist->bio !!}</p>
             </div>
         @endif
 

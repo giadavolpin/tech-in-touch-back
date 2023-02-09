@@ -23,7 +23,7 @@
                     @csrf
 
                     <div class="mb-3">
-                        <label for="nickname" class="form-label">Nickname</label>
+                        <label for="nickname" class="form-label"><strong>*</strong>Nickname</label>
 
                         <input type="text" class="form-control @error('nickname') is-invalid @enderror" id="nickname"
                             name="nickname" required maxlength="15" minlength="3">
@@ -35,24 +35,24 @@
 
                     <div class="mb-3">
 
-                        <label for="name" class="form-label">Nome</label>
+                        <label for="name" class="form-label"><strong>*</strong>Nome</label>
 
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                             name="name" required maxlength="15" minlength="3">
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                        <div class="form-text">*Minimo 3 caratteri e massimo 15 </div>
+                        <div class="form-text">*Minimo 3 caratteri e massimo 50 </div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="surname" class="form-label">Cognome</label>
+                        <label for="surname" class="form-label"><strong>*</strong>Cognome</label>
                         <input type="text" class="form-control @error('surname') is-invalid @enderror" id="surname"
                             name="surname" required maxlength="15" minlength="3">
                         @error('surname')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                        <div class="form-text">*Minimo 3 caratteri e massimo 15 </div>
+                        <div class="form-text">*Minimo 3 caratteri e massimo 50 </div>
                     </div>
 
                     <div class="mb-3">
@@ -60,6 +60,16 @@
                         <input type="text" class="form-control @error('job_address') is-invalid @enderror"
                             id="job_address" name="job_address">
                         @error('job_address')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        {{-- <div class="form-text">*Minimo 3 caratteri e massimo 15 </div> --}}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone_number" class="form-label">Telefono</label>
+                        <input type="tel" class="form-control @error('phone_number') is-invalid @enderror"
+                            id="phone_number" name="phone_number">
+                        @error('phone_number')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                         {{-- <div class="form-text">*Minimo 3 caratteri e massimo 15 </div> --}}
@@ -90,7 +100,7 @@
 
                         </div>
 
-                        <label for="cv_path" class="form-label">inserisci un CV</label>
+                        <label for="cv_path" class="form-label">Inserisci un CV</label>
                         {{-- <input type="file" name="cv_path" id="create_cv_path"
                             class="form-control  @error('cv_path') is-invalid @enderror"> --}}
                         <div class=" mb-3 w-50">
@@ -127,12 +137,13 @@
 
                         <div class="mb-3">
                             {{-- <label for="tags" class="form-label">Select Tags</label> <br> --}}
+                            <div class="mb-3"><strong>*</strong>Seleziona le tecnologie che utilizzi</div>
                             @foreach ($technologies as $technology)
                                 <div class="form-check form-check-inline">
 
 
                                     <input type="checkbox" class="form-check-input" id="{{ $technology->slug }}"
-                                        name="technologies[]" value="{{ $technology->id }}">
+                                        name="technologies[]" value="{{ $technology->id }}" >
 
                                     <label class="form-check-label"
                                         for="{{ $technology->slug }}">{{ $technology->name }}</label>
@@ -143,15 +154,7 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3">
-                            <label for="phone_number" class="form-label">Numero di Telefono</label>
-                            <input type="tel" class="form-control @error('phone_number') is-invalid @enderror"
-                                id="phone_number" name="phone_number">
-                            @error('phone_number')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                            {{-- <div class="form-text">*Minimo 3 caratteri e massimo 15 </div> --}}
-                        </div>
+                     
                         <div class="mb-3">
                             <label for="linkedin" class="form-label">Linkedin</label>
                             <input type="text" class="form-control @error('linkedin') is-invalid @enderror"
@@ -171,7 +174,7 @@
                             {{-- <div class="form-text">*Minimo 3 caratteri e massimo 15 </div> --}}
                         </div>
                         <div class="mb-3">
-                            <label for="visible" class="form-label ">Desideri che il tuo profilo sia visile?</label>
+                            <label for="visible" class="form-label "><strong>*</strong>Scegli la visibilità del tuo profilo</label>
                             <select name="visible" id="visible"
                                 class="w-25 form-control @error('visible') is-invalid @enderror" required>
                                 <option value="" selected>Seleziona un opzione</option>

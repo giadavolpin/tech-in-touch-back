@@ -22,7 +22,7 @@
                     @csrf
 
                     <div class="mb-3">
-                        <label for="name" class="form-label">Nome</label>
+                        <label for="name" class="form-label"><strong>*</strong>Nome</label>
 
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                             name="name" required maxlength="15" minlength="3">

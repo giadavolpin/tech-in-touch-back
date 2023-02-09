@@ -26,6 +26,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:50',
             'description' => 'required',
+            //togliere obbligatoria descrizione
             'cover_image' => 'nullable',
             'professionist_id' => 'exists:professionist,id'
         ];

@@ -27,7 +27,7 @@ class UpdateProfessionistRequest extends FormRequest
     {
         return [
             'nickname' => [
-                'nullable',
+                'required',
                 'string',
                 'min:3',
                 'max:15', Rule::unique('professionists')->ignore($this->professionist)
@@ -48,6 +48,7 @@ class UpdateProfessionistRequest extends FormRequest
     public function messages()
     {
         return [
+            'nickname.required' => 'Devi inserire un nickname',
             'nickname.min' => 'Il nickname deve essere almeno :min caratteri',
             'nickname.max' => 'Il nickname deve essere massimo :max caratteri',
             'name.required' => 'Compila il campo',
@@ -60,7 +61,6 @@ class UpdateProfessionistRequest extends FormRequest
             'phone_number.max' => 'Il numero di telefono deve essere massimo :max numeri',
             'phone_number.regex' => 'Il formato del numero di telefono non è corretto',
             'profile_image.image' => 'Il file deve essere una immagine',
-            'cv_path.required' => 'Il campo è obbligatorio',
             'linkedin.string' => 'Inserisci un URL',
             'github.string' => 'Inserici un URL',
             'visible.required' => 'Selezionare un opzione'

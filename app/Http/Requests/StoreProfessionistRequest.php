@@ -42,6 +42,7 @@ class StoreProfessionistRequest extends FormRequest
     public function messages()
     {
         return [
+            'nickname.required' => 'Devi inserire un nickname',
             'nickname.min' => 'Il nickname deve essere almeno :min caratteri',
             'nickname.max' => 'Il nickname deve essere massimo :max caratteri',
             'name.required' => 'Compila il campo',
@@ -53,8 +54,8 @@ class StoreProfessionistRequest extends FormRequest
             'job_address.max' => 'Indirizzo deve essere massimo :max caratteri',
             'phone_number.min' => 'Il numero di telefono deve essere di minimo :min numeri',
             'profile_image.image' => 'Il file deve essere una immagine',
-            'cv_path.required' => 'Il campo è obbligatorio',
             'linkedin.string' => 'Inserisci un URL',
+            // 'cv_path.required' => 'Il campo è obbligatorio',
             'github.string' => 'Inserici un URL',
             'visible.required' => 'Selezionare un opzione'
         ];

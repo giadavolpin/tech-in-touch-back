@@ -24,7 +24,7 @@
                     @method('PUT')
 
                     <div class="mb-3">
-                        <label for="nickname" class="form-label">Nickname</label>
+                        <label for="nickname" class="form-label"><strong>*</strong>Nickname</label>
 
                         <input type="text" class="form-control @error('nickname') is-invalid @enderror" id="nickname"
                             name="nickname" value="{{ old('nickname', $professionist->nickname) }}">
@@ -36,7 +36,7 @@
 
                     <div class="mb-3">
 
-                        <label for="name" class="form-label">Nome</label>
+                        <label for="name" class="form-label"><strong>*</strong>Nome</label>
 
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                             name="name" required maxlength="50" minlength="3"
@@ -44,18 +44,18 @@
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                        <div class="form-text">*Minimo 3 caratteri e massimo 15 </div>
+                        <div class="form-text">*Minimo 3 caratteri e massimo 50 </div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="surname" class="form-label">Cognome</label>
+                        <label for="surname" class="form-label"><strong>*</strong>Cognome</label>
                         <input type="text" class="form-control @error('surname') is-invalid @enderror" id="surname"
                             name="surname" required maxlength="50" minlength="3"
                             value="{{ old('surname', $professionist->surname) }}">
                         @error('surname')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                        <div class="form-text">*Minimo 3 caratteri e massimo 15 </div>
+                        <div class="form-text">*Minimo 3 caratteri e massimo 50 </div>
                     </div>
 
                     <div class="mb-3">
@@ -64,6 +64,17 @@
                             id="job_address" name="job_address"
                             value="{{ old('job_address', $professionist->job_address) }}">
                         @error('job_address')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        {{-- <div class="form-text">*Minimo 3 caratteri e massimo 15 </div> --}}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone_number" class="form-label">Telefono</label>
+                        <input type="tel" class="form-control @error('phone_number') is-invalid @enderror"
+                            id="phone_number" name="phone_number"
+                            value="{{ old('phone_number', $professionist->phone_number) }}">
+                        @error('phone_number')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                         {{-- <div class="form-text">*Minimo 3 caratteri e massimo 15 </div> --}}
@@ -81,10 +92,15 @@
                             class="form-control  @error('profile_image') is-invalid @enderror"> --}}
                         <div class=" mb-3 w-50">
 
+                            @if (!$professionist->profile_image)
                             <img class="d-block mb-2" id="uploadPreview" width="100"
-                                src="{{ asset('storage/' . $professionist->profile_image) }}">
+                            src="https://via.placeholder.com/300x200">
+                            @else
+                            <img class="d-block mb-2" id="uploadPreview" width="100"
+                            src="{{ asset('storage/' . $professionist->profile_image) }}">
+                            @endif
+                           
                             <div>
-
                                 <input type="file" name="profile_image" id="create_profile_image" class="form-control"
                                     value="{{ old('cover_image', $professionist->profile_image) }}"
                                     @error('profile_image') is-invalid @enderror">
@@ -100,8 +116,17 @@
                             class="form-control  @error('cv_path') is-invalid @enderror"> --}}
                         <div class=" mb-3 w-50">
 
+                            @if (!$professionist->cv_path)
                             <img class="d-block mb-2" id="uploadPreview" width="100"
-                                src="{{ asset('storage/' . $professionist->cv_path) }}">
+                            src="https://via.placeholder.com/300x200">
+                            @else
+                            <img class="d-block mb-2" id="uploadPreview" width="100"
+                            src="{{ asset('storage/' . $professionist->cv_path) }}">
+                            @endif
+
+                           
+
+
                             <div>
 
                                 <input type="file" name="cv_path" id="create_cv_path" class="form-control"
@@ -131,8 +156,9 @@
                         </div> --}}
 
 
-                        <div class="mb-3">
+                        <div class="py-5">
                             {{-- <label for="tags" class="form-label">Select Tags</label> <br> --}}
+                            <div class="mb-3"><strong>*</strong>Seleziona le tecnologie che utilizzi</div>
                             @foreach ($technologies as $technology)
                                 <div class="form-check form-check-inline">
 
@@ -155,16 +181,7 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3">
-                            <label for="phone_number" class="form-label">Numero di telefono</label>
-                            <input type="tel" class="form-control @error('phone_number') is-invalid @enderror"
-                                id="phone_number" name="phone_number"
-                                value="{{ old('phone_number', $professionist->phone_number) }}">
-                            @error('phone_number')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                            {{-- <div class="form-text">*Minimo 3 caratteri e massimo 15 </div> --}}
-                        </div>
+                    
                         <div class="mb-3">
                             <label for="linkedin" class="form-label">linkedin</label>
                             <input type="text" class="form-control @error('linkedin') is-invalid @enderror"
@@ -185,7 +202,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="visible" class="form-label ">Desideri che il tuo profilo sia visile?</label>
+                            <label for="visible" class="form-label "><strong>*</strong>Scegli la visibilità del tuo profilo</label>
                             <select name="visible" id="visible"
                                 class="w-25 form-control @error('visible') is-invalid @enderror" required>
                                 <option value="" selected>Seleziona un opzione</option>
