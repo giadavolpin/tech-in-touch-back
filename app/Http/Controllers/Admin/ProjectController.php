@@ -77,10 +77,7 @@ class ProjectController extends Controller
         // dd($id);
         // dd($project->professionist_id);
         // dd($project->professionist_id == $id);
-
         return view('admin.projects.show', compact('project'));
-
-
     }
 
     /**

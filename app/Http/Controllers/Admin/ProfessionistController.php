@@ -23,6 +23,7 @@ class ProfessionistController extends Controller
 
         $userId = Auth::id();
         $professionists = Professionist::where('user_id', $userId)->get();
+        // dd($professionists);
 
         return view('admin.professionists.index', compact('professionists'));
     }
@@ -33,9 +34,25 @@ class ProfessionistController extends Controller
      */
     public function create()
     {
+        $userId = Auth::id();
+        $professionists = Professionist::where('user_id', $userId)->get();
+        $professionistID = Professionist::where('user_id', $userId)->value('id');
+        // dd($professionistID);
+
+
+        //
+
         $projects = Project::all();
         $technologies = Technology::all();
-        return view('admin.professionists.create', compact('projects', 'technologies'));
+
+        if (!is_null($professionistID)) {
+            // dd($professionists);
+            return view('admin.professionists.index', compact('professionists'));
+
+        } else {
+            return view('admin.professionists.create', compact('projects', 'technologies', 'professionists'));
+        }
+
     }
 
     /**
