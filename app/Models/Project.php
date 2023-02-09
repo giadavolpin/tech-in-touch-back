@@ -17,6 +17,10 @@ class Project extends Model
         return Str::slug($name, '-');
     }
 
+    public function getName(){
+        return $this->title;
+    } 
+
     public function professionists():BelongsTo{
         return $this->belongsTo(Professionist::class);
     }

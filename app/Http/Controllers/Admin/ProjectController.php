@@ -69,7 +69,17 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('admin.projects.show', compact('project'));
+        $userId = Auth::id();
+        $professionistID = Professionist::where('user_id', $userId)->pluck('user_id');
+        $id = Auth::id();
+        // dd($project->professionist_id == Auth::id() );
+       // dd($id);
+        // dd($project->professionist_id);
+       // dd($project->professionist_id == $id);
+        if($project->professionist_id == $id && $project->professionist_id == Auth::id()){
+            return view('admin.projects.show', compact('project'));
+        } else{
+            abort(403);        }
 
     }
 
