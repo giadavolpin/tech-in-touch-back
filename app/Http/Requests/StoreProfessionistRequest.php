@@ -43,14 +43,14 @@ class StoreProfessionistRequest extends FormRequest
     {
         return [
             'nickname.min' => 'Il nickname deve essere almeno :min caratteri',
-            'nickname.max' => 'Il nickname deve essere almeno :max caratteri',
+            'nickname.max' => 'Il nickname deve essere massimo :max caratteri',
             'name.required' => 'Compila il campo',
             'name.min' => 'Il Nome deve essere almeno :min caratteri',
-            'name.max' => 'Il Nome deve essere almeno :max caratteri',
+            'name.max' => 'Il Nome deve essere massimo :max caratteri',
             'surname.min' => 'Il Cognome deve essere almeno :min caratteri',
-            'surname.max' => 'Il Cognome deve essere almeno :max caratteri',
+            'surname.max' => 'Il Cognome deve essere massimo :max caratteri',
             'job_address.min' => 'Indirizzo deve essere almeno :min caratteri',
-            'job_address.max' => 'Indirizzo deve essere almeno :max caratteri',
+            'job_address.max' => 'Indirizzo deve essere massimo :max caratteri',
             'phone_number.min' => 'Il numero di telefono deve essere di minimo :min numeri',
             'profile_image.image' => 'Il file deve essere una immagine',
             'cv_path.required' => 'Il campo è obbligatorio',
