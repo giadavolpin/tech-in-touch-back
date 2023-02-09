@@ -33,7 +33,7 @@ class StoreProfessionistRequest extends FormRequest
             'cv_path' => 'nullable|image',
             'user_id' => 'nullable|exists:user,id',
             'technologies_id' => 'nullable',
-            'phone_number' => 'nullable',
+            'phone_number' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'linkedin' => 'nullable',
             'github' => 'nullable',
             'visible' => 'required'
@@ -51,11 +51,12 @@ class StoreProfessionistRequest extends FormRequest
             'surname.max' => 'Il Cognome deve essere almeno :max caratteri',
             'job_address.min' => 'Indirizzo deve essere almeno :min caratteri',
             'job_address.max' => 'Indirizzo deve essere almeno :max caratteri',
-            'phone_number.max' => 'Il numero di telefono deve essere massimo :max numeri',
+            'phone_number.min' => 'Il numero di telefono deve essere di minimo :min numeri',
             'profile_image.image' => 'Il file deve essere una immagine',
             'cv_path.required' => 'Il campo è obbligatorio',
             'linkedin.string' => 'Inserisci un URL',
-            'github.string' => 'Inserici un URL'
+            'github.string' => 'Inserici un URL',
+            'visible.required' => 'Selezionare un opzione'
         ];
     }
 }

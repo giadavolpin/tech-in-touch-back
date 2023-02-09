@@ -174,7 +174,7 @@
                             <label for="visible" class="form-label ">Desideri che il tuo profilo sia visile?</label>
                             <select name="visible" id="visible"
                                 class="w-25 form-control @error('visible') is-invalid @enderror" required>
-                                <option selected>Seleziona un opzione</option>
+                                <option value="" selected>Seleziona un opzione</option>
                                 <option value="0">Invisibile</option>
                                 <option value="1">Visibile</option>
 

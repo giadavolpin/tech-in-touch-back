@@ -35,13 +35,14 @@ class UpdateProfessionistRequest extends FormRequest
             'name' => ['required', 'string', 'min:3', 'max: 50'],
             'surname' => ['required', 'string', 'min:3', 'max: 50'],
             'job_address' => ['nullable', 'string', 'min:3', 'max: 50'],
-            'phone_number' => ['nullable', 'max: 15', Rule::unique('professionists')->ignore($this->professionist)],
+            'phone_number' => ['nullable', 'regex:/^([0-9\s\-\+\(\)]*)$/' , 'min:10', Rule::unique('professionists')->ignore($this->professionist)],
+
             'bio' => ['nullable'],
             'profile_image' => ['nullable', 'image'],
             'cv_path' => ['nullable'],
             'linkedin' => ['nullable', 'string'],
             'github' => ['nullable', 'string'],
-            'visible' => ['nullable']
+            'visible' => ['required']
         ];
     }
     public function messages()
@@ -57,10 +58,12 @@ class UpdateProfessionistRequest extends FormRequest
             'job_address.min' => 'Indirizzo deve essere almeno :min caratteri',
             'job_address.max' => 'Indirizzo deve essere almeno :max caratteri',
             'phone_number.max' => 'Il numero di telefono deve essere massimo :max numeri',
+            'phone_number.regex' => 'Il formato del numero di telefono non è corretto',
             'profile_image.image' => 'Il file deve essere una immagine',
             'cv_path.required' => 'Il campo è obbligatorio',
             'linkedin.string' => 'Inserisci un URL',
-            'github.string' => 'Inserici un URL'
+            'github.string' => 'Inserici un URL',
+            'visible.required' => 'Selezionare un opzione'
         ];
     }
 }

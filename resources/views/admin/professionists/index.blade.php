@@ -3,9 +3,12 @@
 @section('content')
     <div>
         <h1 class="m-3">I miei Profili</h1>
-        <div class="text-end">
+        @if(!count($professionists) >= 1)
+            <div class="text-end">
             <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.professionists.create') }}">Aggiungi Profilo</a>
         </div>
+
+        @endif
 
 
         @if (count($professionists) == 0)
