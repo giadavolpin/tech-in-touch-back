@@ -17,7 +17,7 @@
                     value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                     @error('name')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="dev_error" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
@@ -33,7 +33,7 @@
                         value="{{ old('surname') }}" required autocomplete="surname" autofocus>
 
                     @error('surname')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="dev_error" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
@@ -49,7 +49,7 @@
                         value="{{ old('address') }}" required autocomplete="address" autofocus>
 
                     @error('address')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="dev_error" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
@@ -65,7 +65,7 @@
                         value="{{ old('email') }}" required autocomplete="email">
 
                     @error('email')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="dev_error" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
@@ -81,7 +81,7 @@
                         required autocomplete="new-password">
 
                     @error('password')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="dev_error" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
