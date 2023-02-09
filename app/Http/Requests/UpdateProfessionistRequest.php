@@ -35,7 +35,7 @@ class UpdateProfessionistRequest extends FormRequest
             'name' => ['required', 'string', 'min:3', 'max: 50'],
             'surname' => ['required', 'string', 'min:3', 'max: 50'],
             'job_address' => ['nullable', 'string', 'min:3', 'max: 50'],
-            'phone_number' => ['nullable', 'regex:/^([0-9\s\-\+\(\)]*)$/' , 'min:10', Rule::unique('professionists')->ignore($this->professionist)],
+            'phone_number' => ['nullable', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10', Rule::unique('professionists')->ignore($this->professionist)],
 
             'bio' => ['nullable'],
             'profile_image' => ['nullable', 'image'],
@@ -49,7 +49,7 @@ class UpdateProfessionistRequest extends FormRequest
     {
         return [
             'nickname.min' => 'Il nickname deve essere almeno :min caratteri',
-            'nickname.max' => 'Il nickname deve essere almeno :max caratteri',
+            'nickname.max' => 'Il nickname deve essere massimo :max caratteri',
             'name.required' => 'Compila il campo',
             'name.min' => 'Il Nome deve essere almeno :min caratteri',
             'name.max' => 'Il Nome deve essere almeno :max caratteri',

@@ -27,8 +27,7 @@
                         <label for="nickname" class="form-label">Nickname</label>
 
                         <input type="text" class="form-control @error('nickname') is-invalid @enderror" id="nickname"
-                            name="nickname" maxlength="15" minlength="3"
-                            value="{{ old('nickname', $professionist->nickname) }}">
+                            name="nickname" value="{{ old('nickname', $professionist->nickname) }}">
                         @error('nickname')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
