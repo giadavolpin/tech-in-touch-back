@@ -6,9 +6,7 @@
         <div class="text-end">
             <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.projects.create') }}">Nuovo Progetto</a>
         </div>
-        @if (count($professionistID) == 0)
-            Crea un Profilo per potere aggiungere i tuoi progetti
-        @else
+
             @if (count($projects) == 0)
                 <div>
                     <h3 class="text-center mb-2">Non sono ancora presenti progetti</h3>
@@ -57,7 +55,7 @@
                     </table>
                 </div>
             @endif
-        @endif
+
 
 
     </div>
