@@ -34,11 +34,20 @@
         </li>
         <li class="nav-item">
             <a href="#"
-                class="nav-link text-white {{ Route::currentRouteName() == 'admin.technologies.index' ? 'bg-secondary' : '' }}"
+                class="nav-link text-white "
                 aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
 
                 Messaggi
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#"
+                class="nav-link text-white "
+                aria-current="page">
+                <i class="fa-solid fa-book mx-1"></i>
+
+                Recensioni
             </a>
         </li>
 
