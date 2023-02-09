@@ -58,7 +58,7 @@ class ProjectController extends Controller
         }
         $newProject = Project::create($data);
 
-        return redirect()->route('admin.projects.index', $newProject->slug);
+        return redirect()->route('admin.projects.index', $newProject->slug)->with('message', "$newProject->slug è stato creato con successo");;
 
     }
 
@@ -106,7 +106,7 @@ class ProjectController extends Controller
         $project->update($data);
 
 
-        return redirect()->route('admin.projects.index')->with('message', "$project->slug updated successfully");
+        return redirect()->route('admin.projects.index')->with('message', "$project->slug è stato caricato con successo");
     }
 
     /**
