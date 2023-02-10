@@ -111,7 +111,8 @@
 
 
                         <button type="submit" class="btn btn-dark">Invia</button>
-                        <button type='reset' id="reset_all_btn" class="btn btn-light border-dark">Reset</button>
+                        <button type='reset' onclick="clearAllInputs()"id="reset_all_btn"
+                            class="btn btn-light border-dark">Reset</button>
                 </form>
 
             </div>
@@ -138,15 +139,19 @@
         }
     }
 
-    // let resetAll = document.getElementById('reset_all_btn');
-    // let nameInput = document.getElementById('name')
-    // let descriptionInput = document.getElementById('description')
-    // let imgInput = document.getElementById('create_cover_image');
+    function clearAllInputs() {
+        let deleteBtn = document.getElementById('my_reset_btn');
+        let preview = document.getElementById("uploadPreview");
+        let resetAll = document.getElementById('reset_all_btn');
+        let nameInput = document.getElementById('name')
+        let descriptionInput = document.getElementById('description')
+        let imgInput = document.getElementById('create_cover_image');
 
-    // resetAll.addEventListener('click', () => {
-    //     console.log('click');
-    //     nameInput.value = ''
-    //     descriptionInput.value = ''
-    //     imgInput.value = ''
-    // })
+        nameInput.value = ''
+        descriptionInput.value = ''
+        imgInput.value = ''
+        preview.src = 'https://via.placeholder.com/300x200'
+        deleteBtn.classList.add('d-none')
+
+    }
 </script>
