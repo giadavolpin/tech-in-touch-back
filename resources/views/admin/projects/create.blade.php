@@ -49,11 +49,15 @@
                             class="form-control  @error('cover_image') is-invalid @enderror"> --}}
                         <div class=" mb-3 w-50">
 
-                            {{-- <img class="d-block mb-2" id="uploadPreview" width="100"
-                                src="https://via.placeholder.com/300x200"> --}}
+                            <div class="img_preview position-relative mb-3">
+                                <img class="d-block img-fluid" id="uploadPreview" src="https://via.placeholder.com/300x200">
+
+                                <span id="my_reset_btn" class="position-absolute top-0 right-0">X</span>
+                            </div>
                             <div>
 
-                                <input type="file" name="cover_image" id="create_cover_image"
+                                <input type="file" name="cover_image" id="create_cover_image" accept="image/*"
+                                    onchange="showPreview(event)"
                                     class="form-control  @error('cover_image') is-invalid @enderror">
                                 @error('cover_image')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -109,8 +113,29 @@
             </div>
         </div>
     </div>
-    {{-- <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        bkLib.onDomLoaded(nicEditors.allTextAreas);
-    </script> --}}
 @endsection
+
+<script>
+    function showPreview(event) {
+        if (event.target.files.length > 0) {
+            let src = URL.createObjectURL(event.target.files[0]);
+            let preview = document.getElementById("uploadPreview");
+            preview.src = src;
+            preview.style.display = "block";
+        } else {
+            //da completare con il vecchio url del placeolder img
+
+        }
+    }
+
+    // let preview = document.getElementById("uploadPreview");
+
+    // let resetBtn = document.getElementById('my_reset_btn');
+
+    // resetBtn.classList.add('prova')
+
+    // resetBtn.addEventListener('click', function() {
+    //     src = URL.createObjectURL('https://via.placeholder.com/300x200')
+    //     preview.src = src;
+    // })
+</script>
