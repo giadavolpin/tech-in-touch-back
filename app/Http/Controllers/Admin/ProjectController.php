@@ -55,12 +55,12 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $userId = Auth::id();
-        $professionistID = Professionist::where('user_id', $userId)->pluck('id');
+        $professionistID = Professionist::where('user_id', $userId)->value('id');
         $professionistNick = Professionist::where('user_id', $userId)->value('nickname');
         $data = $request->validated();
         $slug = Project::generateSlug($request->name, $professionistNick);
         $data['slug'] = $slug;
-        $data['professionist_id'] = $professionistID[0];
+        $data['professionist_id'] = $professionistID;
 
         if ($request->hasFile('cover_image')) {
             $path = Storage::put('project_image', $request->cover_image);
@@ -86,12 +86,12 @@ class ProjectController extends Controller
         //controllo
         $userId = Auth::id();
         Session::flash('userId',  $userId);
-
+        $professionistID = Professionist::where('user_id', $userId)->value('id');
 
         $session_id = Session::get('userId');
         // dd($session_id);
 
-        if($project->professionist_id == $userId && $userId == $session_id){
+        if($project->professionist_id == $professionistID  && $userId == $session_id){
             return view('admin.projects.show', compact('project'));
         }else{
             abort(401);
