@@ -44,16 +44,23 @@
 
                     <div>
 
-                        <label for="cover_image" class="form-label">Inserisci un'immagine</label>
+                        <label for="cover_image" class="form-label mb-4">Inserisci un'immagine</label>
                         {{-- <input type="file" name="cover_image" id="create_cover_image"
                             class="form-control  @error('cover_image') is-invalid @enderror"> --}}
                         <div class=" mb-3 w-50">
 
-                            {{-- <img class="d-block mb-2" id="uploadPreview" width="100"
-                                src="https://via.placeholder.com/300x200"> --}}
+                            <div class="position-relative ">
+                                <div class="img_preview mb-3 ">
+                                    <img class="d-block img-fluid " id="uploadPreview"
+                                        src="https://via.placeholder.com/300x200">
+                                </div>
+                                <span id="my_reset_btn" class="d-none"><i class="fa-solid fa-circle-xmark"></i></span>
+                            </div>
+
                             <div>
 
-                                <input type="file" name="cover_image" id="create_cover_image"
+                                <input type="file" name="cover_image" id="create_cover_image" accept="image/*"
+                                    onchange="showPreview(event)"
                                     class="form-control  @error('cover_image') is-invalid @enderror">
                                 @error('cover_image')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -104,13 +111,42 @@
 
 
                         <button type="submit" class="btn btn-dark">Invia</button>
-                        <button type="reset" class="btn btn-light border-dark">Reset</button>
+                        <button type='reset' id="reset_all_btn" class="btn btn-light border-dark">Reset</button>
                 </form>
+
             </div>
         </div>
     </div>
-    {{-- <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        bkLib.onDomLoaded(nicEditors.allTextAreas);
-    </script> --}}
 @endsection
+
+<script>
+    function showPreview(event) {
+        if (event.target.files.length > 0) {
+            let input_field = document.getElementById('create_cover_image');
+            let deleteBtn = document.getElementById('my_reset_btn');
+            deleteBtn.classList.remove('d-none')
+            let src = URL.createObjectURL(event.target.files[0]);
+            let preview = document.getElementById("uploadPreview");
+            preview.src = src;
+            preview.style.display = "block";
+            deleteBtn.addEventListener('click', () => {
+                src = 'https://via.placeholder.com/300x200'
+                preview.src = src
+                input_field.value = ''
+                deleteBtn.classList.add('d-none')
+            })
+        }
+    }
+
+    // let resetAll = document.getElementById('reset_all_btn');
+    // let nameInput = document.getElementById('name')
+    // let descriptionInput = document.getElementById('description')
+    // let imgInput = document.getElementById('create_cover_image');
+
+    // resetAll.addEventListener('click', () => {
+    //     console.log('click');
+    //     nameInput.value = ''
+    //     descriptionInput.value = ''
+    //     imgInput.value = ''
+    // })
+</script>
