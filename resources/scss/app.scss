@@ -107,15 +107,29 @@ h6{
 }
 
 
-// REGISTER 
-
+// REGISTER
+.auth_errors_list {
+    color: red;
+    background-color: transparent;
+    border: 4px solid red;
+    padding: 1rem;
+    border-radius: 15px;
+    line-height: 2rem;
+}
 .dev_register_full_page{
-   
-    min-height: 100vh; /* sottrai header e footer*/ 
+
+    min-height: 100vh; /* sottrai header e footer*/
     display: flex;
+    flex-direction: column;
+    gap: 3rem;
     align-items: center;
     justify-content: center;
     background-color: $dev_bkg_blue;
+
+
+
+
+
 
     .box_register{
         position: relative;
@@ -273,7 +287,7 @@ h6{
             letter-spacing: 0.2rem;
             color: #1c1c1c;
             transition: transform 250ms ease;
-            
+
             &:hover{
                 transform: scale(1.05);
             }
@@ -286,25 +300,27 @@ h6{
     }
 
     /* Change Autocomplete styles input in Chrome*/
-    
+
     input:-webkit-autofill,
-    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:hover,
     input:-webkit-autofill:focus {
     border: none;
     -webkit-text-fill-color: $dev_black;
     transition: background-color 5000s ease-in-out 0s;
     }
-    
+
 }
 
-// LOGIN 
+// LOGIN
 
 .dev_login_full_page{
-   
-    min-height: 100vh; /* sottrai header e footer*/ 
+
+    min-height: 100vh; /* sottrai header e footer*/
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 3rem;
     background-color: $dev_bkg_blue;
 
 
@@ -490,9 +506,9 @@ h6{
         }
     }
     /* Change Autocomplete styles input in Chrome*/
-    
+
     input:-webkit-autofill,
-    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:hover,
     input:-webkit-autofill:focus {
     border: none;
     -webkit-text-fill-color: $dev_black;
