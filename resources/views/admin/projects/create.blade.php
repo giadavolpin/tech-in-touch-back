@@ -137,15 +137,16 @@
             })
         }
     }
-    let resetAll = document.getElementById('reset_all_btn');
-    let nameInput = document.getElementById('name')
-    let descriptionInput = document.getElementById('description')
-    let imgInput = document.getElementById('create_cover_image');
 
-    resetAll.addEventListener('click', () => {
-        console.log('click');
-        nameInput.value = ''
-        descriptionInput.value = ''
-        imgInput.value = ''
-    })
+    // let resetAll = document.getElementById('reset_all_btn');
+    // let nameInput = document.getElementById('name')
+    // let descriptionInput = document.getElementById('description')
+    // let imgInput = document.getElementById('create_cover_image');
+
+    // resetAll.addEventListener('click', () => {
+    //     console.log('click');
+    //     nameInput.value = ''
+    //     descriptionInput.value = ''
+    //     imgInput.value = ''
+    // })
 </script>
