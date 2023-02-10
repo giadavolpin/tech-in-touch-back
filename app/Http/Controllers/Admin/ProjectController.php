@@ -61,16 +61,17 @@ class ProjectController extends Controller
         $userId = Auth::id();
         $professionistID = Professionist::where('user_id', $userId)->pluck('id');
         $professionistNick = Professionist::where('user_id', $userId)->value('nickname');
-        // dd($professionistID);
         $data = $request->validated();
         $slug = Project::generateSlug($request->name, $professionistNick);
         $data['slug'] = $slug;
         $data['professionist_id'] = $professionistID[0];
+
         if ($request->hasFile('cover_image')) {
             $path = Storage::put('project_image', $request->cover_image);
             $data['cover_image'] = $path;
         }
         $newProject = Project::create($data);
+        // dd($newProject);
 
 
 

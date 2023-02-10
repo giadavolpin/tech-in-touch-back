@@ -9,65 +9,65 @@
                 <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.projects.create') }}">Nuovo Progetto</a>
             </div>
         @else
-                <div>
-                    <h3 class="text-center mb-2">Non hai ancora un profilo da Professionista, per aggiungere un progetto crea prima il tuo profilo da professionista</h3>
+            <div>
+                <h3 class="text-center mb-2">Non hai ancora un profilo da Professionista, per aggiungere un progetto crea
+                    prima il tuo profilo da professionista</h3>
 
-                </div>
-                <div class=" text-center">
-                    <a class="btn btn-dark mx-3 my-3" href="{{ route('admin.professionists.create') }}">Aggiungi Profilo</a>
-                </div>
-
+            </div>
+            <div class=" text-center">
+                <a class="btn btn-dark mx-3 my-3" href="{{ route('admin.professionists.create') }}">Aggiungi Profilo</a>
+            </div>
         @endif
 
 
-            @if ( count($projects) == 0 )
-                <div>
-                    <h3 class="text-center mb-2">Non sono ancora presenti progetti</h3>
+        @if (count($projects) == 0)
+            <div>
+                <h3 class="text-center mb-2">Non sono ancora presenti progetti</h3>
 
-                </div>
-
-                @if (session()->has('message'))
-                    <div class="alert alert-success mx-3 mb-3">
-                        {{ session()->get('message') }}
-                    </div>
-                @endif
-                <div class="table-responsive mx-3">
-                    <table class="my-table table table-striped">
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Descrizione</th>
-                                <th scope="col">Immagine</th>
-                                <th scope="col">Modifica</th>
-                                <th class="text-center" scope="col">Elimina</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($projects as $project)
-                                <tr>
-                                    <td><a href="{{ route('admin.projects.show', $project->slug) }}" title="Vedi Progetto">
-                                            {{ $project->name }} </a></td>
-                                    <td>{{ Str::limit($project->description, 30) }}</td>
-                                    <td>{{ $project->cover_image }}</td>
-
-                                    <td class="text-center"><a class="link-secondary"
-                                            href="{{ route('admin.projects.edit', $project->slug) }}"
-                                            title="Edit project"><i class="fa-solid fa-pen"></i></a></td>
-                                    <td class="text-center">
-                                        <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="delete-button btn btn-danger "
-                                                data-item-title="{{ $project->slug }}"><i
-                                                    class="fa-solid fa-trash-can"></i></button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+            </div>
+        @else
+            @if (session()->has('message'))
+                <div class="alert alert-success mx-3 mb-3">
+                    {{ session()->get('message') }}
                 </div>
             @endif
+            <div class="table-responsive mx-3">
+                <table class="my-table table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Descrizione</th>
+                            <th scope="col">Immagine</th>
+                            <th scope="col">Modifica</th>
+                            <th class="text-center" scope="col">Elimina</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($projects as $project)
+                            <tr>
+                                <td><a href="{{ route('admin.projects.show', $project->slug) }}" title="Vedi Progetto">
+                                        {{ $project->name }} </a></td>
+                                <td>{{ Str::limit($project->description, 30) }}</td>
+                                <td>{{ $project->cover_image }}</td>
+
+                                <td class="text-center"><a class="link-secondary"
+                                        href="{{ route('admin.projects.edit', $project->slug) }}" title="Edit project"><i
+                                            class="fa-solid fa-pen"></i></a></td>
+                                <td class="text-center">
+                                    <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="delete-button btn btn-danger "
+                                            data-item-title="{{ $project->slug }}"><i
+                                                class="fa-solid fa-trash-can"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        @endif
 
 
 
