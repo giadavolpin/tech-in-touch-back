@@ -19,7 +19,7 @@
         @endif
 
         <div class="text-end mt-4">
-            <a href="{{ route('admin.projects.edit', $project->slug) }}" class="btn btn-light border-dark">Modifica
+            <a href="{{ route('admin.projects.edit', $project->slug) }}" class="btn btn-dark border-dark">Modifica
                 Progetto</a>
         </div>
     </div>

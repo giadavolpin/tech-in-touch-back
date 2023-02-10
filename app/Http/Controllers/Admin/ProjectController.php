@@ -9,6 +9,8 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Technology;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -18,13 +20,20 @@ class ProjectController extends Controller
      * Display a listing of the resource.
      *
      */
-    public function index()
+    public function index(Request $request)
     {
         $userId = Auth::id();
-        $professionistID = Professionist::where('user_id', $userId)->pluck('id');
-        $projects = Project::where('professionist_id', $professionistID[0])->get();
+        $professionistID = Professionist::where('user_id', $userId)->value('id');
+        // dd($professionistID);
 
-        return view('admin.projects.index', compact('projects'));
+        // dd($session_id);
+
+            $projects = Project::where('professionist_id', $professionistID )->get();
+            // dd($projects);
+
+        // $projects = Project::where('professionist_id', $professionistID)->get();
+
+        return view('admin.projects.index', compact('projects','professionistID'));
     }
 
     /**
@@ -46,17 +55,21 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $userId = Auth::id();
-        $professionistID = Professionist::where('user_id', $userId)->pluck('id');
-        // dd($professionistID);
+        $professionistID = Professionist::where('user_id', $userId)->value('id');
+        $professionistNick = Professionist::where('user_id', $userId)->value('nickname');
         $data = $request->validated();
-        $slug = Project::generateSlug($request->name);
+        $slug = Project::generateSlug($request->name, $professionistNick);
         $data['slug'] = $slug;
-        $data['professionist_id'] = $professionistID[0];
+        $data['professionist_id'] = $professionistID;
+
         if ($request->hasFile('cover_image')) {
             $path = Storage::put('project_image', $request->cover_image);
             $data['cover_image'] = $path;
         }
         $newProject = Project::create($data);
+        // dd($newProject);
+        //mattia ti prego;
+
 
         return redirect()->route('admin.projects.index', $newProject->slug)->with('message', "$newProject->slug è stato creato con successo");
         ;
@@ -70,14 +83,27 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+        //controllo
         $userId = Auth::id();
-        $professionistID = Professionist::where('user_id', $userId)->pluck('user_id');
-        $id = Auth::id();
+        Session::flash('userId',  $userId);
+        $professionistID = Professionist::where('user_id', $userId)->value('id');
+
+        $session_id = Session::get('userId');
+        // dd($session_id);
+
+        if($project->professionist_id == $professionistID  && $userId == $session_id){
+            return view('admin.projects.show', compact('project'));
+        }else{
+            abort(401);
+        }
+
+
         // dd($project->professionist_id == Auth::id() );
         // dd($id);
         // dd($project->professionist_id);
         // dd($project->professionist_id == $id);
-        return view('admin.projects.show', compact('project'));
+
+        // return view('admin.projects.show', compact('project'));
     }
 
     /**
@@ -98,9 +124,10 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-
+        $userId = Auth::id();
         $data = $request->validated();
-        $slug = Project::generateSlug($request->name);
+        $professionistNick = Professionist::where('user_id', $userId)->value('nickname');
+        $slug = Project::generateSlug($request->name, $professionistNick);
         $data['slug'] = $slug;
         if ($request->hasFile('cover_image')) {
             if ($project->cover_image) {

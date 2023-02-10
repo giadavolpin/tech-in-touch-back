@@ -13,13 +13,13 @@ class Project extends Model
 
     protected $guarded = [];
 
-    public static function generateSlug($name){
-        return Str::slug($name, '-');
+    public static function generateSlug($name, $nickname){
+        return Str::slug($name . '-' . $nickname, '-');
     }
 
     public function getName(){
         return $this->title;
-    } 
+    }
 
     public function professionists():BelongsTo{
         return $this->belongsTo(Professionist::class);

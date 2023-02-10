@@ -9,6 +9,7 @@ use App\Http\Requests\StoreProfessionistRequest;
 use App\Http\Requests\UpdateProfessionistRequest;
 use App\Models\Project;
 use App\Models\Technology;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -46,7 +47,7 @@ class ProfessionistController extends Controller
         $technologies = Technology::all();
 
         if (!is_null($professionistID)) {
-            // dd($professionists);
+            // dd($professionists)
             return view('admin.professionists.index', compact('professionists'));
 
         } else {
@@ -62,9 +63,10 @@ class ProfessionistController extends Controller
      */
     public function store(StoreProfessionistRequest $request)
     {
+
         $userId = Auth::id();
         $data = $request->validated();
-        $slug = Professionist::generateSlug($request->name, $request->surname);
+        $slug = Professionist::generateSlug($request->nickname);
         $data['slug'] = $slug;
         $data['user_id'] = $userId;
         if ($request->hasFile('profile_image')) {
