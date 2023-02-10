@@ -66,7 +66,7 @@ class ProfessionistController extends Controller
 
         $userId = Auth::id();
         $data = $request->validated();
-        $slug = Professionist::generateSlug($request->name, $request->surname);
+        $slug = Professionist::generateSlug($request->nickname);
         $data['slug'] = $slug;
         $data['user_id'] = $userId;
         if ($request->hasFile('profile_image')) {
