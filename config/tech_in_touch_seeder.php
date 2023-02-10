@@ -509,7 +509,7 @@ return [
         ],
         /*Mario Rossi */
         [
-            "name" => "dadi",
+            "name" => "Dadi",
             "description" => "Riproduzione del layout in JS di un sito di macchine",
             "professionist_id" => 15,
             "cover_image" => null
@@ -579,7 +579,7 @@ return [
         ],
         [
             "name" => "Vue Boolzapp",
-            "description" => "Riproduzione semplificata del layout di WhatsApp in HTML 5 CSS 3 e JavaScript di Spotify",
+            "description" => "Riproduzione semplificata del layout di WhatsApp in HTML 5 CSS 3 e JavaScript di Whatsapp",
             "professionist_id" => 5,
             "cover_image" => "https://s3-us-west-1.amazonaws.com/coppertino/seo-photos/spotify-web-player-vs-loop-web.jpg"
         ],
@@ -596,7 +596,7 @@ return [
             "professionist_id" => 6,
             "cover_image" => null
         ],
-        // Laura Rossi 4 progetti
+        // Laura Rossi 3 progetti
         [
             "name" => "Shopping",
             "description" => "UI / UX Design e Copy per l'app di Shopping",
@@ -782,6 +782,7 @@ return [
             "professionist_id" => 19,
             "cover_image" => "https://play-lh.googleusercontent.com/yZsmiNjmji3ZoOuLthoVvptLB9cZ0vCmitcky4OUXNcEFV3IEQkrBD2uu5kuWRF5_ERA"
         ],
+        /* sabato */
         [
             "name" => "Champloo",
             "description" => "Website e-commerce Streetwear",

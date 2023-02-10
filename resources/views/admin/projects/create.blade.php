@@ -25,7 +25,7 @@
                         <label for="name" class="form-label"><strong>*</strong>Nome</label>
 
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                            name="name" required maxlength="15" minlength="3">
+                            name="name" required maxlength="50" minlength="3">
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
