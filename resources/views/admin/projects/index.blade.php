@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        <h1 class="m-3 text-center">Progetti</h1>
+        <h1 class="m-3 text-center">I miei Progetti</h1>
 
         @if (!is_null($professionistID))
             <div class="text-center">
@@ -15,7 +15,7 @@
 
             </div>
             <div class=" text-center">
-                <a class="btn btn-dark mx-3 my-3" href="{{ route('admin.professionists.create') }}">Aggiungi Profilo</a>
+                <a class="btn btn-dark mx-3 my-3" href="{{ route('admin.professionists.create') }}">Crea Profilo</a>
             </div>
         @endif
 
@@ -25,7 +25,7 @@
                 <h3 class="text-center mb-2">Non sono ancora presenti progetti</h3>
 
             </div>
-        @else
+        @elseif(count($projects) > 0 && !is_null($professionistID))
             @if (session()->has('message'))
                 <div class="alert alert-success mx-3 mb-3">
                     {{ session()->get('message') }}

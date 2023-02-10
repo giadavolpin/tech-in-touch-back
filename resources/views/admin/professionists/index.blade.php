@@ -2,14 +2,14 @@
 
 @section('content')
     <div>
-        <h1 class="m-5 text-center bolder">Il mio Profilo</h1>
+        <h1 class="m-3 text-center bolder">Il mio Profilo</h1>
 
 
 
         @if (count($professionists) == 0)
-            <div class="mt-5">
-                <h3 class="text-center mb-2">Benvenuto</h3>
-                <p class="text-center">Registra il tuo primo profilo</p>
+            <div class="my-3">
+                <h3 class="text-center mb-2">Nessun profilo trovato</h3>
+
             </div>
         @else
             @if (session()->has('message'))
@@ -84,7 +84,7 @@
 
         @if (!count($professionists) >= 1)
             <div class="text-center">
-                <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.professionists.create') }}">Aggiungi Profilo</a>
+                <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.professionists.create') }}">Crea Profilo</a>
             </div>
         @endif
     </div>
