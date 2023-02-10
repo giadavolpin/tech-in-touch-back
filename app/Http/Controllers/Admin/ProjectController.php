@@ -72,7 +72,7 @@ class ProjectController extends Controller
         }
         $newProject = Project::create($data);
         // dd($newProject);
-
+        //mattia ti prego;
 
 
         return redirect()->route('admin.projects.index', $newProject->slug)->with('message', "$newProject->slug è stato creato con successo");
