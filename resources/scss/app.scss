@@ -36,6 +36,23 @@ h6{
     font-family: 'Chakra Petch', sans-serif;
 
 }
+.img_preview {
+    width: 150px;
+    height: 100px;
+    overflow: hidden;
+}
+#my_reset_btn {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    z-index: 40;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.prova {
+    color: red;
+}
 .my-w-100 {
     width: 100px;
 }
