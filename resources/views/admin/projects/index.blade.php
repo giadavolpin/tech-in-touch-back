@@ -2,17 +2,30 @@
 
 @section('content')
     <div>
-        <h1 class="m-3">Progetti</h1>
-        <div class="text-end">
-            <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.projects.create') }}">Nuovo Progetto</a>
-        </div>
+        <h1 class="m-3 text-center">Progetti</h1>
 
-            @if (count($projects) == 0)
+        @if (!is_null($professionistID))
+            <div class="text-center">
+                <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.projects.create') }}">Nuovo Progetto</a>
+            </div>
+        @else
+                <div>
+                    <h3 class="text-center mb-2">Non hai ancora un profilo da Professionista, per aggiungere un progetto crea prima il tuo profilo da professionista</h3>
+
+                </div>
+                <div class=" text-center">
+                    <a class="btn btn-dark mx-3 my-3" href="{{ route('admin.professionists.create') }}">Aggiungi Profilo</a>
+                </div>
+
+        @endif
+
+
+            @if ( count($projects) == 0 )
                 <div>
                     <h3 class="text-center mb-2">Non sono ancora presenti progetti</h3>
 
                 </div>
-            @else
+
                 @if (session()->has('message'))
                     <div class="alert alert-success mx-3 mb-3">
                         {{ session()->get('message') }}
