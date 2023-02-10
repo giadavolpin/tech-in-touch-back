@@ -44,16 +44,19 @@
 
                     <div>
 
-                        <label for="cover_image" class="form-label">Inserisci un'immagine</label>
+                        <label for="cover_image" class="form-label mb-4">Inserisci un'immagine</label>
                         {{-- <input type="file" name="cover_image" id="create_cover_image"
                             class="form-control  @error('cover_image') is-invalid @enderror"> --}}
                         <div class=" mb-3 w-50">
 
-                            <div class="img_preview position-relative mb-3">
-                                <img class="d-block img-fluid" id="uploadPreview" src="https://via.placeholder.com/300x200">
-
-                                <span id="my_reset_btn" class="position-absolute top-0 right-0">X</span>
+                            <div class="position-relative ">
+                                <div class="img_preview mb-3 ">
+                                    <img class="d-block img-fluid " id="uploadPreview"
+                                        src="https://via.placeholder.com/300x200">
+                                </div>
+                                <span id="my_reset_btn" class="d-none"><i class="fa-solid fa-circle-xmark"></i></span>
                             </div>
+
                             <div>
 
                                 <input type="file" name="cover_image" id="create_cover_image" accept="image/*"
@@ -108,8 +111,9 @@
 
 
                         <button type="submit" class="btn btn-dark">Invia</button>
-                        <button type="reset" class="btn btn-light border-dark">Reset</button>
+                        <button type='reset' id="reset_all_btn" class="btn btn-light border-dark">Reset</button>
                 </form>
+
             </div>
         </div>
     </div>
@@ -118,24 +122,30 @@
 <script>
     function showPreview(event) {
         if (event.target.files.length > 0) {
+            let input_field = document.getElementById('create_cover_image');
+            let deleteBtn = document.getElementById('my_reset_btn');
+            deleteBtn.classList.remove('d-none')
             let src = URL.createObjectURL(event.target.files[0]);
             let preview = document.getElementById("uploadPreview");
             preview.src = src;
             preview.style.display = "block";
-        } else {
-            //da completare con il vecchio url del placeolder img
-
+            deleteBtn.addEventListener('click', () => {
+                src = 'https://via.placeholder.com/300x200'
+                preview.src = src
+                input_field.value = ''
+                deleteBtn.classList.add('d-none')
+            })
         }
     }
+    let resetAll = document.getElementById('reset_all_btn');
+    let nameInput = document.getElementById('name')
+    let descriptionInput = document.getElementById('description')
+    let imgInput = document.getElementById('create_cover_image');
 
-    // let preview = document.getElementById("uploadPreview");
-
-    // let resetBtn = document.getElementById('my_reset_btn');
-
-    // resetBtn.classList.add('prova')
-
-    // resetBtn.addEventListener('click', function() {
-    //     src = URL.createObjectURL('https://via.placeholder.com/300x200')
-    //     preview.src = src;
-    // })
+    resetAll.addEventListener('click', () => {
+        console.log('click');
+        nameInput.value = ''
+        descriptionInput.value = ''
+        imgInput.value = ''
+    })
 </script>
