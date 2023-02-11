@@ -42,7 +42,8 @@ class UpdateProfessionistRequest extends FormRequest
             'cv_path' => ['nullable'],
             'linkedin' => ['nullable', 'string'],
             'github' => ['nullable', 'string'],
-            'visible' => ['required']
+            'visible' => ['required'],
+            'technologies' => 'required|array|min:1',
         ];
     }
     public function messages()
@@ -63,7 +64,9 @@ class UpdateProfessionistRequest extends FormRequest
             'profile_image.image' => 'Il file deve essere una immagine',
             'linkedin.string' => 'Inserisci un URL',
             'github.string' => 'Inserici un URL',
-            'visible.required' => 'Selezionare un opzione'
+            'visible.required' => 'Selezionare un opzione',
+            'technologies.required' => 'Selezionare almeno una tecnologia',
+            'technologies.min' => 'Selezionare almeno una tecnologia',
         ];
     }
 }

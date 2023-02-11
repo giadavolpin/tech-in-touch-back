@@ -167,14 +167,35 @@ class ProfessionistController extends Controller
 
             $path = Storage::put('professionist_images', $request->profile_image);
             $data['profile_image'] = $path;
+        }else{
+            $data['profile_image'] = '';
         }
         if ($request->hasFile('cv_path')) {
             $path = Storage::put('professionists_images', $request->cv_path);
             $data['cv_path'] = $path;
+        }else{
+            $data['cv_path'] = '';
         }
 
 
-        $professionist->update($data);
+
+        $professionist->nickname = $data['nickname'];
+        // $professionist->user_id = $data['user_id'];
+        $professionist->slug = $data['slug'];
+        $professionist->name = $data['name'];
+        $professionist->surname = $data['surname'];
+        $professionist->job_address = $data['job_address'];
+        $professionist->phone_number = $data['phone_number'];
+        $professionist->bio = $data['bio'];
+        $professionist->profile_image = $data['profile_image'];
+        $professionist->cv_path = $data['cv_path'];
+        $professionist->linkedin = $data['linkedin'];
+        $professionist->github = $data['github'];
+        $professionist->visible = $data['visible'];
+
+
+
+        $professionist->update();
 
         if ($request->has('technologies')) {
             $professionist->technologies()->sync($request->technologies);
