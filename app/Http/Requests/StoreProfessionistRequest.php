@@ -32,7 +32,7 @@ class StoreProfessionistRequest extends FormRequest
             'profile_image' => 'nullable|image',
             'cv_path' => 'nullable|image',
             'user_id' => 'nullable|exists:user,id',
-            'technologies_id' => 'nullable',
+            'technologies' => 'required|array|min:1',
             'phone_number' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'linkedin' => 'nullable',
             'github' => 'nullable',
@@ -57,7 +57,9 @@ class StoreProfessionistRequest extends FormRequest
             'linkedin.string' => 'Inserisci un URL',
             // 'cv_path.required' => 'Il campo è obbligatorio',
             'github.string' => 'Inserici un URL',
-            'visible.required' => 'Selezionare un opzione'
+            'visible.required' => 'Selezionare un opzione',
+            'technologies.required' => 'Selezionare almeno una tecnologia',
+            'technologies.min' => 'Selezionare almeno una tecnologia',
         ];
     }
 }

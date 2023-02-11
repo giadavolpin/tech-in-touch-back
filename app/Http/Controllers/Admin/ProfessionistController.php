@@ -72,17 +72,41 @@ class ProfessionistController extends Controller
         if ($request->hasFile('profile_image')) {
             $path = Storage::put('professionists_images', $request->profile_image);
             $data['profile_image'] = $path;
+        }else{
+            $data['profile_image'] = '';
         }
         if ($request->hasFile('cv_path')) {
             $path = Storage::put('professionists_images', $request->cv_path);
             $data['cv_path'] = $path;
+        }else{
+            $data['cv_path'] = '';
         }
 
-        $new_professionist = Professionist::create($data);
+        $new_professionist = new Professionist;
+
+        $new_professionist->nickname = $data['nickname'];
+        $new_professionist->user_id = $data['user_id'];
+        $new_professionist->slug = $data['slug'];
+        $new_professionist->name = $data['name'];
+        $new_professionist->surname = $data['surname'];
+        $new_professionist->job_address = $data['job_address'];
+        $new_professionist->phone_number = $data['phone_number'];
+        $new_professionist->bio = $data['bio'];
+        $new_professionist->profile_image = $data['profile_image'];
+        $new_professionist->cv_path = $data['cv_path'];
+        $new_professionist->linkedin = $data['linkedin'];
+        $new_professionist->github = $data['github'];
+        $new_professionist->visible = $data['visible'];
+
+        $new_professionist->save();
+
+
 
         if ($request->has('technologies')) {
+
             $new_professionist->technologies()->attach($request->technologies);
         }
+
 
         return redirect()->route('admin.professionists.index', $new_professionist->slug)->with('message', "Profilo creato con successo");
         ;
