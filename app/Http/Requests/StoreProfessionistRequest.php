@@ -33,6 +33,7 @@ class StoreProfessionistRequest extends FormRequest
             'cv_path' => 'nullable|image',
             'user_id' => 'nullable|exists:user,id',
             'technologies_id' => 'nullable',
+            'technologies' => 'required',
             'phone_number' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'linkedin' => 'nullable',
             'github' => 'nullable',
@@ -55,6 +56,7 @@ class StoreProfessionistRequest extends FormRequest
             'phone_number.min' => 'Il numero di telefono deve essere di minimo :min numeri',
             'profile_image.image' => 'Il file deve essere una immagine',
             'linkedin.string' => 'Inserisci un URL',
+            'technologies.required' => 'Devi selezionare almeno una tecnologia!',
             // 'cv_path.required' => 'Il campo è obbligatorio',
             'github.string' => 'Inserici un URL',
             'visible.required' => 'Selezionare un opzione'

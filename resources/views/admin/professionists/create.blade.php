@@ -155,7 +155,7 @@
                                 <div class="form-check form-check-inline">
 
 
-                                    <input type="checkbox" class="form-check-input" id="{{ $technology->slug }}"
+                                    <input type="checkbox" class="form-check-input" id="{{ $technology->slug }} "
                                         name="technologies[]" value="{{ $technology->id }}">
 
                                     <label class="form-check-label"
@@ -163,7 +163,7 @@
                                 </div>
                             @endforeach
                             @error('technologies')
-                                <div class="alert alert-danger">{{ $message }}</div>
+                                <div class="alert alert-danger my-3">{{ $message }}</div>
                             @enderror
                         </div>
 
