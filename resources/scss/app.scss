@@ -50,8 +50,14 @@ h6{
         cursor: pointer;
     }
 }
-.prova {
-    color: red;
+#cv_reset_btn {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    z-index: 40;
+    &:hover {
+        cursor: pointer;
+    }
 }
 .my-w-100 {
     width: 100px;
