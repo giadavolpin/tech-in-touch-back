@@ -87,13 +87,18 @@
                             class="form-control  @error('profile_image') is-invalid @enderror"> --}}
                         <div class=" mb-3 w-50">
 
-                            <img class="d-block mb-2" id="uploadPreview" width="100"
-                                src="https://via.placeholder.com/300x200">
-
+                            <div class="position-relative ">
+                                <div class="img_preview mb-3 ">
+                                    <img class="d-block img-fluid " id="uploadPreview"
+                                        src="https://via.placeholder.com/300x200">
+                                </div>
+                                <span id="my_reset_btn" class="d-none"><i class="fa-solid fa-circle-xmark"></i></span>
+                            </div>
 
                             <div>
 
-                                <input type="file" name="profile_image" id="create_profile_image"
+                                <input type="file" name="profile_image" id="create_profile_image" accept="image/*"
+                                    onchange="showPreview(event)"
                                     class="form-control  @error('profile_image') is-invalid @enderror">
                                 @error('profile_image')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -107,11 +112,17 @@
                             class="form-control  @error('cv_path') is-invalid @enderror"> --}}
                         <div class=" mb-3 w-50">
 
-                            <img class="d-block mb-2" id="uploadPreview" width="100"
-                                src="https://via.placeholder.com/300x200">
+                            <div class="position-relative ">
+                                <div class="img_preview mb-3 ">
+                                    <img class="d-block img-fluid " id="CV_Preview"
+                                        src="https://via.placeholder.com/300x200">
+                                </div>
+                                <span id="cv_reset_btn" class="d-none"><i class="fa-solid fa-circle-xmark"></i></span>
+                            </div>
                             <div>
 
-                                <input type="file" name="cv_path" id="create_cv_path"
+                                <input type="file" name="cv_path" id="create_cv_path" accept="image/*"
+                                    onchange="showCVPreview(event)"
                                     class="form-control  @error('cv_path') is-invalid @enderror">
                                 @error('cv_path')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -201,3 +212,41 @@
         bkLib.onDomLoaded(nicEditors.allTextAreas);
     </script>
 @endsection
+
+<script>
+    function showPreview(event) {
+        if (event.target.files.length > 0) {
+            let input_profile_field = document.getElementById('create_profile_image');
+            let delete_profile_Btn = document.getElementById('my_reset_btn');
+            delete_profile_Btn.classList.remove('d-none')
+            let profile_src = URL.createObjectURL(event.target.files[0]);
+            let preview_profile = document.getElementById("uploadPreview");
+            preview_profile.src = profile_src;
+            preview_profile.style.display = "block";
+            delete_profile_Btn.addEventListener('click', () => {
+                profile_src = 'https://via.placeholder.com/300x200'
+                preview_profile.src = profile_src
+                input_profile_field.value = ''
+                delete_profile_Btn.classList.add('d-none')
+            })
+        }
+    }
+
+    function showCVPreview(event) {
+        if (event.target.files.length > 0) {
+            let input_CV_field = document.getElementById('create_cv_path');
+            let delete_CV_Btn = document.getElementById('cv_reset_btn');
+            delete_CV_Btn.classList.remove('d-none')
+            let cv_src = URL.createObjectURL(event.target.files[0]);
+            let cv_preview = document.getElementById("CV_Preview");
+            cv_preview.src = cv_src;
+            cv_preview.style.display = "block";
+            delete_CV_Btn.addEventListener('click', () => {
+                cv_src = 'https://via.placeholder.com/300x200'
+                cv_preview.src = cv_src
+                input_CV_field.value = ''
+                delete_CV_Btn.classList.add('d-none')
+            })
+        }
+    }
+</script>

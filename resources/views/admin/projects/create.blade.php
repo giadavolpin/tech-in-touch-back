@@ -152,6 +152,5 @@
         imgInput.value = ''
         preview.src = 'https://via.placeholder.com/300x200'
         deleteBtn.classList.add('d-none')
-
     }
 </script>
