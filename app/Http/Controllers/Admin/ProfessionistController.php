@@ -63,7 +63,8 @@ class ProfessionistController extends Controller
      */
     public function store(StoreProfessionistRequest $request)
     {
-
+        $projects = Project::all();
+        $technologies = Technology::all();
         $userId = Auth::id();
         $data = $request->validated();
         $slug = Professionist::generateSlug($request->nickname);
@@ -77,11 +78,13 @@ class ProfessionistController extends Controller
             $path = Storage::put('professionists_images', $request->cv_path);
             $data['cv_path'] = $path;
         }
-
+        // $data['technologies[]'] = implode($request->technologies);
         $new_professionist = Professionist::create($data);
 
         if ($request->has('technologies')) {
             $new_professionist->technologies()->attach($request->technologies);
+        } else {
+            return view('admin.professionists.create', compact('projects', 'technologies'));
         }
 
         return redirect()->route('admin.professionists.index', $new_professionist->slug)->with('message', "Profilo creato con successo");

@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Technology;
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreProfessionistRequest extends FormRequest
@@ -23,6 +25,9 @@ class StoreProfessionistRequest extends FormRequest
      */
     public function rules()
     {
+        // $technologies = Technology::all();
+
+
         return [
             'nickname' => 'required|unique:professionists|max:15|min:3',
             'name' => 'required|max:50|min:3',
@@ -33,7 +38,7 @@ class StoreProfessionistRequest extends FormRequest
             'cv_path' => 'nullable|image',
             'user_id' => 'nullable|exists:user,id',
             'technologies_id' => 'nullable',
-            'technologies' => 'required',
+            // 'technologies' => 'required',
             'phone_number' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'linkedin' => 'nullable',
             'github' => 'nullable',
