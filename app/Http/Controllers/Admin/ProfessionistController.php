@@ -158,7 +158,7 @@ class ProfessionistController extends Controller
         //     abort(403);
         // }
         $data = $request->validated();
-        $slug = Professionist::generateSlug($request->name, $request->surname);
+        $slug = Professionist::generateSlug($request->nickname);
         $data['slug'] = $slug;
         if ($request->hasFile('profile_image')) {
             if ($professionist->profile_image) {
