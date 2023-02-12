@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProfessionistController;
+use App\Http\Controllers\Api\LeadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,4 @@ Route::get('professionists', [ProfessionistController::class, 'index']);
 Route::get('data', [ProfessionistController::class, 'data']);
 
 Route::get('professionists/{slug}', [ProfessionistController::class, 'show']);
+Route::post('contacts', [LeadController::class, 'store']);

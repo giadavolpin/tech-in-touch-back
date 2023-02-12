@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProfessionistController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TechnologyController;
+use App\Http\Controllers\Admin\LeadController;
 use App\Http\Controllers\Admin\DashboardController;
 
 /*
@@ -34,6 +35,7 @@ Route::middleware(['auth', 'verified'])
         Route::get('/', [ProfessionistController::class, 'create']);
         Route::resource('professionists', ProfessionistController::class)->parameters(['professionists' => 'professionist:slug']);
         Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
+        Route::resource('leads', LeadController::class);
         Route::resource('technologies', TechnologyController::class)->parameters(['technologies' => 'technologies:slug'])->except('show', 'create', 'edit');
 
     });
