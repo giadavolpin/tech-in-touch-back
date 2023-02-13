@@ -47,8 +47,8 @@ class Professionist extends Model
         return $this->belongsToMany(Plan::class)->withPivot('subscription_start', 'subscription_end');
     }
 
-    public function votes(): BelongsToMany
+    public function reviews(): BelongsToMany
     {
-        return $this->belongsToMany(Vote::class)->withPivot('comment');
+        return $this->belongsToMany(Review::class)->withPivot('comment');
     }
 }
