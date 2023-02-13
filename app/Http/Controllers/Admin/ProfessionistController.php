@@ -24,7 +24,7 @@ class ProfessionistController extends Controller
 
         $userId = Auth::id();
         $professionists = Professionist::where('user_id', $userId)->get();
-        // dd($professionists);
+       // dd($professionists);
 
         return view('admin.professionists.index', compact('professionists'));
     }
@@ -71,13 +71,13 @@ class ProfessionistController extends Controller
         $data['slug'] = $slug;
         $data['user_id'] = $userId;
         if ($request->hasFile('profile_image')) {
-            $path = Storage::put('professionists_images', $request->profile_image);
+            $path = Storage::put('professionist_images', $request->profile_image);
             $data['profile_image'] = $path;
         }else{
             $data['profile_image'] = '';
         }
         if ($request->hasFile('cv_path')) {
-            $path = Storage::put('professionists_images', $request->cv_path);
+            $path = Storage::put('professionist_images', $request->cv_path);
             $data['cv_path'] = $path;
         }else{
             $data['cv_path'] = '';

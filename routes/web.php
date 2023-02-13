@@ -35,7 +35,7 @@ Route::middleware(['auth', 'verified'])
         Route::get('/', [ProfessionistController::class, 'create']);
         Route::resource('professionists', ProfessionistController::class)->parameters(['professionists' => 'professionist:slug']);
         Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
-        Route::resource('leads', LeadController::class);
+        Route::resource('leads', LeadController::class)->parameters(['leads' => 'lead:id']);
         Route::resource('technologies', TechnologyController::class)->parameters(['technologies' => 'technologies:slug'])->except('show', 'create', 'edit');
 
     });

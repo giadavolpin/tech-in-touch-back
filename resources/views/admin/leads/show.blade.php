@@ -27,8 +27,6 @@
                             <th scope="col">Email</th>
                             <th scope="col">Messaggio</th>
                             <th scope="col">Letto</th>
-                            <th scope="col">Elimina</th>
-
 
                         </tr>
                     </thead>
@@ -42,15 +40,6 @@
                                 <td>{{ $lead->message }}</td>
                                 <td>
                                     {{ $lead->read ? 'Si' : 'No' }}
-                                </td>
-                                <td>
-                                    <form action="{{ route('admin.leads.destroy', $lead->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="delete-button btn btn-danger "
-                                            data-item-title="{{ $lead->email }}"><i
-                                                class="fa-solid fa-trash-can"></i></button>
-                                    </form>
                                 </td>
 
 
