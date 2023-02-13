@@ -2,20 +2,19 @@
 
 @section('content')
     <div>
-        <h1 class="m-3">I miei Profili</h1>
-        @if (!count($professionists) >= 1)
-            <div class="text-end">
-                <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.professionists.create') }}">Aggiungi Profilo</a>
-            </div>
-        @endif
+
 
 
         @if (count($professionists) == 0)
-            <div>
-                <h3 class="text-center mb-2">Benvenuto</h3>
-                <p class="text-center">Registra il tuo primo profilo</p>
+            <div class="mt-3">
+                <h1 class="text-center mb-3">Benvenuto</h1>
+                <h3 class="text-center mb-4">Registra il tuo primo profilo</h3>
             </div>
         @else
+
+        <h1 class="text-center m-3">Il mio Profilo</h1>
+
+
             @if (session()->has('message'))
                 <div class="alert alert-success mx-3 mb-3">
                     {{ session()->get('message') }}
@@ -86,6 +85,11 @@
             </div>
         @endif
 
+        @if (!count($professionists) >= 1)
+            <div class="text-center">
+                <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.professionists.create') }}">Aggiungi Profilo</a>
+            </div>
+        @endif
     </div>
 
     {{-- {{ $projects->links('vendor.pagination.bootstrap-5') }} --}}

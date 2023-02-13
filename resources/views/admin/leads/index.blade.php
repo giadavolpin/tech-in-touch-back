@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        <h1 class="m-3">I miei Messaggi</h1>
+        <h1 class="text-center m-3">I miei Messaggi</h1>
 
 
         @if (count($leads) == 0)
