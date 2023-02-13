@@ -1,5 +1,5 @@
 <!-- Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+<nav class="navbar navbar-expand-lg navbar-dark ">
     <div class="container-fluid justify-content-between">
         <!-- Left elements -->
         <div class="d-flex">

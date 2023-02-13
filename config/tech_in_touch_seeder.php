@@ -94,7 +94,7 @@ return [
         ],
         // laura rossi
         [
-            "nickname" => null,
+            "nickname" => "Lauretta",
             "name" => "Laura",
             "surname" => "Rossi",
             "job_address" => "via paoloni 2, treviso",
@@ -109,7 +109,7 @@ return [
         ],
         // Mei Ling
         [
-            "nickname" => null,
+            "nickname" => "MeiLi",
             "name" => "Mei",
             "surname" => "Ling",
             "job_address" => "via salvo d'acquisto 4, napoli",
@@ -240,7 +240,7 @@ return [
 
         ],
         [
-            "nickname" => null,
+            "nickname" => "Moreno89",
             "name" => "Moreno",
             "surname" => "Rimesio",
             "job_address" => "Via Garibaldi 80, Mantova",
@@ -777,7 +777,7 @@ return [
             "cover_image" => "https://aulab.it/img/blog/javascript.jpeg"
         ],
         [
-            "name" => "Zoom Replica",
+            "name" => "Zoom",
             "description" => "Un clone Website di Zoom",
             "professionist_id" => 19,
             "cover_image" => "https://play-lh.googleusercontent.com/yZsmiNjmji3ZoOuLthoVvptLB9cZ0vCmitcky4OUXNcEFV3IEQkrBD2uu5kuWRF5_ERA"
