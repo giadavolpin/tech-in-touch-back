@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('professionists', [ProfessionistController::class, 'index']);
 Route::get('professionists', [ProfessionistController::class, 'index']);
 
 Route::get('data', [ProfessionistController::class, 'data']);
