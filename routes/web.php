@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProfessionistController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\Admin\LeadController;
@@ -37,7 +38,7 @@ Route::middleware(['auth', 'verified'])
         Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
         Route::resource('leads', LeadController::class)->parameters(['leads' => 'lead:id']);
         Route::resource('technologies', TechnologyController::class)->parameters(['technologies' => 'technologies:slug'])->except('show', 'create', 'edit');
-
+        Route::resource('reviews', ReviewController::class)->parameters(['reviews' => 'reviews:id'])->except('show', 'create', 'edit');
     });
 
 

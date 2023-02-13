@@ -33,14 +33,18 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.leads.index') }}"  class="nav-link text-white {{ Route::currentRouteName() == 'admin.leads.index' ? 'bg-secondary' : '' }}" aria-current="page">
+            <a href="{{ route('admin.leads.index') }}"
+                class="nav-link text-white {{ Route::currentRouteName() == 'admin.leads.index' ? 'bg-secondary' : '' }}"
+                aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
 
                 Messaggi
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link text-white " aria-current="page">
+            <a href="{{ route('admin.reviews.index') }}"
+                class="nav-link text-white {{ Route::currentRouteName() == 'admin.reviews.index' ? 'bg-secondary' : '' }} "
+                aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
 
                 Recensioni
