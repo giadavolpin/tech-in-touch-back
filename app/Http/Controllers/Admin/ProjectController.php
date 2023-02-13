@@ -49,8 +49,13 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $userId = Auth::id();
+
         $professionists = Professionist::all();
-        return view("admin.projects.create", compact('professionists'));
+        $professionistID = Professionist::where('user_id', $userId)->value('id');
+        $leads = Lead::where('professionist_id', $professionistID)->get();
+       $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+        return view("admin.projects.create", compact('professionists','leadUnread'));
 
     }
 
@@ -94,12 +99,15 @@ class ProjectController extends Controller
         $userId = Auth::id();
         Session::flash('userId',  $userId);
         $professionistID = Professionist::where('user_id', $userId)->value('id');
+        $leads = Lead::where('professionist_id', $professionistID)->get();
+       $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+        $professionistID = Professionist::where('user_id', $userId)->value('id');
 
         $session_id = Session::get('userId');
         // dd($session_id);
 
         if($project->professionist_id == $professionistID  && $userId == $session_id){
-            return view('admin.projects.show', compact('project'));
+            return view('admin.projects.show', compact('project','leadUnread'));
         }else{
             abort(401);
         }
@@ -120,7 +128,12 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view("admin.projects.edit", compact('project'));
+        $userId = Auth::id();
+
+        $professionistID = Professionist::where('user_id', $userId)->value('id');
+        $leads = Lead::where('professionist_id', $professionistID)->get();
+       $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+        return view("admin.projects.edit", compact('project','leadUnread'));
     }
 
     /**
