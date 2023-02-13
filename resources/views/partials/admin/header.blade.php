@@ -82,7 +82,7 @@
           </a>
         </li> --}}
             <li class="nav-item me-3 me-lg-1">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href=" {{ route('admin.projects.create') }} ">
                     <span><i class="fas fa-plus-circle fa-lg"></i></span>
                 </a>
             </li>

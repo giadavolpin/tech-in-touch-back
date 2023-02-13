@@ -31,8 +31,6 @@ class ProfessionistController extends Controller
        // dd($professionists);
 
        $leads = Lead::where('professionist_id', $professionistID)->get();
-       // dd($leads);
-
        $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
        
         return view('admin.professionists.index', compact('professionists','leadUnread'));
@@ -49,18 +47,18 @@ class ProfessionistController extends Controller
         $professionistID = Professionist::where('user_id', $userId)->value('id');
         // dd($professionistID);
 
-
-        //
+        $leads = Lead::where('professionist_id', $professionistID)->get();
+       $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
 
         $projects = Project::all();
         $technologies = Technology::all();
 
         if (!is_null($professionistID)) {
             // dd($professionists)
-            return view('admin.professionists.index', compact('professionists'));
+            return view('admin.professionists.index', compact('professionists','leadUnread'));
 
         } else {
-            return view('admin.professionists.create', compact('projects', 'technologies', 'professionists'));
+            return view('admin.professionists.create', compact('projects', 'technologies', 'professionists','leadUnread'));
         }
 
     }
@@ -131,10 +129,15 @@ class ProfessionistController extends Controller
      */
     public function show(Professionist $professionist)
     {
+        $userId = Auth::id();
+
+        $professionistID = Professionist::where('user_id', $userId)->value('id');
+        $leads = Lead::where('professionist_id', $professionistID)->get();
+       $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
         if ($professionist->user_id !== Auth::id()) {
             abort(403);
         }
-        return view('admin.professionists.show', compact('professionist'));
+        return view('admin.professionists.show', compact('professionist','leadUnread'));
     }
 
     /**
@@ -149,10 +152,14 @@ class ProfessionistController extends Controller
         // }
         $projects = Project::all();
         $technologies = Technology::all();
+        $userId = Auth::id();
+        $professionistID = Professionist::where('user_id', $userId)->value('id');
+        $leads = Lead::where('professionist_id', $professionistID)->get();
+       $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
         // if (!Auth::user()->isAdmin() && $professionist->user_id !== Auth::id()) {
         //     abort(403);
         // }
-        return view('admin.professionists.edit', compact('professionist', 'projects', 'technologies'));
+        return view('admin.professionists.edit', compact('professionist', 'projects', 'technologies','leadUnread'));
     }
 
     /**
