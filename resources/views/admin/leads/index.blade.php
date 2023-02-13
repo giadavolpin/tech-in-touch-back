@@ -36,7 +36,8 @@
                         @foreach ($leads as $lead)
                             <tr>
 
-                                <td>{{ $lead->name }}</td>
+                                <td><a href="{{ route('admin.leads.show', $lead->id) }}" title="Vedi messaggio">
+                                        {{ $lead->name }} </a></td>
                                 <td>{{ $lead->surname }}</td>
                                 <td>{{ $lead->email }}</td>
                                 <td>{{ $lead->message }}</td>
@@ -48,8 +49,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="delete-button btn btn-danger "
-                                            data-item-title="{{ $lead->email }}"><i
-                                                class="fa-solid fa-trash-can"></i></button>
+                                            data-item-title="il messaggio"><i class="fa-solid fa-trash-can"></i></button>
                                     </form>
                                 </td>
 
