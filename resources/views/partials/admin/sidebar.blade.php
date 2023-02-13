@@ -34,6 +34,7 @@
         </li>
         <li class="nav-item">
             <a href="{{ route('admin.leads.index') }}"
+
                 class="nav-link  {{ Route::currentRouteName() == 'admin.leads.index' ? 'active_li' : '' }}"
                 aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
@@ -42,7 +43,10 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link  " aria-current="page">
+            <a href="{{ route('admin.reviews.index') }}"
+                class="nav-link {{ Route::currentRouteName() == 'admin.reviews.index' ? 'bg-secondary' : '' }} "
+                aria-current="page">
+
                 <i class="fa-solid fa-book mx-1"></i>
 
                 Recensioni
