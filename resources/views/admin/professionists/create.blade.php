@@ -25,8 +25,9 @@
                     <div class="mb-3">
                         <label for="nickname" class="form-label"><strong>*</strong>Nickname</label>
 
-                        <input type="text" value="{{ old('nickname') }}" class="form-control @error('nickname') is-invalid @enderror" id="nickname"
-                            name="nickname" required maxlength="15" minlength="3">
+                        <input type="text" value="{{ old('nickname') }}"
+                            class="form-control @error('nickname') is-invalid @enderror" id="nickname" name="nickname"
+                            required maxlength="15" minlength="3">
                         @error('nickname')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -37,8 +38,9 @@
 
                         <label for="name" class="form-label"><strong>*</strong>Nome</label>
 
-                        <input value="{{ old('name') }}" type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                            name="name" required maxlength="15" minlength="3">
+                        <input value="{{ old('name') }}" type="text"
+                            class="form-control @error('name') is-invalid @enderror" id="name" name="name" required
+                            maxlength="15" minlength="3">
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -47,8 +49,9 @@
 
                     <div class="mb-3">
                         <label for="surname" class="form-label"><strong>*</strong>Cognome</label>
-                        <input type="text" value="{{ old('surname') }}" class="form-control @error('surname') is-invalid @enderror" id="surname"
-                            name="surname" required maxlength="15" minlength="3">
+                        <input type="text" value="{{ old('surname') }}"
+                            class="form-control @error('surname') is-invalid @enderror" id="surname" name="surname"
+                            required maxlength="15" minlength="3">
                         @error('surname')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -57,8 +60,9 @@
 
                     <div class="mb-3">
                         <label for="job_address" class="form-label">Indirizzo</label>
-                        <input type="text" value="{{ old('job_address') }}" class="form-control @error('job_address') is-invalid @enderror"
-                            id="job_address" name="job_address">
+                        <input type="text" value="{{ old('job_address') }}"
+                            class="form-control @error('job_address') is-invalid @enderror" id="job_address"
+                            name="job_address">
                         @error('job_address')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -67,8 +71,9 @@
 
                     <div class="mb-3">
                         <label for="phone_number" class="form-label">Telefono</label>
-                        <input type="tel" value="{{ old('phone_number') }}" class="form-control @error('phone_number') is-invalid @enderror"
-                            id="phone_number" name="phone_number">
+                        <input type="tel" value="{{ old('phone_number') }}"
+                            class="form-control @error('phone_number') is-invalid @enderror" id="phone_number"
+                            name="phone_number">
                         @error('phone_number')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -97,7 +102,7 @@
 
                             <div>
 
-                                <input type="file"  name="profile_image" id="create_profile_image" accept="image/*"
+                                <input type="file" name="profile_image" id="create_profile_image" accept="image/*"
                                     onchange="showPreview(event)"
                                     class="form-control  @error('profile_image') is-invalid @enderror">
                                 @error('profile_image')
@@ -155,9 +160,8 @@
                                 <div class="form-check form-check-inline">
 
 
-                                    <input type="checkbox" value="{{ old('technologies[]') }}" class="form-check-input" id="{{ $technology->slug }} "
+                                    <input type="checkbox" class="form-check-input" id="{{ $technology->slug }} "
                                         name="technologies[]" value="{{ $technology->id }}">
-
                                     <label class="form-check-label"
                                         for="{{ $technology->slug }}">{{ $technology->name }}</label>
                                 </div>
@@ -170,8 +174,9 @@
 
                         <div class="mb-3">
                             <label for="linkedin" class="form-label">Linkedin</label>
-                            <input type="text" value="{{ old('linkedin') }}" class="form-control @error('linkedin') is-invalid @enderror"
-                                id="linkedin" name="linkedin">
+                            <input type="text" value="{{ old('linkedin') }}"
+                                class="form-control @error('linkedin') is-invalid @enderror" id="linkedin"
+                                name="linkedin">
                             @error('linkedin')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -179,8 +184,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="github" class="form-label">Github</label>
-                            <input type="text" value="{{ old('github') }}" class="form-control @error('github') is-invalid @enderror"
-                                id="github" name="github">
+                            <input type="text" value="{{ old('github') }}"
+                                class="form-control @error('github') is-invalid @enderror" id="github" name="github">
                             @error('github')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
