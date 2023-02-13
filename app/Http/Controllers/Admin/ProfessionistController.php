@@ -73,13 +73,13 @@ class ProfessionistController extends Controller
         if ($request->hasFile('profile_image')) {
             $path = Storage::put('professionists_images', $request->profile_image);
             $data['profile_image'] = $path;
-        }else{
+        } else {
             $data['profile_image'] = '';
         }
         if ($request->hasFile('cv_path')) {
             $path = Storage::put('professionists_images', $request->cv_path);
             $data['cv_path'] = $path;
-        }else{
+        } else {
             $data['cv_path'] = '';
         }
 
@@ -104,7 +104,7 @@ class ProfessionistController extends Controller
 
 
         if ($request->has('technologies')) {
-
+            // dd($request->technologies);
             $new_professionist->technologies()->attach($request->technologies);
         } else {
             return view('admin.professionists.create', compact('projects', 'technologies'));
@@ -167,13 +167,13 @@ class ProfessionistController extends Controller
 
             $path = Storage::put('professionist_images', $request->profile_image);
             $data['profile_image'] = $path;
-        }else{
+        } else {
             $data['profile_image'] = '';
         }
         if ($request->hasFile('cv_path')) {
             $path = Storage::put('professionists_images', $request->cv_path);
             $data['cv_path'] = $path;
-        }else{
+        } else {
             $data['cv_path'] = '';
         }
 
