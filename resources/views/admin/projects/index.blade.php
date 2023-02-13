@@ -2,11 +2,11 @@
 
 @section('content')
     <div>
-        <h1 class="m-3 text-center">I miei Progetti</h1>
+        <h1 class="m-3 text-center py-4">I miei Progetti</h1>
 
         @if (!is_null($professionistID))
             <div class="text-center">
-                <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.projects.create') }}">Nuovo Progetto</a>
+                <a class="btn dev_btn mx-3 mb-3" href="{{ route('admin.projects.create') }}">Nuovo Progetto</a>
             </div>
         @else
             <div>
@@ -33,7 +33,7 @@
             @endif
             <div class="table-responsive mx-3">
                 <table class="my-table table table-striped">
-                    <thead class="table-dark">
+                    <thead class="blue_table_row">
                         <tr>
                             <th scope="col">Nome</th>
                             <th scope="col">Descrizione</th>
@@ -45,7 +45,8 @@
                     <tbody>
                         @foreach ($projects as $project)
                             <tr>
-                                <td><a href="{{ route('admin.projects.show', $project->slug) }}" title="Vedi Progetto">
+                                <td><a class="text-decoration-none text-black"
+                                        href="{{ route('admin.projects.show', $project->slug) }}" title="Vedi Progetto">
                                         {{ $project->name }} </a></td>
                                 <td>{{ Str::limit($project->description, 30) }}</td>
                                 <td>{{ $project->cover_image }}</td>

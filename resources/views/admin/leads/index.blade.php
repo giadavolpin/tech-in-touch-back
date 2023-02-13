@@ -34,9 +34,10 @@
                     </thead>
                     <tbody>
                         @foreach ($leads as $lead)
-                            <tr>
+                            <tr class="{{ $lead->read ? '' : 'unread_bold_text' }}">
 
-                                <td><a href="{{ route('admin.leads.show', $lead->id) }}" title="Vedi messaggio">
+                                <td><a class="text-decoration-none text-black"
+                                        href="{{ route('admin.leads.show', $lead->id) }}" title="Vedi messaggio">
                                         {{ $lead->name }} </a></td>
                                 <td>{{ $lead->surname }}</td>
                                 <td>{{ $lead->email }}</td>

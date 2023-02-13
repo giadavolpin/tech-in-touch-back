@@ -70,6 +70,9 @@ h6{
 //-----------Admin-----------//
 
 #admin {
+    .active_li {
+        background-color: $dev_pantone;
+    }
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -82,12 +85,20 @@ h6{
         //------------sidebar------------//
         #sidebar {
             height: 100%;
+            background-color: $dev_bkg_blue;
 
+            ul li a {
+                color: $dev_white;
+                &:hover:not(.active_li) {
+                    color: $dev_light_gray;
+                }
+            }
 
             #logo-sidebar{
                 margin-left: 1rem;
                 span {
                     font-size: 2rem;
+                    color: $dev_pantone;
                 }
             }
         }
@@ -99,6 +110,7 @@ h6{
 
         .navbar {
             height: 80px;
+            background-color: $dev_bkg_blue;
         }
 
         main {
@@ -565,5 +577,22 @@ h6{
 
 .prof-invisible{
     color: red;
+}
+
+.unread_bold_text {
+    font-weight: 700;
+    font-style: italic;
+}
+.blue_table_row {
+    background-color: $dev_bkg_blue;
+    color: white;
+}
+.dev_btn {
+    background-color: $dev_pantone;
+    color: $dev_white;
+    &:hover {
+        background-color: $dev_bkg_purple;
+        color: white;
+    }
 }
 

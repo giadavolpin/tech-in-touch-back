@@ -1,4 +1,4 @@
-<div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 230px;">
+<div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 " style="width: 230px;">
     <a href="/admin" id="logo-sidebar"
         class="d-flex align-items-center  mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 
@@ -16,7 +16,7 @@
         </li> --}}
         <li class="nav-item">
             <a href="{{ route('admin.professionists.index') }}"
-                class="nav-link text-white {{ Route::currentRouteName() == 'admin.professionists.index' ? 'bg-secondary' : '' }}"
+                class="nav-link {{ Route::currentRouteName() == 'admin.professionists.index' ? 'active_li' : '' }}"
                 aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
 
@@ -25,7 +25,7 @@
         </li>
         <li class="nav-item">
             <a href="{{ route('admin.projects.index') }}"
-                class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary' : '' }}"
+                class="nav-link  {{ Route::currentRouteName() == 'admin.projects.index' ? 'active_li' : '' }}"
                 aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
 
@@ -33,14 +33,16 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.leads.index') }}"  class="nav-link text-white {{ Route::currentRouteName() == 'admin.leads.index' ? 'bg-secondary' : '' }}" aria-current="page">
+            <a href="{{ route('admin.leads.index') }}"
+                class="nav-link  {{ Route::currentRouteName() == 'admin.leads.index' ? 'active_li' : '' }}"
+                aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
 
                 Messaggi
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link text-white " aria-current="page">
+            <a href="#" class="nav-link  " aria-current="page">
                 <i class="fa-solid fa-book mx-1"></i>
 
                 Recensioni

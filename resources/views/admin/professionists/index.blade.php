@@ -11,8 +11,7 @@
                 <h3 class="text-center mb-4">Registra il tuo primo profilo</h3>
             </div>
         @else
-
-        <h1 class="text-center m-3">Il mio Profilo</h1>
+            <h1 class="text-center m-3 py-4">Il mio Profilo</h1>
 
 
             @if (session()->has('message'))
@@ -22,7 +21,7 @@
             @endif
             <div class="table-responsive mx-3">
                 <table class="my-table table table-striped">
-                    <thead class="table-dark">
+                    <thead class="blue_table_row">
                         <tr>
 
                             <th scope="col">Nick</th>
