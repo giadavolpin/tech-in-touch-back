@@ -22,7 +22,10 @@ class LeadController extends Controller
         return view('admin.leads.index', compact('leads'));
     }
 
-    public function show(){
+    public function show(Lead $lead){
+        $letto['read'] = 1;
+        $lead->update($letto);
+        return view('admin.leads.show', compact('lead'));
 
     }
 
