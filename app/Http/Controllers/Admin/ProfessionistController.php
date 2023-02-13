@@ -12,6 +12,8 @@ use App\Models\Technology;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Lead;
+
 
 class ProfessionistController extends Controller
 {
@@ -24,9 +26,16 @@ class ProfessionistController extends Controller
 
         $userId = Auth::id();
         $professionists = Professionist::where('user_id', $userId)->get();
+        $professionistID = Professionist::where('user_id', $userId)->value('id');
+
        // dd($professionists);
 
-        return view('admin.professionists.index', compact('professionists'));
+       $leads = Lead::where('professionist_id', $professionistID)->get();
+       // dd($leads);
+
+       $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+       
+        return view('admin.professionists.index', compact('professionists','leadUnread'));
     }
 
     /**

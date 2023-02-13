@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Lead;
+
 
 
 class ProjectController extends Controller
@@ -23,17 +25,22 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         $userId = Auth::id();
+        
         $professionistID = Professionist::where('user_id', $userId)->value('id');
         // dd($professionistID);
 
         // dd($session_id);
-
+        $leads = Lead::where('professionist_id', $professionistID)->get();
+        // dd($leads);
+ 
+        $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+ 
             $projects = Project::where('professionist_id', $professionistID )->get();
             // dd($projects);
 
         // $projects = Project::where('professionist_id', $professionistID)->get();
 
-        return view('admin.projects.index', compact('projects','professionistID'));
+        return view('admin.projects.index', compact('projects','professionistID','leadUnread'));
     }
 
     /**

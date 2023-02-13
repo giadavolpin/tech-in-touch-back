@@ -19,15 +19,27 @@ class LeadController extends Controller
         $leads = Lead::where('professionist_id', $professionistID)->get();
        // dd($leads);
 
-        return view('admin.leads.index', compact('leads'));
+       $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+
+        return view('admin.leads.index', compact('leads','leadUnread'));
     }
 
     public function show(Lead $lead){
+        $userId = Auth::id();
+
+        $professionistID = Professionist::where('user_id', $userId)->value('id');
+
         $letto['read'] = 1;
         $lead->update($letto);
-        return view('admin.leads.show', compact('lead'));
+        $leads = Lead::where('professionist_id', $professionistID)->get();
+       // dd($leads);
+
+       $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+        return view('admin.leads.show', compact('lead','leadUnread'));
 
     }
+
+    
 
     public function destroy(Lead $lead){
 
