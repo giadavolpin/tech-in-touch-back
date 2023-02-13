@@ -16,6 +16,8 @@ class Lead extends Model
         return $this->belongsTo(Professionist::class);
     }
 
+ 
+
 
 }
 
