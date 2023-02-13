@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Vote;
-use App\Http\Requests\StoreVoteRequest;
-use App\Http\Requests\UpdateVoteRequest;
+use App\Models\Review;
+use App\Http\Requests\StoreReviewRequest;
+use App\Http\Requests\UpdateReviewRequest;
+use Illuminate\Routing\Controller;
 
-class VoteController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class VoteController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreVoteRequest  $request
+     * @param  \App\Http\Requests\StoreReviewRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreVoteRequest $request)
+    public function store(StoreReviewRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class VoteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Vote  $vote
+     * @param  \App\Models\Review  $Review
      * @return \Illuminate\Http\Response
      */
-    public function show(Vote $vote)
+    public function show(Review $review)
     {
         //
     }
@@ -53,10 +54,10 @@ class VoteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Vote  $vote
+     * @param  \App\Models\Review  $Review
      * @return \Illuminate\Http\Response
      */
-    public function edit(Vote $vote)
+    public function edit(Review $Review)
     {
         //
     }
@@ -64,11 +65,11 @@ class VoteController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateVoteRequest  $request
-     * @param  \App\Models\Vote  $vote
+     * @param  \App\Http\Requests\UpdateReviewRequest  $request
+     * @param  \App\Models\Review  $Review
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateVoteRequest $request, Vote $vote)
+    public function update(UpdateReviewRequest $request, Review $Review)
     {
         //
     }
@@ -76,10 +77,10 @@ class VoteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Vote  $vote
+     * @param  \App\Models\Review  $Review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vote $vote)
+    public function destroy(Review $Review)
     {
         //
     }
