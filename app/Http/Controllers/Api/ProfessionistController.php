@@ -36,7 +36,14 @@ class ProfessionistController extends Controller
             'results' => $professionists
         ]);
     }
-
+    public function showAll(){
+        $professionists = Professionist::all();
+        return response()->json([
+            'success' => true,
+            'results' => 'ciao'
+        ]);
+    }
+    
     public function data()
     {
         $professionists = Professionist::all();
@@ -49,7 +56,7 @@ class ProfessionistController extends Controller
 
     public function show($slug)
     {
-        $professionist = Professionist::where('slug', $slug)->first();
+        $professionist = Professionist::where('slug', $slug)->with('technologies')->first();
 
         return response()->json([
             'success' => true,
