@@ -50,7 +50,7 @@
                         {{-- <input type="file" name="cover_image" id="create_cover_image"
                             class="form-control  @error('cover_image') is-invalid @enderror"> --}}
                         <div class=" mb-3 w-50">
-                            @if ($project->cover_image)
+                            {{-- @if ($project->cover_image)
                                 <img class="d-block mb-2" id="cover_image" width="100"
                                     src="{{ asset('storage/' . $project->cover_image) }}">
                             @else
@@ -67,8 +67,24 @@
                                 @error('cover_image')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
+                            </div> --}}
+                            <div class="position-relative ">
+                                <div class="img_preview mb-3 ">
+                                    <img class="d-block img-fluid " id="uploadPreview"
+                                        src="https://via.placeholder.com/300x200">
+                                </div>
+                                <span id="my_reset_btn" class="d-none"><i class="fa-solid fa-circle-xmark"></i></span>
                             </div>
 
+                            <div>
+
+                                <input type="file" name="cover_image" id="create_cover_image" accept="image/*"
+                                    onchange="showPreview(event)"
+                                    class="form-control  @error('cover_image') is-invalid @enderror">
+                                @error('cover_image')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
 
 
@@ -123,3 +139,22 @@
         bkLib.onDomLoaded(nicEditors.allTextAreas);
     </script> --}}
 @endsection
+<script>
+    function showPreview(event) {
+        if (event.target.files.length > 0) {
+            let input_field = document.getElementById('create_cover_image');
+            let deleteBtn = document.getElementById('my_reset_btn');
+            deleteBtn.classList.remove('d-none')
+            let src = URL.createObjectURL(event.target.files[0]);
+            let preview = document.getElementById("uploadPreview");
+            preview.src = src;
+            preview.style.display = "block";
+            deleteBtn.addEventListener('click', () => {
+                src = 'https://via.placeholder.com/300x200'
+                preview.src = src
+                input_field.value = ''
+                deleteBtn.classList.add('d-none')
+            })
+        }
+    }
+</script>

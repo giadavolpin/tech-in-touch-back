@@ -92,7 +92,7 @@
                             class="form-control  @error('profile_image') is-invalid @enderror"> --}}
                         <div class=" mb-3 w-50">
 
-                            @if (!$professionist->profile_image)
+                            {{-- @if (!$professionist->profile_image)
                                 <img class="d-block mb-2" id="uploadPreview" width="100"
                                     src="https://via.placeholder.com/300x200">
                             @else
@@ -107,7 +107,26 @@
                                 @error('profile_image')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
+                            </div> --}}
+
+                            <div class="position-relative ">
+                                <div class="img_preview mb-3 ">
+                                    <img class="d-block img-fluid " id="uploadPreview"
+                                        src="https://via.placeholder.com/300x200">
+                                </div>
+                                <span id="my_reset_btn" class="d-none"><i class="fa-solid fa-circle-xmark"></i></span>
                             </div>
+
+                            <div>
+
+                                <input type="file" name="profile_image" id="create_profile_image" accept="image/*"
+                                    onchange="showPreview(event)"
+                                    class="form-control  @error('profile_image') is-invalid @enderror">
+                                @error('profile_image')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
 
 
                         </div>
@@ -117,7 +136,7 @@
                             class="form-control  @error('cv_path') is-invalid @enderror"> --}}
                         <div class=" mb-3 w-50">
 
-                            @if (!$professionist->cv_path)
+                            {{-- @if (!$professionist->cv_path)
                                 <img class="d-block mb-2" id="CVPreview" width="100"
                                     src="https://via.placeholder.com/300x200">
                             @else
@@ -130,6 +149,22 @@
                                 <input type="file" name="cv_path" id="create_cv_path"
                                     class="form-control @error('cv_path') is-invalid @enderror"
                                     value="{{ old('cv_path', $professionist->cv_path) }}">
+                                @error('cv_path')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div> --}}
+                            <div class="position-relative ">
+                                <div class="img_preview mb-3 ">
+                                    <img class="d-block img-fluid " id="CV_Preview"
+                                        src="https://via.placeholder.com/300x200">
+                                </div>
+                                <span id="cv_reset_btn" class="d-none"><i class="fa-solid fa-circle-xmark"></i></span>
+                            </div>
+                            <div>
+
+                                <input type="file" name="cv_path" id="create_cv_path" accept="image/*"
+                                    onchange="showCVPreview(event)"
+                                    class="form-control  @error('cv_path') is-invalid @enderror">
                                 @error('cv_path')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -231,46 +266,64 @@
 @endsection
 
 <script>
-    function removePic() {
-        let input_pic_field = document.getElementById('create_profile_image')
-        let removeBtn = document.getElementById('remove_pic')
-        let img_field = document.getElementById('uploadPreview')
-
-        removeBtn.addEventListener('click', () => {
-            input_pic_field.value = ''
-            img_field.src = "https://via.placeholder.com/300x200"
-            removeBtn.classList.add('d-none')
-        })
-
+    function showPreview(event) {
+        if (event.target.files.length > 0) {
+            let input_profile_field = document.getElementById('create_profile_image');
+            let delete_profile_Btn = document.getElementById('my_reset_btn');
+            delete_profile_Btn.classList.remove('d-none')
+            let profile_src = URL.createObjectURL(event.target.files[0]);
+            let preview_profile = document.getElementById("uploadPreview");
+            preview_profile.src = profile_src;
+            preview_profile.style.display = "block";
+            delete_profile_Btn.addEventListener('click', () => {
+                profile_src = 'https://via.placeholder.com/300x200'
+                preview_profile.src = profile_src
+                input_profile_field.value = ''
+                delete_profile_Btn.classList.add('d-none')
+            })
+        }
     }
 
-    function removeCV() {
-        let input_pic_field = document.getElementById('create_cv_path')
-        let removeBtn = document.getElementById('remove_cv')
-        let img_field = document.getElementById('CVPreview')
-
-        removeBtn.addEventListener('click', () => {
-            input_pic_field.value = ''
-            img_field.src = "https://via.placeholder.com/300x200"
-            removeBtn.classList.add('d-none')
-        })
-
+    function showCVPreview(event) {
+        if (event.target.files.length > 0) {
+            let input_CV_field = document.getElementById('create_cv_path');
+            let delete_CV_Btn = document.getElementById('cv_reset_btn');
+            delete_CV_Btn.classList.remove('d-none')
+            let cv_src = URL.createObjectURL(event.target.files[0]);
+            let cv_preview = document.getElementById("CV_Preview");
+            cv_preview.src = cv_src;
+            cv_preview.style.display = "block";
+            delete_CV_Btn.addEventListener('click', () => {
+                cv_src = 'https://via.placeholder.com/300x200'
+                cv_preview.src = cv_src
+                input_CV_field.value = ''
+                delete_CV_Btn.classList.add('d-none')
+            })
+        }
     }
-    // function showPreview(event) {
-    //     if (event.target.files.length > 0) {
-    //         let input_profile_field = document.getElementById('create_profile_image');
-    //         let delete_profile_Btn = document.getElementById('remove_div');
-    //         delete_profile_Btn.classList.remove('d-none')
-    //         let profile_src = URL.createObjectURL(event.target.files[0]);
-    //         let preview_profile = document.getElementById("uploadPreview");
-    //         preview_profile.src = profile_src;
-    //         preview_profile.style.display = "block";
-    //         delete_profile_Btn.addEventListener('click', () => {
-    //             profile_src = 'https://via.placeholder.com/300x200'
-    //             preview_profile.src = profile_src
-    //             input_profile_field.value = ''
-    //             delete_profile_Btn.classList.add('d-none')
-    //         })
-    //     }
+    // function removePic() {
+    //     let input_pic_field = document.getElementById('create_profile_image')
+    //     let removeBtn = document.getElementById('remove_pic')
+    //     let img_field = document.getElementById('uploadPreview')
+
+    //     removeBtn.addEventListener('click', () => {
+    //         input_pic_field.value = ''
+    //         img_field.src = "https://via.placeholder.com/300x200"
+    //         removeBtn.classList.add('d-none')
+    //     })
+
+    // }
+
+    // function removeCV() {
+    //     let input_pic_field = document.getElementById('create_cv_path')
+    //     let removeBtn = document.getElementById('remove_cv')
+    //     let img_field = document.getElementById('CVPreview')
+
+    //     removeBtn.addEventListener('click', () => {
+    //         input_pic_field.value = ''
+    //         img_field.src = "https://via.placeholder.com/300x200"
+    //         removeBtn.classList.add('d-none')
+    //     })
+
     // }
 </script>
