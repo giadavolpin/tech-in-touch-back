@@ -39,7 +39,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
+                            {{-- <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a> --}}
+                            <a href="http://localhost:5174/">Home</a>
                         </li>
                     </ul>
                     <!-- Right Side Of Navbar -->
@@ -52,7 +53,7 @@
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    {{-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> --}}
                                 </li>
                             @endif
                         @else
