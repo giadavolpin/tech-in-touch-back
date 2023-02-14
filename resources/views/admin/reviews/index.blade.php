@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        <h1 class="m-3">Le mie recensioni</h1>
+        <h1 class="m-3 text-center">Le mie recensioni</h1>
 
 
         @if (count($reviews) == 0)

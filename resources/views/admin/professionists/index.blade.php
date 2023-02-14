@@ -11,7 +11,7 @@
                 <h3 class="text-center mb-4">Registra il tuo primo profilo</h3>
             </div>
         @else
-            <h1 class="text-center m-3 py-4">Il mio Profilo</h1>
+            <h1 class="text-center m-3 py-3">Il mio Profilo</h1>
 
 
             @if (session()->has('message'))
