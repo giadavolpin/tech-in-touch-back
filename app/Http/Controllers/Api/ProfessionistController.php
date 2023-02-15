@@ -16,14 +16,14 @@ class ProfessionistController extends Controller
     {
         // $technology_id = $request->get('technology_id');
 
-        // $filter_professionists = DB::table('technologies')
-        // ->join('professionist_technology', function($join){
+        $filter_professionists = DB::table('technologies')
+        ->join('professionist_technology', function($join){
 
-        //     $join->on('technologies.id', '=', 'professionist_technology.technology_id')
-        //     ->where('professionist_technology.technology_id', '=', );
-        // })
-        // ->join('professionists','professionist_technology.professionist_id', '=', 'professionists.id')
-        // ->get();
+            $join->on('technologies.id', '=', 'professionist_technology.technology_id')
+            ->where('professionist_technology.technology_id', '=', );
+        })
+        ->join('professionists','professionist_technology.professionist_id', '=', 'professionists.id')
+        ->get();
 
 
         $selectedOptionId = $request->input('technology_id');
@@ -40,30 +40,37 @@ class ProfessionistController extends Controller
             'results' => $professionists
         ]);
     }
-    public function avgVote(){
-      /*   $avg_stars = DB::table('reviews')
+    public function avgVote(Request $request)
+    {
+        /*   $avg_stars = DB::table('reviews')
                 ->avg('vote_id'); */
-                
-               $data = DB::table('professionists')
-                ->join('reviews','professionists.id', '=', 'reviews.professionist_id')
-    ->select(DB::raw('avg(vote_id)'))
-    ->groupBy('professionist_id')
-    ->orderByDesc('avg')
-    ->get();
 
-   $prova = DB::table('reviews')
-    ->join('professionists','professionists.id', '=', 'reviews.professionist_id')
- 
-    ->whereRaw('professionists.id = reviews.professionist_id')
-    //->select(DB::raw('avg(vote_id) as avg, professionist_id')) 
-    ->update(['avg_vote' => $data]);
+        // $data = DB::table('professionists')
+        //     ->join('reviews', 'professionists.id', '=', 'reviews.professionist_id')
+        //     ->select(DB::raw('avg(vote_id)'))
+        //     ->groupBy('professionist_id')
+        //     ->orderByDesc('avg')
+        //     ->get();
+
+        // $prova = DB::table('reviews')
+        //     ->join('professionists', 'professionists.id', '=', 'reviews.professionist_id')
+
+        //     ->whereRaw('professionists.id = reviews.professionist_id')
+        //     ->select(DB::raw('avg(vote_id) as avg, professionist_id'))
+        //     ->update(['avg_vote' => $data]);
+
+        $professionistId = $request->singleProfessionistID;
 
 
 
-    
+        $professionist = Professionist::find($professionistId);
+
+
+
+
         return response()->json([
             'success' => true,
-            'results' => $prova
+            'results' => $professionist
         ]);
     }
 
@@ -73,7 +80,7 @@ class ProfessionistController extends Controller
         $technologies = Technology::all();
         return response()->json([
             'success' => true,
-            'results' => [$technologies , $professionists]
+            'results' => [$technologies, $professionists]
         ]);
     }
 
@@ -85,14 +92,14 @@ class ProfessionistController extends Controller
 
         $projectPro = Project::where('professionist_id', $professionistID)->get();
         $data = DB::table('reviews')
-    ->select(DB::raw('avg(vote_id) as avg, professionist_id'))
-    ->groupBy('professionist_id')
-    ->orderByDesc('avg')
-    ->get();
+            ->select(DB::raw('avg(vote_id) as avg, professionist_id'))
+            ->groupBy('professionist_id')
+            ->orderByDesc('avg')
+            ->get();
 
         return response()->json([
             'success' => true,
-            'results' =>  [$professionist, $projectPro,$data]
+            'results' =>  [$professionist, $projectPro, $data]
         ]);
     }
 }
