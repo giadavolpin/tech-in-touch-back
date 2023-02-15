@@ -129,6 +129,76 @@ h6{
     }
 }
 /***************************************
+  STEFANIA HEADER
+***************************************/
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+.dev_container{
+    width: 80%;
+    margin: 0 auto;
+}
+.header{
+    background-color: $dev_bkg_blue;
+    padding-top: 2rem;
+}
+.position{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    ul{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        
+    }
+    li{
+         position: relative;
+    }
+    a{
+        font-family: 'Chakra Petch', sans-serif;
+        position: relative;
+        font-size: 1.2em;
+        font-weight: 600;
+        line-height: 1em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        // color: transparent;
+        // -webkit-text-stroke: .5px rgba(255,255,255,0.5);
+        color: rgba(255,255,255,0.5);
+    }
+    a::before{
+        content: attr(data-text);
+        position: absolute;
+        color: var(--clr);
+        width: 0%;
+        overflow: hidden;
+        transition: 1s;
+        border-right: 4px solid var(--clr);
+        -webkit-text-stroke: .5px var(--clr);
+
+    }
+    a:hover::before{
+        width: 100%;
+        // -webkit-text-stroke: .5px var(--clr);
+        filter: drop-shadow(0 0 25px var(--clr));
+
+    }
+    .active_nav_link{
+        color: var(--clr);
+        filter: drop-shadow(0 0 25px var(--clr));
+    }
+}
+
+
+/***************************************
   STEFANIA LOGIN E REGISTER FRONT END
 ***************************************/
 // ERRORS REGISTER + LOGIN
@@ -153,13 +223,15 @@ h6{
 }
 .dev_register_full_page{
 
-    min-height: 100vh; /* sottrai header e footer*/
+    // min-height: 100vh; /* sottrai header e footer*/
+    height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    // gap: 3rem;
     align-items: center;
     justify-content: center;
     background-color: $dev_bkg_blue;
+    // transform: scale(.9);
 
 
 
@@ -350,12 +422,13 @@ h6{
 
 .dev_login_full_page{
 
-    min-height: 100vh; /* sottrai header e footer*/
+    // min-height: 100vh; /* sottrai header e footer*/
+    height: calc(100vh - 100px);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 3rem;
+    // gap: 3rem;
     background-color: $dev_bkg_blue;
 
 
