@@ -40,11 +40,30 @@ class ProfessionistController extends Controller
             'results' => $professionists
         ]);
     }
-    public function showAll(){
-        $professionists = Professionist::all();
+    public function avgVote(){
+      /*   $avg_stars = DB::table('reviews')
+                ->avg('vote_id'); */
+                
+               $data = DB::table('professionists')
+                ->join('reviews','professionists.id', '=', 'reviews.professionist_id')
+    ->select(DB::raw('avg(vote_id)'))
+    ->groupBy('professionist_id')
+    ->orderByDesc('avg')
+    ->get();
+
+   $prova = DB::table('reviews')
+    ->join('professionists','professionists.id', '=', 'reviews.professionist_id')
+ 
+    ->whereRaw('professionists.id = reviews.professionist_id')
+    //->select(DB::raw('avg(vote_id) as avg, professionist_id')) 
+    ->update(['avg_vote' => $data]);
+
+
+
+    
         return response()->json([
             'success' => true,
-            'results' => 'ciao'
+            'results' => $prova
         ]);
     }
 
@@ -65,10 +84,15 @@ class ProfessionistController extends Controller
         $professionistID = Professionist::where('slug', $slug)->value('id');
 
         $projectPro = Project::where('professionist_id', $professionistID)->get();
+        $data = DB::table('reviews')
+    ->select(DB::raw('avg(vote_id) as avg, professionist_id'))
+    ->groupBy('professionist_id')
+    ->orderByDesc('avg')
+    ->get();
 
         return response()->json([
             'success' => true,
-            'results' =>  [$professionist, $projectPro]
+            'results' =>  [$professionist, $projectPro,$data]
         ]);
     }
 }
