@@ -16,14 +16,14 @@ class ProfessionistController extends Controller
     {
         // $technology_id = $request->get('technology_id');
 
-        $filter_professionists = DB::table('technologies')
-        ->join('professionist_technology', function($join){
+        // $filter_professionists = DB::table('technologies')
+        // ->join('professionist_technology', function($join){
 
-            $join->on('technologies.id', '=', 'professionist_technology.technology_id')
-            ->where('professionist_technology.technology_id', '=', );
-        })
-        ->join('professionists','professionist_technology.professionist_id', '=', 'professionists.id')
-        ->get();
+        //     $join->on('technologies.id', '=', 'professionist_technology.technology_id')
+        //     ->where('professionist_technology.technology_id', '=', );
+        // })
+        // ->join('professionists','professionist_technology.professionist_id', '=', 'professionists.id')
+        // ->get();
 
 
         $selectedOptionId = $request->input('technology_id');
@@ -59,18 +59,22 @@ class ProfessionistController extends Controller
         //     ->select(DB::raw('avg(vote_id) as avg, professionist_id'))
         //     ->update(['avg_vote' => $data]);
 
-        $professionistId = $request->singleProfessionistID;
+        // $professionistId = $request->singleProfessionistID;
 
 
 
-        $professionist = Professionist::find($professionistId);
+        $professionistVote =  DB::table('reviews')
+            ->join('professionists', 'professionist_id', '=', 'reviews.professionist_id')
+            ->select(DB::raw('avg(vote_id)'))
+
+            ->value('vote_id');
 
 
 
 
         return response()->json([
             'success' => true,
-            'results' => $professionist
+            'results' => $professionistVote
         ]);
     }
 
