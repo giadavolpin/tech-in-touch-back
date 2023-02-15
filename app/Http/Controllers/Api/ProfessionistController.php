@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Professionist;
 use App\Models\Technology;
+use App\Models\Project;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,7 +25,9 @@ class ProfessionistController extends Controller
         // ->join('professionists','professionist_technology.professionist_id', '=', 'professionists.id')
         // ->get();
 
-        $selectedOptionId = $request->get('technology_id');
+
+        $selectedOptionId = $request->input('technology_id');
+
         $professionists = Professionist::whereHas('technologies', function ($query) use ($selectedOptionId) {
             $query->where('technology_id', $selectedOptionId);
         })->get();
@@ -43,7 +47,7 @@ class ProfessionistController extends Controller
             'results' => 'ciao'
         ]);
     }
-    
+
     public function data()
     {
         $professionists = Professionist::all();
@@ -58,9 +62,13 @@ class ProfessionistController extends Controller
     {
         $professionist = Professionist::where('slug', $slug)->with('technologies')->first();
 
+        $professionistID = Professionist::where('slug', $slug)->value('id');
+
+        $projectPro = Project::where('professionist_id', $professionistID)->get();
+
         return response()->json([
             'success' => true,
-            'results' =>  $professionist
+            'results' =>  [$professionist, $projectPro]
         ]);
     }
 }
