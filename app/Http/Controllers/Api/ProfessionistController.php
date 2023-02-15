@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Professionist;
 use App\Models\Technology;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -36,31 +37,31 @@ class ProfessionistController extends Controller
             'results' => $professionists
         ]);
     }
-    public function showAll(){
+    public function showAll()
+    {
         $professionists = Professionist::all();
         return response()->json([
             'success' => true,
             'results' => 'ciao'
         ]);
     }
-    
+
     public function data()
     {
         $professionists = Professionist::all();
         $technologies = Technology::all();
         return response()->json([
             'success' => true,
-            'results' => [$technologies , $professionists]
+            'results' => [$technologies, $professionists]
         ]);
     }
 
     public function show($slug)
     {
         $professionist = Professionist::where('slug', $slug)->with('technologies')->first();
-
         return response()->json([
             'success' => true,
-            'results' =>  $professionist
+            'results' => $professionist
         ]);
     }
 }
