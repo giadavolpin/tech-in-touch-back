@@ -27,6 +27,7 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'name' => ['required', 'min:3' ,'max:50', Rule::unique('projects')->where('professionist_id', Auth::user()->id)->ignore($this->project)],
+
             'description' => 'required',
             //togliere obbligatoria descrizione
             'slug' => 'unique',
