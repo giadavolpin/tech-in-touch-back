@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class StoreProjectRequest extends FormRequest
 {
@@ -24,11 +26,13 @@ class StoreProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:50',
+            'name' => ['required', 'min:3' ,'max:50', Rule::unique('projects')->where('professionist_id', Auth::user()->professionist->id)->ignore($this->project)],
             'description' => 'required',
             //togliere obbligatoria descrizione
+            'slug' => 'unique',
             'cover_image' => 'nullable',
-            'professionist_id' => 'exists:professionist,id'
+            'professionist_id' => 'exists:professionist,id',
+            // 'state' => 'exists:states,abbreviation'
         ];
     }
     public function messages()
@@ -38,6 +42,7 @@ class StoreProjectRequest extends FormRequest
             'name.min' => 'Il nome deve avere almeno :min caratteri.',
             'name.max' => 'Il nome non può superare i :max caratteri.',
             'description.required' => 'La descrizione è obbligatoria.',
+            'slug.unique' => 'Hai già creato un progetto con questo nome'
 
 
         ];
