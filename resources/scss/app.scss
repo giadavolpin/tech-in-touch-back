@@ -671,3 +671,7 @@ a{
 .backoffice_title {
     color: $dev_orange;
 }
+.lead_message {
+    height: 200px;
+    overflow-y: auto;
+}
