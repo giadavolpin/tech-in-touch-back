@@ -2,35 +2,38 @@
 
 @section('content')
 
-
+    @if (session()->has('message'))
+        <div class="alert alert-success my-5">
+            {{ session()->get('message') }}
+        </div>
+    @endif
 
     <div class="mt-3 px-5">
-        <h1 class="mb-5">{{ $professionist->name }} {{ $professionist->surname }}</h1>
-        <div class="row">
-            <div class="col-lg-6 border-end">
+        <h1 class="my-5 backoffice_title">{{ $professionist->name }} {{ $professionist->surname }}</h1>
+        <div class="row border-bottom">
+            <div class="col-lg-6 border-end d-flex flex-column gap-3">
                 @if ($professionist->profile_image)
                     <div class="py-4">
                         <img width="300" src="{{ asset('storage/' . $professionist->profile_image) }}">
                     </div>
                 @else
-                    <img class="d-block mb-2" id="uploadPreview" width="100" src="https://via.placeholder.com/300x200">
+                    <img class="d-block mb-2" id="uploadPreview" width="300" src="https://via.placeholder.com/300x200">
                 @endif
                 @if ($professionist->nickname)
-                    <h2 class="mb-4"><span class="fs-2 me-3">Nickname:</span>{{ $professionist->nickname }}</h2>
+                    <h2><span class="fs-4 me-3">Nickname:</span>{{ $professionist->nickname }}
+                    </h2>
                 @endif
                 @if ($professionist->job_address)
-                    <h3>
-                        <p>Indirizzo : {{ $professionist->job_address }}</p>
-                    </h3>
+                    <h3> Indirizzo : {{ $professionist->job_address }}</h3>
                 @endif
 
                 @if ($professionist->phone_number)
                     <h3>
-                        <p>Telefono : {{ $professionist->phone_number }}</p>
+                        Telefono : {{ $professionist->phone_number }}
                     </h3>
                 @endif
                 @if ($professionist->technologies && count($professionist->technologies) > 0)
-                    <div class="d-flex">
+                    <div class="d-flex mb-4">
                         <span>I miei linguaggi:</span>
                         <ul class="list-unstyled d-flex gap-2 ms-3">
                             @foreach ($professionist->technologies as $technology)
@@ -66,15 +69,20 @@
 
         @if ($professionist->bio)
             <div class="mt-5">
-                <span class="text-center d-block">Descrizione</span>
-                <p class="fs-4 ">{!! $professionist->bio !!}</p>
+                <span class="text-center d-block py-3 backoffice_title">Descrizione</span>
+                <p class="fs-4 "><span class="me-3"><i
+                            class="fa-solid fa-quote-left backoffice_title"></i></span>{!! $professionist->bio !!}<span
+                        class="ms-3"><i class="fa-solid fa-quote-right backoffice_title"></i></span></p>
             </div>
         @endif
 
         <div class="text-end mt-5">
-            <a href="{{ route('admin.professionists.edit', $professionist->slug) }}"
-                class="btn btn-light border-dark">Modifica Profilo</a>
+            <a href="{{ route('admin.professionists.edit', $professionist->slug) }}" class="btn dev_btn">Gestisci
+                Profilo</a>
         </div>
+
+
+        {{-- Sponsorizzazione da spostare --}}
 
         <div class="subscription_plans py-5">
             <h3 class="text-center">Piani di sponsorizzazione</h3>

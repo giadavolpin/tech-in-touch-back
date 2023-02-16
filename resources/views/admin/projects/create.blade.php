@@ -47,7 +47,7 @@
                         <label for="cover_image" class="form-label mb-4">Inserisci un'immagine</label>
                         {{-- <input type="file" name="cover_image" id="create_cover_image"
                             class="form-control  @error('cover_image') is-invalid @enderror"> --}}
-                        <div class=" mb-3 w-50">
+                        <div class="w-50">
 
                             <div class="position-relative ">
                                 <div class="img_preview mb-3 ">
@@ -110,9 +110,11 @@
 
 
 
-                        <button type="submit" class="btn btn-dark">Invia</button>
-                        <button type='reset' onclick="clearAllInputs()"id="reset_all_btn"
-                            class="btn btn-light border-dark">Reset</button>
+                        <div class="mt-5">
+                            <button type="submit" class="btn dev_btn me-1">Invia</button>
+                            <button type='reset' onclick="clearAllInputs()"id="reset_all_btn"
+                                class="btn btn-light border-dark">Reset</button>
+                        </div>
                 </form>
 
             </div>

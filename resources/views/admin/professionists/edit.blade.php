@@ -15,11 +15,11 @@
             @endif
         </div> --}}
     <div class="mt-3 dev_container ">
-        <h1 class="text-center">Modifica {{ $professionist->nickname }}</h1>
+        <h1 class="text-center">Modifica <span class="backoffice_title">{{ $professionist->nickname }}</span></h1>
         <div class="row bg-white">
             <div class="col-12">
-                <form action="{{ route('admin.professionists.update', $professionist->slug) }}" method="POST" class="p-4"
-                    enctype="multipart/form-data">
+                <form action="{{ route('admin.professionists.update', $professionist->slug) }}" method="POST"
+                    class="p-4 d-flex flex-column gap-3" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -253,8 +253,8 @@
 
 
 
-                        <button type="submit" class="btn btn-dark">Invia</button>
-                        <button type="reset" class="btn btn-light border-dark">Reset</button>
+                        <button type="submit" class="btn dev_btn mt-4">Invia</button>
+                        {{-- <button type="reset" class="btn btn-light border-dark">Reset</button> --}}
                 </form>
             </div>
         </div>

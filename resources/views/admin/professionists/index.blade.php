@@ -39,7 +39,7 @@
                         @foreach ($professionists as $professionist)
                             <tr>
 
-                                <td><a class="text-black text-decoration-none"
+                                <td><a class="backoffice_title text-decoration-none"
                                         href="{{ route('admin.professionists.show', $professionist->slug) }}">{{ $professionist->nickname }}</a>
                                 </td>
                                 <td>
@@ -82,7 +82,7 @@
 
         @if (!count($professionists) >= 1)
             <div class="text-center">
-                <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.professionists.create') }}">Aggiungi Profilo</a>
+                <a class="btn dev_btn mx-3 mb-3" href="{{ route('admin.professionists.create') }}">Aggiungi Profilo</a>
             </div>
         @endif
     </div>
