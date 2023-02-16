@@ -13,11 +13,15 @@
             </span>
         </p>
         <span class="fs-5">Messaggio:</span>
-        <p class="mt-4 lead_message">
+        <p class="mt-4 lead_message border-bottom p-4">
             <span class="me-3"><i class="fa-solid fa-quote-left backoffice_title"></i></span>
             {{ $lead->message }}
             <span class="ms-3"><i class="fa-solid fa-quote-right backoffice_title"></i></span>
         </p>
+        <div class="mt-5">
+            <span class="me-2 fs-6">Messaggio ricevuto il: </span>
+            <span class="fs-6 backoffice_title">{{ $lead->created_at }}</span>
+        </div>
 
 
         {{--         <div class="text-end mt-4">

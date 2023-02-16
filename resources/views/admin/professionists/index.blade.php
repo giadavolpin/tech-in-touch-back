@@ -29,7 +29,7 @@
                             <th scope="col">Cognome</th>
                             <th scope="col">Indirizzo</th>
                             <th class="text-center" scope="col">Tecnologie</th>
-
+                            <th class="text-center" scope="col">Creato il</th>
                             <th class="text-center" scope="col">Visibile</th>
                             <th scope="col" class="text-center">Modifica</th>
                             <th class="text-center" scope="col">Elimina</th>
@@ -53,20 +53,16 @@
                                 <td class="text-center">
                                     {{ $professionist->technologies && count($professionist->technologies) > 0 ? count($professionist->technologies) : 0 }}
                                 </td>
-
+                                <td class="text-center">{{ $professionist->created_at }}</td>
                                 <td class="text-center">
                                     <i
                                         class="fa-solid fa-circle {{ $professionist->visible == 1 ? 'prof-visible' : 'prof-invisible' }}"></i>
-
-
-
                                 </td>
 
 
                                 <td class="text-center"><a class="link-secondary"
                                         href="{{ route('admin.professionists.edit', ['professionist' => $professionist->slug]) }}"
                                         title="Edit professionist"><i class="fa-solid fa-pen"></i></a></td>
-
                                 <td class="text-center">
                                     <form action="{{ route('admin.professionists.destroy', $professionist->slug) }}"
                                         method="POST">

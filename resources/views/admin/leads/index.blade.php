@@ -20,12 +20,12 @@
                 <table class="my-table table table-striped">
                     <thead class="blue_table_row">
                         <tr>
-
-
+                            <th scope="col"></th>
                             <th scope="col">Nome</th>
                             <th scope="col">Cognome</th>
                             <th scope="col">Email</th>
                             <th scope="col">Messaggio</th>
+                            <th scope="col">Data ricezione</th>
                             <th scope="col">Letto</th>
                             <th scope="col">Elimina</th>
 
@@ -35,13 +35,17 @@
                     <tbody>
                         @foreach ($leads as $lead)
                             <tr class="{{ $lead->read ? '' : 'unread_bold_text' }}">
-
-                                <td><a class="text-decoration-none text-black"
-                                        href="{{ route('admin.leads.show', $lead->id) }}" title="Vedi messaggio">
-                                        {{ $lead->name }} </a></td>
+                                <td class="text-center">
+                                    <a class="btn dev_btn" href="{{ route('admin.leads.show', $lead->id) }}"
+                                        title="Vedi messaggio">
+                                        Leggi
+                                    </a>
+                                </td>
+                                <td>{{ $lead->name }}</td>
                                 <td>{{ $lead->surname }}</td>
                                 <td>{{ $lead->email }}</td>
-                                <td>{{ $lead->message }}</td>
+                                <td>{{ Str::limit($lead->message, 35) }}</td>
+                                <td>{{ $lead->created_at }}</td>
                                 <td>
                                     {{ $lead->read ? 'Si' : 'No' }}
                                 </td>

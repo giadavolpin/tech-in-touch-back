@@ -673,5 +673,7 @@ a{
 }
 .lead_message {
     height: 200px;
-    overflow-y: auto;
+    width: 50%;
+    overflow: auto;
+
 }
