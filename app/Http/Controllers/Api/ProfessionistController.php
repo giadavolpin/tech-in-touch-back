@@ -121,7 +121,7 @@ class ProfessionistController extends Controller
 
         return response()->json([
             'success' => true,
-            'results' => $professionist
+            'results' => [$professionist, $projectPro, $data]
         ]);
     }
 }
