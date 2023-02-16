@@ -59,22 +59,34 @@ class ProfessionistController extends Controller
         //     ->select(DB::raw('avg(vote_id) as avg, professionist_id'))
         //     ->update(['avg_vote' => $data]);
 
-        // $professionistId = $request->singleProfessionistID;
+        $professionistId = $request->singleProfessionistID;
 
+        $professionist = Professionist::find($professionistId);
 
+        $reviews = $professionist->reviews;
 
-        $professionistVote =  DB::table('reviews')
-            ->join('professionists', 'professionist_id', '=', 'reviews.professionist_id')
-            ->select(DB::raw('avg(vote_id)'))
+        $allreviews = [];
 
-            ->value('vote_id');
+        foreach ($reviews as $review) {
+            $vote = $review->vote_id;
+            array_push($allreviews, $vote);
+        }
 
+        $sum = array_sum($allreviews);
+
+        $count = count($allreviews);
+
+        $avarage = $sum / $count;
+
+        DB::table('professionists')
+            ->where('id', $professionistId)
+            ->update(['avg_vote' => $avarage]);
 
 
 
         return response()->json([
             'success' => true,
-            'results' => $professionistVote
+            'results' => $avarage
         ]);
     }
 
