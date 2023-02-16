@@ -64,6 +64,12 @@ class ProfessionistController extends Controller
         $professionist = Professionist::find($professionistId);
 
         $reviews = $professionist->reviews;
+        if( count($reviews) == 0 ){
+            return response()->json([
+                'success' => true,
+                'results' => count($reviews)
+            ]);
+        }
 
         $allreviews = [];
 
