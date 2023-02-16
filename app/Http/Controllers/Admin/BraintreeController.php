@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Lead;
 use App\Models\Professionist;
+use DateInterval;
 use Illuminate\Http\Request;
 use App\Models\Plan;
 use Braintree\Gateway;
 use Illuminate\Support\Facades\Auth;
+use Nette\Utils\DateTime;
 
 class BraintreeController extends Controller
 {
@@ -31,8 +33,12 @@ class BraintreeController extends Controller
         $nonce = $request->input('payment_method_nonce');
         $plan_id = $request->input('plan');
 
+
         $plan = Plan::findOrFail($plan_id);
 
+        $durata = $plan->duration;
+        // $date_start = date('l');
+        // dd( $date_start);
         // dd($nonce, $plan_id, $plan, $professionist_id);
 
 
@@ -64,9 +70,26 @@ class BraintreeController extends Controller
             $professionist = Professionist::where('id', Auth::id())->first();
 
 
-            $professionist->plans()->attach($plan_id);
+
+
+            $date_start = new DateTime();
+
+            $date_start->add(new DateInterval("P".$durata."D"));
+
+            $subscription_end = date_format($date_start,"Y-m-d H:i:s");
+
+            // dd($subscription_end);
+
+            // $professionist->plans()->attach($subscription_end);
+
+            $professionist->plans()->attach($plan_id, ["subscription_end"=>$subscription_end]);
+
+
             // dd('Rollo Mattia aveva ragione');
             $userId = Auth::id();
+
+
+
             $professionists = Professionist::where('user_id', $userId)->get();
             $professionistID = Professionist::where('user_id', $userId)->value('id');
 
