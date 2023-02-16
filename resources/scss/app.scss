@@ -157,7 +157,7 @@ a{
         display: flex;
         flex-direction: column;
         gap: 20px;
-        
+
     }
     li{
          position: relative;
@@ -668,4 +668,6 @@ a{
         color: white;
     }
 }
-
+.backoffice_title {
+    color: $dev_orange;
+}

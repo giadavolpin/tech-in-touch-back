@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        <h1 class="text-center m-3">I miei Messaggi</h1>
+        <h1 class="text-center my-5 backoffice_title">I miei Messaggi</h1>
 
 
         @if (count($leads) == 0)
@@ -18,7 +18,7 @@
             @endif
             <div class="table-responsive mx-3">
                 <table class="my-table table table-striped">
-                    <thead class="table-dark">
+                    <thead class="blue_table_row">
                         <tr>
 
 

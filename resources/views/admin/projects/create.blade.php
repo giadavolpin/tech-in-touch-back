@@ -14,7 +14,7 @@
             </div>
             @endif
         </div> --}}
-    <div class="mt-3 ">
+    <div class="mt-3 dev_container">
         <h1 class="mx-4">Crea un progetto</h1>
         <div class="row bg-white">
             <div class="col-12">

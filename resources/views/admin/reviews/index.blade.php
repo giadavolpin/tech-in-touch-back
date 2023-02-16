@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        <h1 class="m-3 text-center">Le mie recensioni</h1>
+        <h1 class="my-5 text-center backoffice_title">Le mie recensioni</h1>
 
 
         @if (count($reviews) == 0)
@@ -18,7 +18,7 @@
             @endif
             <div class="table-responsive mx-3">
                 <table class="my-table table table-striped">
-                    <thead class="table-dark">
+                    <thead class="blue_table_row">
                         <tr>
 
 
