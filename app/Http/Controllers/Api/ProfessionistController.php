@@ -43,7 +43,7 @@ class ProfessionistController extends Controller
     public function avgVote(Request $request)
     {
         /*   $avg_stars = DB::table('reviews')
-                ->avg('vote_id'); */
+        ->avg('vote_id'); */
 
         // $data = DB::table('professionists')
         //     ->join('reviews', 'professionists.id', '=', 'reviews.professionist_id')
@@ -64,7 +64,7 @@ class ProfessionistController extends Controller
         $professionist = Professionist::find($professionistId);
 
         $reviews = $professionist->reviews;
-        if( count($reviews) == 0 ){
+        if (count($reviews) == 0) {
             return response()->json([
                 'success' => true,
                 'results' => count($reviews)
@@ -121,7 +121,7 @@ class ProfessionistController extends Controller
 
         return response()->json([
             'success' => true,
-            'results' =>  [$professionist, $projectPro, $data]
+            'results' => [$professionist, $projectPro, $data]
         ]);
     }
 }
