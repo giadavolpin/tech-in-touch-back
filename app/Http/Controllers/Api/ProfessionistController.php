@@ -29,7 +29,8 @@ class ProfessionistController extends Controller
         $selectedOptionId = $request->input('technology_id');
 
         $professionists = Professionist::whereHas('technologies', function ($query) use ($selectedOptionId) {
-            $query->where('technology_id', $selectedOptionId);
+            $query->where('technology_id', $selectedOptionId)
+            ->where('visible', 1);
         })->get();
 
         // return response()->json($professionists);

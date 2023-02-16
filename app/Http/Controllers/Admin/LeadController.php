@@ -16,7 +16,7 @@ class LeadController extends Controller
         $userId = Auth::id();
         $professionistID = Professionist::where('user_id', $userId)->value('id');
 
-        $leads = Lead::where('professionist_id', $professionistID)->get();
+        $leads = Lead::orderByDesc('id')->where('professionist_id', $professionistID)->get();
        // dd($leads);
 
        $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
@@ -39,7 +39,7 @@ class LeadController extends Controller
 
     }
 
-    
+
 
     public function destroy(Lead $lead){
 
