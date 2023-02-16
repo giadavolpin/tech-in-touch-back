@@ -9,11 +9,12 @@ use App\Http\Requests\StoreProfessionistRequest;
 use App\Http\Requests\UpdateProfessionistRequest;
 use App\Models\Project;
 use App\Models\Technology;
+use App\Models\Plan;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Lead;
-
+use Braintree\Gateway;
 
 class ProfessionistController extends Controller
 {
@@ -28,12 +29,12 @@ class ProfessionistController extends Controller
         $professionists = Professionist::where('user_id', $userId)->get();
         $professionistID = Professionist::where('user_id', $userId)->value('id');
 
-       // dd($professionists);
+        // dd($professionists);
 
-       $leads = Lead::where('professionist_id', $professionistID)->get();
-       $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
-       
-        return view('admin.professionists.index', compact('professionists','leadUnread'));
+        $leads = Lead::where('professionist_id', $professionistID)->get();
+        $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+
+        return view('admin.professionists.index', compact('professionists', 'leadUnread'));
     }
 
     /**
@@ -48,17 +49,17 @@ class ProfessionistController extends Controller
         // dd($professionistID);
 
         $leads = Lead::where('professionist_id', $professionistID)->get();
-       $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+        $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
 
         $projects = Project::all();
         $technologies = Technology::all();
 
         if (!is_null($professionistID)) {
             // dd($professionists)
-            return view('admin.professionists.index', compact('professionists','leadUnread'));
+            return view('admin.professionists.index', compact('professionists', 'leadUnread'));
 
         } else {
-            return view('admin.professionists.create', compact('projects', 'technologies', 'professionists','leadUnread'));
+            return view('admin.professionists.create', compact('projects', 'technologies', 'professionists', 'leadUnread'));
         }
 
     }
@@ -127,17 +128,19 @@ class ProfessionistController extends Controller
      *
      * @param  \App\Models\Professionist  $professionist
      */
-    public function show(Professionist $professionist)
+    public function show(Professionist $professionist, Gateway $gateway)
     {
         $userId = Auth::id();
-
+        $plans = Plan::all();
+        $token = $gateway->clientToken()->generate();
         $professionistID = Professionist::where('user_id', $userId)->value('id');
         $leads = Lead::where('professionist_id', $professionistID)->get();
-       $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+        $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
         if ($professionist->user_id !== Auth::id()) {
             abort(403);
         }
-        return view('admin.professionists.show', compact('professionist','leadUnread'));
+        // dd($token);
+        return view('admin.professionists.show', compact('professionist', 'leadUnread', 'plans', 'token'));
     }
 
     /**
@@ -155,11 +158,11 @@ class ProfessionistController extends Controller
         $userId = Auth::id();
         $professionistID = Professionist::where('user_id', $userId)->value('id');
         $leads = Lead::where('professionist_id', $professionistID)->get();
-       $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+        $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
         // if (!Auth::user()->isAdmin() && $professionist->user_id !== Auth::id()) {
         //     abort(403);
         // }
-        return view('admin.professionists.edit', compact('professionist', 'projects', 'technologies','leadUnread'));
+        return view('admin.professionists.edit', compact('professionist', 'projects', 'technologies', 'leadUnread'));
     }
 
     /**

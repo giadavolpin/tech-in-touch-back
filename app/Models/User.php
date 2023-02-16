@@ -46,7 +46,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function professionist(): HasOne{
+    public function professionist(): HasOne
+    {
         return $this->hasOne(Professionist::class);
     }
 }
