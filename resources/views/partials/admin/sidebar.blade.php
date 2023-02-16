@@ -18,7 +18,7 @@
             <a href="{{ route('admin.professionists.index') }}"
                 class="nav-link {{ Route::currentRouteName() == 'admin.professionists.index' ? 'active_li' : '' }}"
                 aria-current="page">
-                <i class="fa-solid fa-book mx-1"></i>
+                <i class="fa-solid fa-user mx-1"></i>
 
                 Profilo
             </a>
@@ -27,29 +27,37 @@
             <a href="{{ route('admin.projects.index') }}"
                 class="nav-link  {{ Route::currentRouteName() == 'admin.projects.index' ? 'active_li' : '' }}"
                 aria-current="page">
-                <i class="fa-solid fa-book mx-1"></i>
+                <i class="fa-solid fa-diagram-project mx-1"></i>
 
                 Progetti
             </a>
         </li>
         <li class="nav-item">
             <a href="{{ route('admin.leads.index') }}"
-
                 class="nav-link  {{ Route::currentRouteName() == 'admin.leads.index' ? 'active_li' : '' }}"
                 aria-current="page">
-                <i class="fa-solid fa-book mx-1"></i>
+                <i class="fa-solid fa-envelope mx-1"></i>
+
 
                 Messaggi
             </a>
         </li>
         <li class="nav-item">
             <a href="{{ route('admin.reviews.index') }}"
-                class="nav-link {{ Route::currentRouteName() == 'admin.reviews.index' ? 'bg-secondary' : '' }} "
+                class="nav-link {{ Route::currentRouteName() == 'admin.reviews.index' ? 'active_li' : '' }} "
                 aria-current="page">
 
                 <i class="fa-solid fa-book mx-1"></i>
 
                 Recensioni
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="" class="nav-link  " aria-current="page">
+
+                <i class="fa-solid fa-credit-card mx-1"></i>
+
+                Pagamenti
             </a>
         </li>
 

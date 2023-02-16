@@ -14,8 +14,8 @@
             </div>
             @endif
         </div> --}}
-    <div class="mt-3 ">
-        <h1 class="mx-4">Modifica {{ $professionist->nickname }}</h1>
+    <div class="mt-3 dev_container ">
+        <h1 class="text-center">Modifica {{ $professionist->nickname }}</h1>
         <div class="row bg-white">
             <div class="col-12">
                 <form action="{{ route('admin.professionists.update', $professionist->slug) }}" method="POST" class="p-4"
