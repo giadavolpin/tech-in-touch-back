@@ -8,6 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    {{-- SCRIPTS PER BRAINTREE --}}
+
+
     <title>TechInTouch</title>
 
 
@@ -28,7 +31,7 @@
         <div id="wrapper-right">
             @include('partials.admin.header')
 
-            <main >
+            <main>
                 @yield('content')
             </main>
         </div>

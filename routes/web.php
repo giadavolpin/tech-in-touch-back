@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\Admin\LeadController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\BraintreeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,8 @@ Route::middleware(['auth', 'verified'])
         Route::resource('leads', LeadController::class)->parameters(['leads' => 'lead:id']);
         Route::resource('technologies', TechnologyController::class)->parameters(['technologies' => 'technologies:slug'])->except('show', 'create', 'edit');
         Route::resource('reviews', ReviewController::class)->parameters(['reviews' => 'reviews:id'])->except('show', 'create', 'edit');
+        // Route::get('', [BraintreeController::class, 'generate']);
+        Route::post('process-payment', [BraintreeController::class, 'processPayment'])->name('braintree');
     });
 
 
