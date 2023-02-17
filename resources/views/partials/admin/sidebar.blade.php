@@ -53,7 +53,19 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="" class="nav-link  " aria-current="page">
+            <a href="{{ route('admin.generatetoken') }}"
+                class="nav-link {{ Route::currentRouteName() == 'admin.generatetoken' ? 'active_li' : '' }} "
+                aria-current="page">
+
+                <i class="fa-solid fa-rocket mx-1"></i>
+
+                Sponsorizzazioni
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.payments.index') }}"
+                class="nav-link {{ Route::currentRouteName() == 'admin.payments.index' ? 'active_li' : '' }} "
+                aria-current="page">
 
                 <i class="fa-solid fa-credit-card mx-1"></i>
 

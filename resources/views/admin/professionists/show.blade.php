@@ -80,32 +80,31 @@
             <a href="{{ route('admin.professionists.edit', $professionist->slug) }}" class="btn dev_btn">Gestisci
                 Profilo</a>
         </div>
-
-
-        {{-- Sponsorizzazione da spostare --}}
-
-        <div class="subscription_plans py-5">
-            <h3 class="text-center">Piani di sponsorizzazione</h3>
-
-            <form action="{{ route('admin.braintree') }}" method="POST" id="payment-form">
+    </div>
+    <section id="sponsorship_pubblicità">
+        <div class="subscription_plans py-5 px-5">
+            <h2 class="text-center">Fatti Notare!</h2>
+            <p>Con i nostri piani di sponsorizzazione sarai sempre in <span>testa</span></p>
+            {{-- <form action="{{ route('admin.braintree') }}" method="POST" id="payment-form">
                 @csrf
-                {{-- SELECT PER I PIANI --}}
-                <select name="plan" id="plan">
+                SELECT PER I PIANI --}}
+            {{-- <select name="plan" id="plan">
                     @foreach ($plans as $plan)
                         <option value="{{ $plan->id }}">{{ $plan->name }} - {{ $plan->price }} €</option>
                     @endforeach
                     <input type="hidden" id="nonce" name="payment_method_nonce">
-
-                </select>
-                {{-- DIV PER L UI DI BRAINTREE --}}
-                <div id="dropin-container"></div>
-                {{-- <button type="submit" id="submit-button" class="button button--small button--green">Purchase</button> --}}
-                <input type="submit" />
-            </form>
+                </select> --}}
+            {{-- DIV PER L UI DI BRAINTREE --}}
+            {{-- <div id="dropin-container"></div> --}}
+            {{-- <button type="submit" id="submit-button" class="button button--small button--green">Purchase</button> --}}
+            {{-- <input type="submit" />
+            </form> --}}
+            <div class="d-flex justify-content-center mt-5"><a href="{{ route('admin.generatetoken') }}"
+                    class="btn">Scopri i Piani</a></div>
         </div>
-    </div>
+    </section>
 
-    <script src="https://js.braintreegateway.com/web/dropin/1.33.7/js/dropin.js"></script>
+    {{-- <script src="https://js.braintreegateway.com/web/dropin/1.33.7/js/dropin.js"></script>
     <script>
         // var button = document.querySelector('#submit-button');
 
@@ -152,5 +151,5 @@
                 });
             });
         });
-    </script>
+    </script> --}}
 @endsection

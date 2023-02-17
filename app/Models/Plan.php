@@ -10,9 +10,8 @@ class Plan extends Model
 {
     use HasFactory;
 
-    public function professionists():BelongsToMany{
-        return $this->belongsToMany(Professionist::class)->withPivot('subscription_start','subscription_end');
+    public function professionists(): BelongsToMany
+    {
+        return $this->belongsToMany(Professionist::class)->withPivot('plan_id', 'professionist_id', 'subscription_start', 'subscription_end');
     }
 }
-
-

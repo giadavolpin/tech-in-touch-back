@@ -15,7 +15,7 @@
             @endif
         </div> --}}
     <div class="mt-3 dev_container">
-        <h1 class="mx-4">Crea un progetto</h1>
+        <h1 class="mx-4 backoffice_title">Crea un progetto</h1>
         <div class="row bg-white">
             <div class="col-12">
                 <form action="{{ route('admin.projects.store') }}" method="POST" class="p-4" enctype="multipart/form-data">

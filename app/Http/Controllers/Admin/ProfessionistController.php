@@ -132,7 +132,7 @@ class ProfessionistController extends Controller
     {
         $userId = Auth::id();
         $plans = Plan::all();
-        $token = $gateway->clientToken()->generate();
+
         $professionistID = Professionist::where('user_id', $userId)->value('id');
         $leads = Lead::where('professionist_id', $professionistID)->get();
         $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
@@ -140,7 +140,7 @@ class ProfessionistController extends Controller
             abort(403);
         }
         // dd($token);
-        return view('admin.professionists.show', compact('professionist', 'leadUnread', 'plans', 'token'));
+        return view('admin.professionists.show', compact('professionist', 'leadUnread', 'plans'));
     }
 
     /**
