@@ -116,6 +116,7 @@ class ProfessionistController extends Controller
         $projectPro = Project::where('professionist_id', $professionistID)->get();
         $data = DB::table('reviews')
             ->select(DB::raw('avg(vote_id) as avg, professionist_id'))
+            ->where('professionist_id', $professionistID)
             ->groupBy('professionist_id')
             ->orderByDesc('avg')
             ->get();
