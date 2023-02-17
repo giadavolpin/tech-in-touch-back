@@ -71,7 +71,7 @@
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-end">
-                    <a class="btn dev_btn mt-4" href="{{ route('admin.professionists.show', $professionist->slug) }}">Torna
+                    <a class="btn dev_btn mt-4" href="{{ route('admin.professionists.show', $professionist->slug) }}">Vai
                         al
                         profilo</a>
                 </div>

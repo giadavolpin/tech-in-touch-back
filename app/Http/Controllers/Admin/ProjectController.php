@@ -25,22 +25,22 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         $userId = Auth::id();
-        
+
         $professionistID = Professionist::where('user_id', $userId)->value('id');
         // dd($professionistID);
 
         // dd($session_id);
         $leads = Lead::where('professionist_id', $professionistID)->get();
         // dd($leads);
- 
+
         $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
- 
-            $projects = Project::where('professionist_id', $professionistID )->get();
-            // dd($projects);
+
+        $projects = Project::where('professionist_id', $professionistID)->get();
+        // dd($projects);
 
         // $projects = Project::where('professionist_id', $professionistID)->get();
 
-        return view('admin.projects.index', compact('projects','professionistID','leadUnread'));
+        return view('admin.projects.index', compact('projects', 'professionistID', 'leadUnread'));
     }
 
     /**
@@ -54,8 +54,8 @@ class ProjectController extends Controller
         $professionists = Professionist::all();
         $professionistID = Professionist::where('user_id', $userId)->value('id');
         $leads = Lead::where('professionist_id', $professionistID)->get();
-       $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
-        return view("admin.projects.create", compact('professionists','leadUnread'));
+        $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+        return view("admin.projects.create", compact('professionists', 'leadUnread'));
 
     }
 
@@ -97,18 +97,18 @@ class ProjectController extends Controller
     {
         //controllo
         $userId = Auth::id();
-        Session::flash('userId',  $userId);
+        Session::flash('userId', $userId);
         $professionistID = Professionist::where('user_id', $userId)->value('id');
         $leads = Lead::where('professionist_id', $professionistID)->get();
-       $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+        $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
         $professionistID = Professionist::where('user_id', $userId)->value('id');
 
         $session_id = Session::get('userId');
         // dd($session_id);
 
-        if($project->professionist_id == $professionistID  && $userId == $session_id){
-            return view('admin.projects.show', compact('project','leadUnread'));
-        }else{
+        if ($project->professionist_id == $professionistID && $userId == $session_id) {
+            return view('admin.projects.show', compact('project', 'leadUnread'));
+        } else {
             abort(401);
         }
 
@@ -132,8 +132,8 @@ class ProjectController extends Controller
 
         $professionistID = Professionist::where('user_id', $userId)->value('id');
         $leads = Lead::where('professionist_id', $professionistID)->get();
-       $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
-        return view("admin.projects.edit", compact('project','leadUnread'));
+        $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+        return view("admin.projects.edit", compact('project', 'leadUnread'));
     }
 
     /**
