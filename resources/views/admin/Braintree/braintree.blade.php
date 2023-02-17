@@ -6,7 +6,7 @@
         <h3 class="text-center">Sponsorizzazioni</h3>
 
 
-        @if ($differenzaOre > 0)
+        @if (isset($differenzaOre) && $differenzaOre > 0)
             <h2 class="text-center py-5">A quanto pare hai già un abbonamento attivo</h2>
             <p class="fs-4 text-center">Il tuo abbonamento <span
                     class="dev_btn p-1 rounded-2 fw-bold">{{ $plan_name }}</span>

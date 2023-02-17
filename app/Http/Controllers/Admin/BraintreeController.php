@@ -22,31 +22,38 @@ class BraintreeController extends Controller
         $plans = Plan::all();
         $professionistID = Professionist::where('user_id', $userId)->value('id');
         $professionist = Professionist::with('plans')->findOrFail($professionistID);
-        foreach ($professionist->plans as $plan) {
-
-            // DA FIXARE
-            $start_date = $plan->pivot->subscription_start;
-            $end_date = $plan->pivot->subscription_end;
-            $plan_name = $plan->name;
-
-
-        }
-
-        $start_date = Carbon::parse($start_date);
-        $end_date = Carbon::parse($end_date);
-
-        $differenzaOre = $end_date->diffInHours($start_date);
         $token = $gateway->clientToken()->generate();
         $leads = Lead::where('professionist_id', $professionistID)->get();
         $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
-        // dd($start_date, $end_date);
 
-        // if ($professionist->user_id !== Auth::id()) {
-        //     abort(403);
-        // }
-        // $token = $gateway->clientToken()->generate();
 
-        return view('admin.Braintree.braintree', compact('professionist', 'leadUnread', 'plans', 'token', 'differenzaOre', 'plan_name'));
+
+        foreach ($professionist->plans as $plan) {
+            $start_date = $plan->pivot->subscription_start;
+            $end_date = $plan->pivot->subscription_end;
+            $plan_name = $plan->name;
+        }
+        if (!$professionist->plans->isEmpty()) {
+
+            $start_date = Carbon::parse($start_date);
+            $end_date = Carbon::parse($end_date);
+
+            $differenzaOre = $end_date->diffInHours($start_date);
+
+            // dd($start_date, $end_date);
+
+            // if ($professionist->user_id !== Auth::id()) {
+            //     abort(403);
+            // }
+            // $token = $gateway->clientToken()->generate();
+
+            return view('admin.Braintree.braintree', compact('professionist', 'leadUnread', 'plans', 'token', 'differenzaOre', 'plan_name'));
+        } else {
+            return view('admin.Braintree.braintree', compact('professionist', 'leadUnread', 'plans', 'token'));
+
+        }
+
+
 
     }
 
