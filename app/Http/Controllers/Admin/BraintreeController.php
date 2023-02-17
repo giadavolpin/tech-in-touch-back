@@ -26,8 +26,6 @@ class BraintreeController extends Controller
         $leads = Lead::where('professionist_id', $professionistID)->get();
         $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
 
-
-
         foreach ($professionist->plans as $plan) {
             $start_date = $plan->pivot->subscription_start;
             $end_date = $plan->pivot->subscription_end;
@@ -37,24 +35,13 @@ class BraintreeController extends Controller
 
             $start_date = Carbon::parse($start_date);
             $end_date = Carbon::parse($end_date);
-
-            $differenzaOre = $end_date->diffInHours($start_date);
-
-            // dd($start_date, $end_date);
-
-            // if ($professionist->user_id !== Auth::id()) {
-            //     abort(403);
-            // }
-            // $token = $gateway->clientToken()->generate();
+            $now = Carbon::now('Europe/Rome');
+            $differenzaOre = $end_date->diffInHours($now);
 
             return view('admin.Braintree.braintree', compact('professionist', 'leadUnread', 'plans', 'token', 'differenzaOre', 'plan_name'));
         } else {
             return view('admin.Braintree.braintree', compact('professionist', 'leadUnread', 'plans', 'token'));
-
         }
-
-
-
     }
 
     public function processPayment(Request $request, Gateway $gateway)
@@ -108,12 +95,19 @@ class BraintreeController extends Controller
             $date_start->add(new DateInterval("P" . $durata . "D"));
 
             $subscription_end = date_format($date_start, "Y-m-d H:i:s");
-
+            $subscription_end = Carbon::parse($subscription_end);
+            $now = Carbon::now('Europe/Rome');
+            $diffenzaTempo = $subscription_end->diffInHours($now);
             // dd($subscription_end);
 
             // $professionist->plans()->attach($subscription_end);
-
+            // if (!$professionist->plans()->wherePivot('professionist_id', $professionist_id)->exists() || $diffenzaTempo == 0) {
             $professionist->plans()->attach($plan_id, ["subscription_end" => $subscription_end]);
+            // } else {
+            // $planIds = [$plan_id];
+            // $professionist->plans()->syncWithoutDetaching($plan_id, ["subscription_end" => $subscription_end->addDays($durata)]);
+            // }
+
 
 
             // dd('Rollo Mattia aveva ragione');
