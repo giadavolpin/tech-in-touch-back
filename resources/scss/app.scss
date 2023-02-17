@@ -233,11 +233,6 @@ a{
     background-color: $dev_bkg_blue;
     // transform: scale(.9);
 
-
-
-
-
-
     .box_register{
         position: relative;
         width: 580px;
@@ -645,11 +640,11 @@ a{
 }
 
 .prof-visible{
-    color: green;
+    color: $dev_dark_green;
 }
 
 .prof-invisible{
-    color: red;
+    color: $dev_pantone;
 }
 
 .unread_bold_text {
@@ -670,4 +665,71 @@ a{
 }
 .backoffice_title {
     color: $dev_orange;
+}
+.lead_message {
+    height: 200px;
+    width: 50%;
+    overflow: auto;
+
+}
+#sponsorship_pubblicità {
+    background: linear-gradient(40deg, $dev_light_blue, $dev_pink);
+    margin-top: 4rem;
+    h2 {
+        font-size: 3.5rem;
+        margin-bottom: 4rem;
+        color: $dev_yellow;
+    }
+    p {
+        font-size: 2rem;
+        text-align: center;
+        color: $dev_white;
+    }
+    a {
+        background-color: $dev_yellow;
+    }
+    span {
+        font-weight: bold;
+        font-size: 3rem;
+    }
+}
+.subscription_plans {
+    h3 {
+        font-size: 3rem;
+        color: $dev_orange;
+    }
+    h4 {
+        font-size: 2rem;
+    }
+    .form_payment {
+        margin-top: 5rem;
+        form select {
+            color: $dev_orange;
+            width: 250px;
+            padding: 1rem;
+            border-radius: 5px;
+            font-size: 1.2rem;
+        }
+    }
+    .my_card {
+        padding: 2rem;
+        border-radius: 10px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        background: linear-gradient(70deg, $dev_dark_blue, $dev_pink);
+
+        h4 {
+            color: $dev-white;
+        }
+        p {
+            color: $dev_white;
+            text-align: center;
+        }
+        p:nth-child(3){
+            color: $dev_orange;
+        }
+    }
 }

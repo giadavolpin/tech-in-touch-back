@@ -11,7 +11,7 @@
                 <h3 class="text-center mb-4">Registra il tuo primo profilo</h3>
             </div>
         @else
-            <h1 class="text-center m-3 py-3 backoffice_title">Il mio Profilo</h1>
+            <h1 class="text-center m-3 py-3 backoffice_title">Panoramica profilo</h1>
 
 
             @if (session()->has('message'))
@@ -29,7 +29,7 @@
                             <th scope="col">Cognome</th>
                             <th scope="col">Indirizzo</th>
                             <th class="text-center" scope="col">Tecnologie</th>
-
+                            <th class="text-center" scope="col">Creato il</th>
                             <th class="text-center" scope="col">Visibile</th>
                             <th scope="col" class="text-center">Modifica</th>
                             <th class="text-center" scope="col">Elimina</th>
@@ -39,34 +39,23 @@
                         @foreach ($professionists as $professionist)
                             <tr>
 
-                                <td><a class="text-black text-decoration-none"
-                                        href="{{ route('admin.professionists.show', $professionist->slug) }}">{{ $professionist->nickname }}</a>
-                                </td>
-                                <td>
-                                    <a class="text-black text-decoration-none"
-                                        href="{{ route('admin.professionists.show', $professionist->slug) }}">{{ $professionist->name }}</a>
-                                </td>
-                                <td><a class="text-black text-decoration-none"
-                                        href="{{ route('admin.professionists.show', $professionist->slug) }}">{{ $professionist->surname }}</a>
-                                </td>
+                                <td>{{ $professionist->nickname }}</td>
+                                <td>{{ $professionist->name }}</td>
+                                <td>{{ $professionist->surname }}</td>
                                 <td>{{ $professionist->job_address }}</td>
                                 <td class="text-center">
                                     {{ $professionist->technologies && count($professionist->technologies) > 0 ? count($professionist->technologies) : 0 }}
                                 </td>
-
+                                <td class="text-center">{{ $professionist->created_at }}</td>
                                 <td class="text-center">
                                     <i
                                         class="fa-solid fa-circle {{ $professionist->visible == 1 ? 'prof-visible' : 'prof-invisible' }}"></i>
-
-
-
                                 </td>
 
 
                                 <td class="text-center"><a class="link-secondary"
                                         href="{{ route('admin.professionists.edit', ['professionist' => $professionist->slug]) }}"
                                         title="Edit professionist"><i class="fa-solid fa-pen"></i></a></td>
-
                                 <td class="text-center">
                                     <form action="{{ route('admin.professionists.destroy', $professionist->slug) }}"
                                         method="POST">
@@ -81,12 +70,17 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-end">
+                    <a class="btn dev_btn mt-4" href="{{ route('admin.professionists.show', $professionist->slug) }}">Torna
+                        al
+                        profilo</a>
+                </div>
             </div>
         @endif
 
         @if (!count($professionists) >= 1)
             <div class="text-center">
-                <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.professionists.create') }}">Aggiungi Profilo</a>
+                <a class="btn dev_btn mx-3 mb-3" href="{{ route('admin.professionists.create') }}">Aggiungi Profilo</a>
             </div>
         @endif
     </div>

@@ -6,7 +6,7 @@
 
         @if (!is_null($professionistID))
             <div class="text-center">
-                <a class="btn dev_btn mx-3 mb-3" href="{{ route('admin.projects.create') }}">Nuovo Progetto</a>
+                <a class="btn dev_btn mx-3 mb-5" href="{{ route('admin.projects.create') }}">Nuovo Progetto</a>
             </div>
             @if (count($projects) == 0)
                 <div>
@@ -15,13 +15,11 @@
                 </div>
             @endif
         @else
-            <div>
-                <h3 class="text-center mb-2">Non hai ancora un profilo da Professionista, per aggiungere un progetto crea
-                    prima il tuo profilo da professionista</h3>
+            <h4 class="text-center mb-5">Non hai ancora un profilo da Professionista, per aggiungere un progetto crea
+                prima il tuo profilo da professionista</h4>
 
-            </div>
             <div class=" text-center">
-                <a class="btn btn-dark" href="{{ route('admin.professionists.create') }}">Crea Profilo</a>
+                <a class="btn dev_btn" href="{{ route('admin.professionists.create') }}">Crea Profilo</a>
             </div>
         @endif
 
@@ -40,6 +38,7 @@
                             <th scope="col">Nome</th>
                             <th scope="col">Descrizione</th>
                             <th scope="col">Immagine</th>
+                            <th scope="col">Creato il</th>
                             <th scope="col">Modifica</th>
                             <th class="text-center" scope="col">Elimina</th>
                         </tr>
@@ -47,17 +46,17 @@
                     <tbody>
                         @foreach ($projects as $project)
                             <tr>
-                                <td><a class="text-decoration-none text-black"
+                                <td><a class="text-decoration-none backoffice_title"
                                         href="{{ route('admin.projects.show', $project->slug) }}" title="Vedi Progetto">
                                         {{ $project->name }} </a></td>
                                 <td>{{ Str::limit($project->description, 30) }}</td>
                                 @if ($project->cover_image)
-                                    <td> <i class="fa-solid fa-circle-check text-success"></i></td>
+                                    <td> <i class="fa-solid fa-circle-check text-success ms-4"></i></td>
                                 @else
-                                    <td><i class="fa-solid fa-circle-xmark text-danger"></i></td>
+                                    <td><i class="fa-solid fa-circle-xmark text-danger ms-4"></i></td>
                                 @endif
 
-
+                                <td>{{ $project->created_at }}</td>
                                 <td class="text-center"><a class="link-secondary"
                                         href="{{ route('admin.projects.edit', $project->slug) }}" title="Edit project"><i
                                             class="fa-solid fa-pen"></i></a></td>

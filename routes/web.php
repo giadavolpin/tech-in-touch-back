@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\Admin\PlanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProfessionistController;
 use App\Http\Controllers\Admin\ReviewController;
@@ -40,8 +41,9 @@ Route::middleware(['auth', 'verified'])
         Route::resource('leads', LeadController::class)->parameters(['leads' => 'lead:id']);
         Route::resource('technologies', TechnologyController::class)->parameters(['technologies' => 'technologies:slug'])->except('show', 'create', 'edit');
         Route::resource('reviews', ReviewController::class)->parameters(['reviews' => 'reviews:id'])->except('show', 'create', 'edit');
-        // Route::get('', [BraintreeController::class, 'generate']);
+        Route::get('Braintree', [BraintreeController::class, 'generate'])->name('generatetoken');
         Route::post('process-payment', [BraintreeController::class, 'processPayment'])->name('braintree');
+        Route::resource('payments', PlanController::class)->except('create', 'edit');
     });
 
 

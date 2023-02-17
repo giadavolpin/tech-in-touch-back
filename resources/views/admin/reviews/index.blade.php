@@ -20,13 +20,8 @@
                 <table class="my-table table table-striped">
                     <thead class="blue_table_row">
                         <tr>
-
-
                             <th scope="col">Voto</th>
                             <th scope="col">Commento</th>
-
-
-
                         </tr>
                     </thead>
                     <tbody>

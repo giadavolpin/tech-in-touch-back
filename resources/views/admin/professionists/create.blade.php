@@ -14,8 +14,8 @@
             </div>
             @endif
         </div> --}}
-    <div class="mt-3 dev_container">
-        <h1 class="mx-4">Creazione Profilo Professionista</h1>
+    <div class="mt-5 dev_container">
+        <h1 class="mx-4 backoffice_title">Creazione Profilo Professionista</h1>
         <div class="row bg-white">
             <div class="col-12">
                 <form action="{{ route('admin.professionists.store') }}" method="POST" class="p-4"
@@ -191,7 +191,7 @@
                             @enderror
                             {{-- <div class="form-text">*Minimo 3 caratteri e massimo 15 </div> --}}
                         </div>
-                        <div class="mb-3">
+                        <div>
                             <label for="visible" class="form-label "><strong>*</strong>Scegli la visibilità del tuo
                                 profilo</label>
                             <select name="visible" id="visible"
@@ -206,8 +206,10 @@
 
 
 
-                        <button type="submit" class="btn btn-dark">Invia</button>
-                        <button type="reset" class="btn btn-light border-dark">Reset</button>
+                        <div class="mt-5">
+                            <button type="submit" class="btn dev_btn me-1">Invia</button>
+                            <button type="reset" class="btn btn-light border-dark">Reset</button>
+                        </div>
                 </form>
             </div>
         </div>

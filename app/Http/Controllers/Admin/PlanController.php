@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use App\Models\Plan;
+use App\Models\Professionist;
+use App\Models\Lead;
 use App\Http\Requests\StorePlanRequest;
 use App\Http\Requests\UpdatePlanRequest;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PlanController extends Controller
 {
@@ -15,7 +20,13 @@ class PlanController extends Controller
      */
     public function index()
     {
-        //
+
+        $userId = Auth::id();
+        $professionistID = Professionist::where('user_id', $userId)->value('id');
+        $professionist = Professionist::with('plans')->findOrFail($professionistID);
+        $leads = Lead::where('professionist_id', $professionistID)->get();
+        $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+        return view('admin.payments.index', compact('professionist', 'leadUnread'));
     }
 
     /**

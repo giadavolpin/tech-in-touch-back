@@ -15,7 +15,10 @@
             @endif
         </div> --}}
     <div class="mt-3 dev_container ">
-        <h1 class="text-center">Modifica {{ $project->name }} </h1>
+        <h1 class="text-center backoffice_title">
+            <span class="text-black">Modifica</span>
+            {{ $project->name }}
+        </h1>
         <div class="row bg-white">
             <div class="col-12">
                 <form action="{{ route('admin.projects.update', $project->slug) }}" method="POST" class="p-4"
@@ -128,8 +131,7 @@
 
 
 
-                        <button type="submit" class="btn btn-dark">Invia</button>
-                        <button type="reset" class="btn btn-light border-dark">Reset</button>
+                        <button type="submit" class="btn dev_btn mt-3">Invia</button>
                 </form>
             </div>
         </div>

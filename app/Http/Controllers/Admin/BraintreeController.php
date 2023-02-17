@@ -12,19 +12,25 @@ use Braintree\Gateway;
 use Illuminate\Support\Facades\Auth;
 use Nette\Utils\DateTime;
 
+
 class BraintreeController extends Controller
 {
-    // public function generate(Request $request, Gateway $gateway)
-    // {
-    //     $token = $gateway->clientToken()->generate();
-    //     $data = [
-    //         'success' => true,
-    //         'token' => $token
-    //     ];
+    public function generate(Professionist $professionist, Request $request, Gateway $gateway)
+    {
+        $userId = Auth::id();
+        $plans = Plan::all();
+        $token = $gateway->clientToken()->generate();
+        $professionistID = Professionist::where('user_id', $userId)->value('id');
+        $leads = Lead::where('professionist_id', $professionistID)->get();
+        $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+        // if ($professionist->user_id !== Auth::id()) {
+        //     abort(403);
+        // }
+        // $token = $gateway->clientToken()->generate();
 
-    //     return redirect()->route('admin.professionists.show', compact($token));
+        return view('admin.Braintree.braintree', compact('professionist', 'leadUnread', 'plans', 'token'));
 
-    // }
+    }
 
     public function processPayment(Request $request, Gateway $gateway)
     {
@@ -98,10 +104,10 @@ class BraintreeController extends Controller
             $leads = Lead::where('professionist_id', $professionistID)->get();
             $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
 
-            return redirect()->route('admin.professionists.index', compact('professionists', 'leadUnread'));
+            return redirect()->route('admin.professionists.index', compact('professionists', 'leadUnread'))->with('message', "Ottima scelta, hai acquistato una sponsorizzazione!");
         } else {
 
-            dd('non funziona un cazzo');
+            dd('Pagamento Respinto');
         }
 
     }
