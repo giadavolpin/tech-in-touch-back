@@ -23,10 +23,15 @@ class BraintreeController extends Controller
         $professionistID = Professionist::where('user_id', $userId)->value('id');
         $professionist = Professionist::with('plans')->findOrFail($professionistID);
         foreach ($professionist->plans as $plan) {
+
+            // DA FIXARE
             $start_date = $plan->pivot->subscription_start;
             $end_date = $plan->pivot->subscription_end;
             $plan_name = $plan->name;
+
+
         }
+
         $start_date = Carbon::parse($start_date);
         $end_date = Carbon::parse($end_date);
 
