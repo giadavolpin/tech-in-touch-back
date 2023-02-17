@@ -25,6 +25,7 @@ class BraintreeController extends Controller
         foreach ($professionist->plans as $plan) {
             $start_date = $plan->pivot->subscription_start;
             $end_date = $plan->pivot->subscription_end;
+            $plan_name = $plan->name;
         }
         $start_date = Carbon::parse($start_date);
         $end_date = Carbon::parse($end_date);
@@ -40,7 +41,7 @@ class BraintreeController extends Controller
         // }
         // $token = $gateway->clientToken()->generate();
 
-        return view('admin.Braintree.braintree', compact('professionist', 'leadUnread', 'plans', 'token', 'differenzaOre'));
+        return view('admin.Braintree.braintree', compact('professionist', 'leadUnread', 'plans', 'token', 'differenzaOre', 'plan_name'));
 
     }
 
