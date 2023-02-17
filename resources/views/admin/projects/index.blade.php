@@ -6,7 +6,7 @@
 
         @if (!is_null($professionistID))
             <div class="text-center">
-                <a class="btn dev_btn mx-3 mb-3" href="{{ route('admin.projects.create') }}">Nuovo Progetto</a>
+                <a class="btn dev_btn mx-3 mb-5" href="{{ route('admin.projects.create') }}">Nuovo Progetto</a>
             </div>
             @if (count($projects) == 0)
                 <div>
@@ -51,9 +51,9 @@
                                         {{ $project->name }} </a></td>
                                 <td>{{ Str::limit($project->description, 30) }}</td>
                                 @if ($project->cover_image)
-                                    <td> <i class="fa-solid fa-circle-check text-success"></i></td>
+                                    <td> <i class="fa-solid fa-circle-check text-success ms-4"></i></td>
                                 @else
-                                    <td><i class="fa-solid fa-circle-xmark text-danger"></i></td>
+                                    <td><i class="fa-solid fa-circle-xmark text-danger ms-4"></i></td>
                                 @endif
 
                                 <td>{{ $project->created_at }}</td>

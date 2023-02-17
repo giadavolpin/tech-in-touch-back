@@ -128,7 +128,7 @@ class ProfessionistController extends Controller
      *
      * @param  \App\Models\Professionist  $professionist
      */
-    public function show(Professionist $professionist, Gateway $gateway)
+    public function show(Professionist $professionist)
     {
         $userId = Auth::id();
         $plans = Plan::all();

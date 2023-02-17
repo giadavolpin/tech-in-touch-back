@@ -11,7 +11,7 @@
                 <h3 class="text-center mb-4">Registra il tuo primo profilo</h3>
             </div>
         @else
-            <h1 class="text-center m-3 py-3 backoffice_title">Il mio Profilo</h1>
+            <h1 class="text-center m-3 py-3 backoffice_title">Panoramica profilo</h1>
 
 
             @if (session()->has('message'))
@@ -39,16 +39,9 @@
                         @foreach ($professionists as $professionist)
                             <tr>
 
-                                <td><a class="backoffice_title text-decoration-none"
-                                        href="{{ route('admin.professionists.show', $professionist->slug) }}">{{ $professionist->nickname }}</a>
-                                </td>
-                                <td>
-                                    <a class="text-black text-decoration-none"
-                                        href="{{ route('admin.professionists.show', $professionist->slug) }}">{{ $professionist->name }}</a>
-                                </td>
-                                <td><a class="text-black text-decoration-none"
-                                        href="{{ route('admin.professionists.show', $professionist->slug) }}">{{ $professionist->surname }}</a>
-                                </td>
+                                <td>{{ $professionist->nickname }}</td>
+                                <td>{{ $professionist->name }}</td>
+                                <td>{{ $professionist->surname }}</td>
                                 <td>{{ $professionist->job_address }}</td>
                                 <td class="text-center">
                                     {{ $professionist->technologies && count($professionist->technologies) > 0 ? count($professionist->technologies) : 0 }}
@@ -77,6 +70,11 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-end">
+                    <a class="btn dev_btn mt-4" href="{{ route('admin.professionists.show', $professionist->slug) }}">Torna
+                        al
+                        profilo</a>
+                </div>
             </div>
         @endif
 

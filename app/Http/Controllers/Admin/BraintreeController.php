@@ -81,10 +81,10 @@ class BraintreeController extends Controller
             $leads = Lead::where('professionist_id', $professionistID)->get();
             $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
 
-            return redirect()->route('admin.professionists.index', compact('professionists', 'leadUnread'));
+            return redirect()->route('admin.professionists.index', compact('professionists', 'leadUnread'))->with('message', "Ottima scelta, hai acquistato una sponsorizzazione!");
         } else {
 
-            dd('non funziona un cazzo');
+            dd('Pagamento Respinto');
         }
 
     }

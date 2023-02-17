@@ -45,7 +45,7 @@
             </div>
             <div class="col-lg-6 ps-5">
                 @if ($professionist->cv_path)
-                    <div class="mb-5">
+                    <div class="mb-5 ">
                         <img width="200" src="{{ asset('storage/' . $professionist->cv_path) }}">
                     </div>
                 @else
@@ -68,16 +68,16 @@
         </div>
 
         @if ($professionist->bio)
-            <div class="mt-5">
+            <div class="py-5">
                 <span class="text-center d-block py-3 backoffice_title">Descrizione</span>
-                <p class="fs-4 "><span class="me-3"><i
+                <p class="fs-4 text-center "><span class="me-3"><i
                             class="fa-solid fa-quote-left backoffice_title"></i></span>{!! $professionist->bio !!}<span
                         class="ms-3"><i class="fa-solid fa-quote-right backoffice_title"></i></span></p>
             </div>
         @endif
 
         <div class="text-end mt-5">
-            <a href="{{ route('admin.professionists.edit', $professionist->slug) }}" class="btn dev_btn">Gestisci
+            <a href="{{ route('admin.professionists.index') }}" class="btn dev_btn">Gestisci
                 Profilo</a>
         </div>
     </div>

@@ -12,6 +12,6 @@ class Plan extends Model
 
     public function professionists(): BelongsToMany
     {
-        return $this->belongsToMany(Professionist::class)->withPivot('plan_id', 'professionist_id', 'subscription_start', 'subscription_end');
+        return $this->belongsToMany(Professionist::class)->withPivot('id', 'plan_id', 'professionist_id', 'subscription_start', 'subscription_end');
     }
 }

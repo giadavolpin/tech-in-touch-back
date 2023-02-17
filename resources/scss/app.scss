@@ -233,11 +233,6 @@ a{
     background-color: $dev_bkg_blue;
     // transform: scale(.9);
 
-
-
-
-
-
     .box_register{
         position: relative;
         width: 580px;
@@ -645,11 +640,11 @@ a{
 }
 
 .prof-visible{
-    color: green;
+    color: $dev_dark_green;
 }
 
 .prof-invisible{
-    color: red;
+    color: $dev_pantone;
 }
 
 .unread_bold_text {
