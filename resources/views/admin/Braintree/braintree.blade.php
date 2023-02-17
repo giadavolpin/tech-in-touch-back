@@ -8,8 +8,10 @@
 
         @if ($differenzaOre > 0)
             <h2 class="text-center py-5">A quanto pare hai già un abbonamento attivo</h2>
-            <p class="fs-4 text-center">Il tuo abbonamento scade tra: <span
-                    class="mx-1 backoffice_title">{{ $differenzaOre }}</span>ore
+            <p class="fs-4 text-center">Il tuo abbonamento <span
+                    class="dev_btn p-1 rounded-2 fw-bold">{{ $plan_name }}</span>
+                scade
+                tra: <span class="mx-1 backoffice_title">{{ $differenzaOre }}</span>ore
             </p>
         @else
             <h4 class="py-5 text-center">Ecco i piani disponibili</h4>
