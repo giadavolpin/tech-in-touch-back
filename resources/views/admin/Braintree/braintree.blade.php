@@ -1,55 +1,66 @@
 @extends('layouts.admin')
 
 @section('content')
+
     <div class="subscription_plans py-5 container">
         <h3 class="text-center">Sponsorizzazioni</h3>
-        <h4 class="py-5 text-center">Ecco i piani disponibili</h4>
-        <div class="row gap-4 justify-content-center">
-            <div class="col-lg-3">
-                <div class="my_card">
-                    <h4>Standard</h4>
-                    <p>Compari in Homepage nella sezione dedicata ai nostri professionisti sponsorizzati </p>
-                    <p>24h di Sponsorizzazione</p>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="my_card">
-                    <h4>Plus</h4>
-                    <p>Compari in Homepage nella sezione dedicata ai nostri professionisti sponsorizzati </p>
-                    <p>48h di Sponsorizzazione</p>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="my_card">
-                    <h4>Ultra</h4>
-                    <p>Compari in Homepage nella sezione dedicata ai nostri professionisti sponsorizzati </p>
-                    <p>72h di Sponsorizzazione</p>
-                </div>
-            </div>
-
-        </div>
 
 
-        <div class="form_payment">
-            <h4 class="py-5 text-center">Scegli il piano ed entra a far parte dei nostri <span
-                    class="backoffice_title">Professionisti
-                    Sponsorizzati</span></h4>
-            <form action="{{ route('admin.braintree') }}" method="POST" id="payment-form" class="mt-3">
-                @csrf
-                {{-- SELECT PER I PIANI --}}
-                <select name="plan" id="plan">
-                    @foreach ($plans as $plan)
-                        <option value="{{ $plan->id }}">{{ $plan->name }}</option>
-                    @endforeach
-                    <input type="hidden" id="nonce" name="payment_method_nonce">
-                </select>
-                {{-- DIV PER L UI DI BRAINTREE --}}
-                <div id="dropin-container"></div>
-                {{-- <button type="submit" id="submit-button" class="button button--small button--green">Purchase</button> --}}
-                <input type="submit" class="btn dev_btn" />
-            </form>
-        </div>
+        @if ($differenzaOre > 0)
+            <h2 class="text-center py-5">A quanto pare hai già un abbonamento attivo</h2>
+            <p class="fs-4 text-center">Il tuo abbonamento scade tra: <span
+                    class="mx-1 backoffice_title">{{ $differenzaOre }}</span>ore
+            </p>
+        @else
+            <h4 class="py-5 text-center">Ecco i piani disponibili</h4>
+            <div class="row gap-4 justify-content-center">
+                <div class="col-lg-3">
+                    <div class="my_card">
+                        <h4>Standard</h4>
+                        <p>Compari in Homepage nella sezione dedicata ai nostri professionisti sponsorizzati </p>
+                        <p>24h di Sponsorizzazione</p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="my_card">
+                        <h4>Plus</h4>
+                        <p>Compari in Homepage nella sezione dedicata ai nostri professionisti sponsorizzati </p>
+                        <p>48h di Sponsorizzazione</p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="my_card">
+                        <h4>Ultra</h4>
+                        <p>Compari in Homepage nella sezione dedicata ai nostri professionisti sponsorizzati </p>
+                        <p>72h di Sponsorizzazione</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="form_payment">
+                <h4 class="py-5 text-center">Scegli il piano ed entra a far parte dei nostri <span
+                        class="backoffice_title">Professionisti
+                        Sponsorizzati</span></h4>
+                <form action="{{ route('admin.braintree') }}" method="POST" id="payment-form" class="mt-3">
+                    @csrf
+                    {{-- SELECT PER I PIANI --}}
+                    <select name="plan" id="plan">
+                        @foreach ($plans as $plan)
+                            <option value="{{ $plan->id }}">{{ $plan->name }}</option>
+                        @endforeach
+                        <input type="hidden" id="nonce" name="payment_method_nonce">
+                    </select>
+                    {{-- DIV PER L UI DI BRAINTREE --}}
+                    <div id="dropin-container"></div>
+                    {{-- <button type="submit" id="submit-button" class="button button--small button--green">Purchase</button> --}}
+                    <input type="submit" class="btn dev_btn" />
+                </form>
+            </div>
     </div>
+    @endif
+
     </div>
 
     <script src="https://js.braintreegateway.com/web/dropin/1.33.7/js/dropin.js"></script>

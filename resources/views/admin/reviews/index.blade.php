@@ -22,6 +22,7 @@
                         <tr>
                             <th scope="col">Voto</th>
                             <th scope="col">Commento</th>
+                            <th scope="col">Data recensione</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,6 +31,7 @@
                                 <td>
                                     {{ $review->vote_id }}</td>
                                 <td>{{ $review->comment }}</td>
+                                <td>{{ $review->created_at }}</td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\Lead;
 use App\Models\Professionist;
@@ -19,16 +20,27 @@ class BraintreeController extends Controller
     {
         $userId = Auth::id();
         $plans = Plan::all();
-        $token = $gateway->clientToken()->generate();
         $professionistID = Professionist::where('user_id', $userId)->value('id');
+        $professionist = Professionist::with('plans')->findOrFail($professionistID);
+        foreach ($professionist->plans as $plan) {
+            $start_date = $plan->pivot->subscription_start;
+            $end_date = $plan->pivot->subscription_end;
+        }
+        $start_date = Carbon::parse($start_date);
+        $end_date = Carbon::parse($end_date);
+
+        $differenzaOre = $end_date->diffInHours($start_date);
+        $token = $gateway->clientToken()->generate();
         $leads = Lead::where('professionist_id', $professionistID)->get();
         $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+        // dd($start_date, $end_date);
+
         // if ($professionist->user_id !== Auth::id()) {
         //     abort(403);
         // }
         // $token = $gateway->clientToken()->generate();
 
-        return view('admin.Braintree.braintree', compact('professionist', 'leadUnread', 'plans', 'token'));
+        return view('admin.Braintree.braintree', compact('professionist', 'leadUnread', 'plans', 'token', 'differenzaOre'));
 
     }
 
@@ -80,15 +92,15 @@ class BraintreeController extends Controller
 
             $date_start = new DateTime();
 
-            $date_start->add(new DateInterval("P".$durata."D"));
+            $date_start->add(new DateInterval("P" . $durata . "D"));
 
-            $subscription_end = date_format($date_start,"Y-m-d H:i:s");
+            $subscription_end = date_format($date_start, "Y-m-d H:i:s");
 
             // dd($subscription_end);
 
             // $professionist->plans()->attach($subscription_end);
 
-            $professionist->plans()->attach($plan_id, ["subscription_end"=>$subscription_end]);
+            $professionist->plans()->attach($plan_id, ["subscription_end" => $subscription_end]);
 
 
             // dd('Rollo Mattia aveva ragione');
