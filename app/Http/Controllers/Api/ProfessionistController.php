@@ -115,10 +115,20 @@ class ProfessionistController extends Controller
     {
 
         $proPlan = Professionist::with('plans')->get();
+        
+        
+        $data = DB::table('professionists')
+        ->join('plan_professionist', 'professionists.id', '=', 'plan_professionist.professionist_id')
+        ->distinct()
+        ->get();
+
+        $professionist = Professionist::whereHas('plans', function($query){
+            $query->select('professionist_id')->distinct();
+        })->inRandomOrder()->get();
 
         return response()->json([
             'success' => true,
-            'results' => [ $proPlan]
+            'results' => [ $professionist]
         ]);
 
 

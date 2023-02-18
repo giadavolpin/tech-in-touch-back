@@ -69,8 +69,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
-
+    'timezone' => 'Europe/Rome',
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
