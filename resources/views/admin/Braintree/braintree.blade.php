@@ -11,7 +11,7 @@
             <p class="fs-4 text-center">Il tuo abbonamento <span
                     class="dev_btn p-1 rounded-2 fw-bold">{{ $plan_name }}</span>
                 scade
-                tra: <span class="mx-1 backoffice_title">{{ $differenzaOre }}</span>ore
+                tra: <span class="mx-1 backoffice_title">{{ $differenzaOre }}</span>
             </p>
         @else
             <h4 class="py-5 text-center">Ecco i piani disponibili</h4>
