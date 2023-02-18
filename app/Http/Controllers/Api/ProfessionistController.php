@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Professionist;
 use App\Models\Technology;
 use App\Models\Project;
-
+use App\Models\Review;
+use App\Models\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -87,9 +88,10 @@ class ProfessionistController extends Controller
     {
         $professionists = Professionist::all();
         $technologies = Technology::all();
+        $votes = Vote::all();
         return response()->json([
             'success' => true,
-            'results' => [$technologies, $professionists]
+            'results' => [$technologies, $professionists, $votes]
         ]);
     }
 
