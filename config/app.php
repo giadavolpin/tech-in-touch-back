@@ -70,7 +70,6 @@ return [
     */
 
     'timezone' => 'Europe/Rome',
-
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
