@@ -42,6 +42,11 @@ Route::middleware(['auth', 'verified'])
         Route::resource('technologies', TechnologyController::class)->parameters(['technologies' => 'technologies:slug'])->except('show', 'create', 'edit');
         Route::resource('reviews', ReviewController::class)->parameters(['reviews' => 'reviews:id'])->except('show', 'create', 'edit');
         Route::get('Braintree', [BraintreeController::class, 'generate'])->name('generatetoken');
+
+        // Questa è la rotta post per inviare da Blade il valore booleano sponsor_end
+        // =====================================================================================
+        Route::post('Braintree', [BraintreeController::class, 'riceviValore'])->name('riceviValore');
+        // ======================================================================================
         Route::post('process-payment', [BraintreeController::class, 'processPayment'])->name('braintree');
         Route::resource('payments', PlanController::class)->except('create', 'edit');
     });

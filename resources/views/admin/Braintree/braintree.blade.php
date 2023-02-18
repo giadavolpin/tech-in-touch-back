@@ -5,14 +5,18 @@
     <div class="subscription_plans py-5 container">
         <h3 class="text-center">Sponsorizzazioni</h3>
 
+        {{-- If DA IMPOSTARE CON I VALORI DI SPONSOR END --}}
 
-        @if (isset($differenzaOre) && $differenzaOre > 0)
+        {{-- SE È FALSO APPARE QUESTO --}}
+        @if (isset($end_date))
             <h2 class="text-center py-5">A quanto pare hai già un abbonamento attivo</h2>
             <p class="fs-4 text-center">Il tuo abbonamento <span
                     class="dev_btn p-1 rounded-2 fw-bold">{{ $plan_name }}</span>
                 scade
-                tra: <span class="mx-1 backoffice_title">{{ $differenzaOre }}</span>
+                tra: <span class="mx-1 backoffice_title" id="timer"></span>
             </p>
+
+            {{-- SE È VERO APPARE QUESTA PER RICOMPRARE UNA SPONSOPRIZZAZIONE --}}
         @else
             <h4 class="py-5 text-center">Ecco i piani disponibili</h4>
             <div class="row gap-4 justify-content-center">
@@ -67,24 +71,55 @@
 
     <script src="https://js.braintreegateway.com/web/dropin/1.33.7/js/dropin.js"></script>
     <script>
-        // var button = document.querySelector('#submit-button');
+        //=====================   FUNZIONE PER IL TIMER DATE=============================
+        var endDate = new Date('{{ $end_date }}')
+        var sponsor_end = false;
 
-        // braintree.dropin.create({
-        //     authorization: '{{ $token }}',
-        //     container: '#dropin-container',
-        //     card: {
-        //         cardholderName: true,
-        //     }
-        // }, function(createErr, instance) {
-        //     button.addEventListener('click', function(event) {
-        //         // event.preventDefault();
-        //         instance.requestPaymentMethod(function(err, payload) {
-        //             document.getElementById('nonce').value = payload.nonce;
-        //             // console.log('sono partito')
-        //         });
-        //     });
-        // });
+        // console.log(endDate);
+        var updateTimer = function() {
+            var now = Date.now();
+            var timediff = Math.round((endDate.getTime() - now) / (1000 * 60));
 
+            if (timediff <= 0) {
+                sponsor_end = true;
+                clearInterval(timerInterval);
+                console.log(sponsor_end);
+                fetch('Braintree', {
+                        method: 'POST',
+                        body: 'sponsor_endPHP=' + sponsor_end,
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                                'content')
+                        }
+                    }).then(response => {
+                        if (response.ok) {
+                            console.log('è andata bene')
+                            console.log(response);
+
+                        } else {
+                            console.log('è andata male')
+                        }
+                    })
+                    .catch(error => {
+                        console.log('errore nella richiesta:', error);
+                    });
+            } else {
+                sponsor_end = false;
+                var diffinHours = Math.floor(timediff / 60);
+                var diffinMins = timediff % 60;
+                var timerString = diffinHours + ' ore ' + diffinMins + ' minuti ';
+                document.getElementById('timer').innerHTML = timerString;
+            }
+        };
+
+        var timerInterval = setInterval(updateTimer, 1000);
+
+
+
+
+
+        // FUNZIONE PER IL FORM DI BRAINTREE
         const form = document.getElementById('payment-form');
 
         braintree.dropin.create({

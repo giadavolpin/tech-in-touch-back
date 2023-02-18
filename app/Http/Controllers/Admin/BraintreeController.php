@@ -16,6 +16,20 @@ use Nette\Utils\DateTime;
 
 class BraintreeController extends Controller
 {
+    // FUNZIONE DI PROVA PER PRENDERE I VALORE BOOLEANO SPONSOR END
+    // QUA IL VALORE VIENE PRESO CORRETTAMENTE MA VA IN ERRORE SE SI RITORNA LA VIEW
+    public function riceviValore(Request $request)
+    {
+        $sponsor_endPHP = $request->input('sponsor_endPHP');
+        ($sponsor_endPHP);
+        // return view('admin.Braintree.braintree', ['sponsor_endPHP' => $sponsor_endPHP]);
+        return $sponsor_endPHP;
+    }
+
+
+    //  FUNZIONE PER GENERARE IL TOKERN DI BRAINTREE E TORNARE LA VIEW PER PAGARE
+    // HO PROVATO A PRENDERE QUI DENTRO IL VALORE BOOLEANO MA TORNA NULL
+    // NON FARE CASINO QUI DENTRO!!!!!!!
     public function generate(Professionist $professionist, Request $request, Gateway $gateway)
     {
         $userId = Auth::id();
@@ -25,6 +39,9 @@ class BraintreeController extends Controller
         $token = $gateway->clientToken()->generate();
         $leads = Lead::where('professionist_id', $professionistID)->get();
         $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+
+
+
 
         foreach ($professionist->plans as $plan) {
             $start_date = $plan->pivot->subscription_start;
@@ -38,13 +55,22 @@ class BraintreeController extends Controller
             $now = Carbon::now('Europe/Rome');
             $diffInMinutes = $end_date->diffInRealMinutes($now);
             $differenzaOre = intdiv($diffInMinutes, 60) . ' ore ' . ' e ' . $diffInMinutes % 60 . ' ' . 'minuti';
+            // $sponsor_endPHP = $request->input('sponsor_endPHP');
+            // $json = $request->getContent();
+            // $data = json_decode($json, true);
+            // $sponsor_endPHP = $data['sponsor_endPHP'];
 
-            return view('admin.Braintree.braintree', compact('professionist', 'leadUnread', 'plans', 'token', 'differenzaOre', 'plan_name'));
+
+            // dd($sponsor_endPHP);
+
+
+            return view('admin.Braintree.braintree', compact('professionist', 'leadUnread', 'plans', 'token', 'end_date', 'plan_name'));
         } else {
             return view('admin.Braintree.braintree', compact('professionist', 'leadUnread', 'plans', 'token'));
         }
     }
 
+    //FUNZIONE CHE GENERA IL PAGAMENTO ====== NON TOCCARE ======
     public function processPayment(Request $request, Gateway $gateway)
     {
 
