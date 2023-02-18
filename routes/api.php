@@ -25,6 +25,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('professionists', [ProfessionistController::class, 'index']);
 Route::get('professionists', [ProfessionistController::class, 'index']);
 
+
+Route::get('professionists', [ProfessionistController::class, 'proPlan']);
+
 Route::post('toprated', [ProfessionistController::class, 'avgVote']);
 
 
