@@ -40,7 +40,7 @@ Route::middleware(['auth', 'verified'])
         Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
         Route::resource('leads', LeadController::class)->parameters(['leads' => 'lead:id']);
         Route::resource('technologies', TechnologyController::class)->parameters(['technologies' => 'technologies:slug'])->except('show', 'create', 'edit');
-        Route::resource('reviews', ReviewController::class)->parameters(['reviews' => 'reviews:id'])->except('show', 'create', 'edit');
+        Route::resource('reviews', ReviewController::class)->parameters(['reviews' => 'review:id'])->except( 'create', 'edit');
         Route::get('Braintree', [BraintreeController::class, 'generate'])->name('generatetoken');
         Route::post('process-payment', [BraintreeController::class, 'processPayment'])->name('braintree');
         Route::resource('payments', PlanController::class)->except('create', 'edit');

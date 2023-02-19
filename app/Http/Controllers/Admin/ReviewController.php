@@ -28,7 +28,19 @@ class ReviewController extends Controller
     }
 
 
-   
+    public function show(Review $review){
+        $userId = Auth::id();
+
+        $professionistID = Professionist::where('user_id', $userId)->value('id');
+
+        //dd($review);
+       
+       $leads = Lead::where('professionist_id', $professionistID)->get();
+
+       $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
+        return view('admin.reviews.show', compact('review','leadUnread'));
+
+    }
 
    
 }

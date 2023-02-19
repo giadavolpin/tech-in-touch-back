@@ -32,7 +32,7 @@ class LeadController extends Controller
         $letto['read'] = 1;
         $lead->update($letto);
         $leads = Lead::where('professionist_id', $professionistID)->get();
-       // dd($leads);
+        // dd($lead);
 
        $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
         return view('admin.leads.show', compact('lead','leadUnread'));

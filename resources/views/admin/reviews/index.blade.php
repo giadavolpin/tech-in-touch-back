@@ -20,6 +20,7 @@
                 <table class="my-table table table-striped">
                     <thead class="blue_table_row">
                         <tr>
+                            <th scope="col"></th>
                             <th scope="col">Voto</th>
                             <th scope="col">Commento</th>
                             <th scope="col">Data ricezione</th>
@@ -29,6 +30,12 @@
                     <tbody>
                         @foreach ($reviews as $review)
                             <tr>
+                                <td class="text-center">
+                                    <a class="btn dev_btn" href="{{ route('admin.reviews.show', $review->id) }}"
+                                        title="Vedi messaggio">
+                                        Leggi
+                                    </a>
+                                </td>
                                 <td>
                                     {{ $review->vote_id }}</td>
                                 <td>{{ Str::limit($review->comment, 35) }}</td>
