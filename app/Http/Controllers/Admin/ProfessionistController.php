@@ -198,7 +198,6 @@ class ProfessionistController extends Controller
         } 
 
 
-
         $professionist->nickname = $data['nickname'];
         // $professionist->user_id = $data['user_id'];
         $professionist->slug = $data['slug'];
@@ -207,10 +206,10 @@ class ProfessionistController extends Controller
         $professionist->job_address = $data['job_address'];
         $professionist->phone_number = $data['phone_number'];
         $professionist->bio = $data['bio'];
-        if(!isEmpty($request->profile_image)){
+        if(!empty($request->profile_image)){
             $professionist->profile_image = $data['profile_image'];
         }
-        if(!isEmpty($request->cv_path)){
+        if(!empty($request->cv_path)){
             $professionist->cv_path = $data['cv_path'];
         }
         $professionist->linkedin = $data['linkedin'];
