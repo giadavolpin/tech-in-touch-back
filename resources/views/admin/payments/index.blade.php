@@ -37,7 +37,6 @@
                             <td>{{ $plan->price }} {{ $plan->price_sign }}</td>
                             <td>{{ $plan->pivot->subscription_start }}</td>
                             <td>{{ $plan->pivot->subscription_end }}</td>
-
                         </tr>
                     @endforeach
                 </tbody>
