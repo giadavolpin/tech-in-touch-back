@@ -9,6 +9,7 @@
                 <div class="col-lg-3">
                     <div class="my_card">
                         <h4>Standard</h4>
+                        <h5 class="prof-invisible">2.99€</h5>
                         <p>Compari in Homepage nella sezione dedicata ai nostri professionisti sponsorizzati </p>
                         <p>24h di Sponsorizzazione</p>
                     </div>
@@ -16,6 +17,7 @@
                 <div class="col-lg-3">
                     <div class="my_card">
                         <h4>Plus</h4>
+                        <h5>5.99€</h5>
                         <p>Compari in Homepage nella sezione dedicata ai nostri professionisti sponsorizzati </p>
                         <p>48h di Sponsorizzazione</p>
                     </div>
@@ -23,6 +25,7 @@
                 <div class="col-lg-3">
                     <div class="my_card">
                         <h4>Ultra</h4>
+                        <h5>9.99€</h5>
                         <p>Compari in Homepage nella sezione dedicata ai nostri professionisti sponsorizzati </p>
                         <p>72h di Sponsorizzazione</p>
                     </div>

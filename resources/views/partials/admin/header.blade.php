@@ -1,6 +1,6 @@
 <!-- Navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark ">
-    <div class="container-fluid justify-content-between">
+    <div class="container">
         <!-- Left elements -->
         <div class="d-flex">
             <!-- Brand -->
@@ -68,7 +68,7 @@
         <!-- Center elements -->
 
         <!-- Right elements -->
-        <ul class="navbar-nav flex-row mx-3">
+        <ul class="navbar-nav flex-row mx-4">
             {{-- <li class="nav-item me-3 me-lg-1">
           <a class="nav-link d-sm-flex align-items-sm-center" href="#">
             <img

@@ -11,7 +11,7 @@
     <div class="mt-3 px-5">
         <h1 class="my-5 backoffice_title">{{ $professionist->name }} {{ $professionist->surname }}</h1>
         <div class="row border-bottom">
-            <div class="col-lg-6 border-end d-flex flex-column gap-3">
+            <div class="col-lg-6 col-sm-12 border-end d-flex flex-column gap-3">
                 @if ($professionist->profile_image)
                     <div class="py-4">
                         <img width="300" src="{{ asset('storage/' . $professionist->profile_image) }}">
@@ -20,32 +20,30 @@
                     <img class="d-block mb-2" id="uploadPreview" width="300" src="https://via.placeholder.com/300x200">
                 @endif
                 @if ($professionist->nickname)
-                    <h2><span class="fs-4 me-3">Nickname:</span>{{ $professionist->nickname }}
+                    <h2><span class="fs-4 me-3 prof-invisible">Nickname:</span>{{ $professionist->nickname }}
                     </h2>
                 @endif
                 @if ($professionist->job_address)
-                    <h3> Indirizzo : {{ $professionist->job_address }}</h3>
+                    <h3> <span class="fs-4 me-3 prof-invisible">Indirizzo:</span>{{ $professionist->job_address }}</h3>
                 @endif
 
                 @if ($professionist->phone_number)
                     <h3>
-                        Telefono : {{ $professionist->phone_number }}
+                        <span class="fs-4 me-3 prof-invisible">Telefono:</span>{{ $professionist->phone_number }}
                     </h3>
                 @endif
                 @if ($professionist->technologies && count($professionist->technologies) > 0)
-                    <div class="d-flex mb-4">
-                        <h3><span>I miei linguaggi:</span></h3>
-                        <ul class="list-unstyled d-flex gap-2 ms-3">
+                    <div class="d-flex gap-2 mb-4">
+                        <span class="fs-4 me-3 prof-invisible">Tecnologie</span>
+                        <ul class="list-unstyled gap-2 ms-3 pb-2 fs-5">
                             @foreach ($professionist->technologies as $technology)
-                                <h3>
-                                    <li>/ {{ $technology->name }}</li>
-                                </h3>
+                                <li>- {{ $technology->name }}</li>
                             @endforeach
                         </ul>
                     </div>
                 @endif
             </div>
-            <div class="col-lg-6 ps-5">
+            <div class="col-lg-6 col-sm-12 py-5 ps-5">
                 @if ($professionist->cv_path)
                     <div class="mb-5 ">
                         <img width="200" src="{{ asset('storage/' . $professionist->cv_path) }}">

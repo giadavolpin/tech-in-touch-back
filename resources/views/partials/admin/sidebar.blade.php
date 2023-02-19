@@ -1,8 +1,9 @@
-<div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 " style="width: 230px;">
+<div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 ">
     <a href="http://localhost:5174/" id="logo-sidebar"
-        class="d-flex align-items-center  mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        class="d-flex align-items-center  mb-3 mx-2 text-white text-decoration-none">
 
-        <span class="fw-bolder">TechInTouch</span>
+        <span class="fw-bolder d-none d-md-block">TechInTouch</span>
+        <span class="d-block d-md-none"><i class="fa-solid fa-house"></i></span>
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
@@ -20,7 +21,7 @@
                 aria-current="page">
                 <i class="fa-solid fa-user mx-1"></i>
 
-                Profilo
+                <span class="d-none d-md-inline-block">Profilo</span>
             </a>
         </li>
         <li class="nav-item">
@@ -29,7 +30,7 @@
                 aria-current="page">
                 <i class="fa-solid fa-diagram-project mx-1"></i>
 
-                Progetti
+                <span class="d-none d-md-inline-block">Progetti</span>
             </a>
         </li>
         <li class="nav-item">
@@ -39,7 +40,7 @@
                 <i class="fa-solid fa-envelope mx-1"></i>
 
 
-                Messaggi
+                <span class="d-none d-md-inline-block">Messaggi</span>
             </a>
         </li>
         <li class="nav-item">
@@ -49,7 +50,7 @@
 
                 <i class="fa-solid fa-book mx-1"></i>
 
-                Recensioni
+                <span class="d-none d-md-inline-block">Recensioni</span>
             </a>
         </li>
         <li class="nav-item">
@@ -59,7 +60,7 @@
 
                 <i class="fa-solid fa-rocket mx-1"></i>
 
-                Sponsorizzazioni
+                <span class="d-none d-md-inline-block">Sponsorizzazioni</span>
             </a>
         </li>
         <li class="nav-item">
@@ -69,7 +70,7 @@
 
                 <i class="fa-solid fa-credit-card mx-1"></i>
 
-                Pagamenti
+                <span class="d-none d-md-inline-block">Pagamenti</span>
             </a>
         </li>
 

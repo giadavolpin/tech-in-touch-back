@@ -78,7 +78,7 @@ h6{
     display: flex;
     overflow: hidden;
     #wrapper-left {
-        width: 230px;
+        max-width: 230px;
         height: 100vh;
 
 
@@ -105,7 +105,8 @@ h6{
     }
 
     #wrapper-right {
-        width: calc(100% - 230px);
+        // width: calc(100% - 230px);
+        width: 100%;
         height: 100vh;
 
         .navbar {
@@ -673,20 +674,20 @@ a{
 
 }
 #sponsorship_pubblicità {
-    background: linear-gradient(40deg, $dev_light_blue, $dev_pink);
+    background: linear-gradient(140deg, $dev_bkg_purple, $dev_pink);
     margin-top: 4rem;
     h2 {
         font-size: 3.5rem;
         margin-bottom: 4rem;
-        color: $dev_yellow;
+        color: $dev_orange;
     }
     p {
         font-size: 2rem;
         text-align: center;
-        color: $dev_white;
+        color: $dev_light_gray;
     }
     a {
-        background-color: $dev_yellow;
+        background-color: $dev_orange;
     }
     span {
         font-weight: bold;
@@ -719,17 +720,20 @@ a{
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        background: linear-gradient(70deg, $dev_dark_blue, $dev_pink);
+        background: linear-gradient(145deg, $dev_bkg_purple, $dev_pink);
 
         h4 {
-            color: $dev-white;
+            color: $dev_matrix_green;
+        }
+        h5{
+            color: $dev_light_blue;
         }
         p {
-            color: $dev_white;
+            color: $dev_orange;
             text-align: center;
         }
         p:nth-child(3){
-            color: $dev_orange;
+            color: $dev_light_gray;
         }
     }
 }
