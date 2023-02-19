@@ -38,7 +38,7 @@ class UpdateProfessionistRequest extends FormRequest
             'phone_number' => ['nullable', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10', Rule::unique('professionists')->ignore($this->professionist)],
 
             'bio' => ['nullable'],
-            'profile_image' => ['nullable', 'image'],
+            'profile_image' => ['nullable'],
             'cv_path' => ['nullable'],
             'linkedin' => ['nullable', 'string'],
             'github' => ['nullable', 'string'],

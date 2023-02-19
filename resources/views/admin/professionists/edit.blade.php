@@ -108,14 +108,24 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div> --}}
-
-                            <div class="position-relative ">
-                                <div class="img_preview mb-3 ">
-                                    <img class="d-block img-fluid " id="uploadPreview"
-                                        src="https://via.placeholder.com/300x200">
+                            @if ($professionist->profile_image)
+                                <div class="position-relative ">
+                                    <div class="img_preview mb-3 ">
+                                        <img class="d-block img-fluid " id="uploadPreview"
+                                            src="{{ asset('storage/' . $professionist->profile_image) }}">
+                                    </div>
+                                    <span id="my_reset_btn" class="d-none"><i class="fa-solid fa-circle-xmark"></i></span>
                                 </div>
-                                <span id="my_reset_btn" class="d-none"><i class="fa-solid fa-circle-xmark"></i></span>
-                            </div>
+                            @else
+                                <div class="position-relative ">
+                                    <div class="img_preview mb-3 ">
+                                        <img class="d-block img-fluid " id="uploadPreview"
+                                            src="https://via.placeholder.com/300x200">
+                                    </div>
+                                    <span id="my_reset_btn" class="d-none"><i class="fa-solid fa-circle-xmark"></i></span>
+                                </div>
+                            @endif
+
 
                             <div>
 
@@ -134,45 +144,77 @@
                         <label for="cv_path" class="form-label">Inserisci CV</label>
                         {{-- <input type="file" name="cv_path" id="create_cv_path"
                             class="form-control  @error('cv_path') is-invalid @enderror"> --}}
-                        <div class=" mb-3 w-50">
+                        @if ($professionist->cv_path)
+                            <div class=" mb-3 w-50">
 
-                            {{-- @if (!$professionist->cv_path)
-                                <img class="d-block mb-2" id="CVPreview" width="100"
-                                    src="https://via.placeholder.com/300x200">
-                            @else
-                                <img class="d-block mb-2" id="CVPreview" width="100"
-                                    src="{{ asset('storage/' . $professionist->cv_path) }}">
-                                <span onclick="removeCV()" id="remove_cv"><i class="fa-solid fa-circle-xmark"></i></span>
-                            @endif
-                            <div>
-
-                                <input type="file" name="cv_path" id="create_cv_path"
-                                    class="form-control @error('cv_path') is-invalid @enderror"
-                                    value="{{ old('cv_path', $professionist->cv_path) }}">
-                                @error('cv_path')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div> --}}
-                            <div class="position-relative ">
-                                <div class="img_preview mb-3 ">
-                                    <img class="d-block img-fluid " id="CV_Preview"
+                                {{-- @if (!$professionist->cv_path)
+                                    <img class="d-block mb-2" id="CVPreview" width="100"
                                         src="https://via.placeholder.com/300x200">
+                                @else
+                                    <img class="d-block mb-2" id="CVPreview" width="100"
+                                        src="{{ asset('storage/' . $professionist->cv_path) }}">
+                                    <span onclick="removeCV()" id="remove_cv"><i class="fa-solid fa-circle-xmark"></i></span>
+                                @endif
+                                <div>
+    
+                                    <input type="file" name="cv_path" id="create_cv_path"
+                                        class="form-control @error('cv_path') is-invalid @enderror"
+                                        value="{{ old('cv_path', $professionist->cv_path) }}">
+                                    @error('cv_path')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div> --}}
+                                <div class="position-relative ">
+                                    <div class="img_preview mb-3 ">
+                                        <img class="d-block img-fluid " id="CV_Preview"
+                                            src="{{ asset('storage/' . $professionist->cv_path) }}">
+                                    </div>
+                                    <span id="cv_reset_btn" class="d-none"><i
+                                            class="fa-solid fa-circle-xmark"></i></span>
                                 </div>
-                                <span id="cv_reset_btn" class="d-none"><i class="fa-solid fa-circle-xmark"></i></span>
-                            </div>
-                            <div>
+                            @else
+                                <div class=" mb-3 w-50">
 
-                                <input type="file" name="cv_path" id="create_cv_path" accept="image/*"
-                                    onchange="showCVPreview(event)"
-                                    class="form-control  @error('cv_path') is-invalid @enderror">
-                                @error('cv_path')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
+                                    {{-- @if (!$professionist->cv_path)
+                                    <img class="d-block mb-2" id="CVPreview" width="100"
+                                        src="https://via.placeholder.com/300x200">
+                                @else
+                                    <img class="d-block mb-2" id="CVPreview" width="100"
+                                        src="{{ asset('storage/' . $professionist->cv_path) }}">
+                                    <span onclick="removeCV()" id="remove_cv"><i class="fa-solid fa-circle-xmark"></i></span>
+                                @endif
+                                <div>
+    
+                                    <input type="file" name="cv_path" id="create_cv_path"
+                                        class="form-control @error('cv_path') is-invalid @enderror"
+                                        value="{{ old('cv_path', $professionist->cv_path) }}">
+                                    @error('cv_path')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div> --}}
+                                    <div class="position-relative ">
+                                        <div class="img_preview mb-3 ">
+                                            <img class="d-block img-fluid " id="CV_Preview"
+                                                src="https://via.placeholder.com/300x200">
+                                        </div>
+                                        <span id="cv_reset_btn" class="d-none"><i
+                                                class="fa-solid fa-circle-xmark"></i></span>
+                                    </div>
+                        @endif
 
+                        <div>
+
+                            <input type="file" name="cv_path" id="create_cv_path" accept="image/*"
+                                onchange="showCVPreview(event)"
+                                class="form-control  @error('cv_path') is-invalid @enderror">
+                            @error('cv_path')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
 
-                        {{-- <div class="mb-3 w-25">
+                    </div>
+
+                    {{-- <div class="mb-3 w-25">
                             <label for="category_id" class="form-label">Select Techonologies</label>
                             <select name="category_id" id="category_id"
                                 class="form-control @error('category_id') is-invalid @enderror" required>
@@ -189,72 +231,72 @@
                         </div> --}}
 
 
-                        <div class="py-5">
-                            {{-- <label for="tags" class="form-label">Select Tags</label> <br> --}}
-                            <div class="mb-3"><strong>*</strong>Seleziona le tecnologie che utilizzi</div>
-                            @foreach ($technologies as $technology)
-                                <div class="form-check form-check-inline">
+                    <div class="py-5">
+                        {{-- <label for="tags" class="form-label">Select Tags</label> <br> --}}
+                        <div class="mb-3"><strong>*</strong>Seleziona le tecnologie che utilizzi</div>
+                        @foreach ($technologies as $technology)
+                            <div class="form-check form-check-inline">
 
-                                    @if (old('technologies'))
-                                        <input type="checkbox" class="form-check-input" id="{{ $technology->slug }}"
-                                            name="technologies[]" value="{{ $technology->id }}"
-                                            {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
-                                    @else
-                                        <input type="checkbox" class="form-check-input" id="{{ $technology->slug }}"
-                                            name="technologies[]" value="{{ $technology->id }}"
-                                            {{ $professionist->technologies->contains($technology) ? 'checked' : '' }}>
-                                    @endif
+                                @if (old('technologies'))
+                                    <input type="checkbox" class="form-check-input" id="{{ $technology->slug }}"
+                                        name="technologies[]" value="{{ $technology->id }}"
+                                        {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+                                @else
+                                    <input type="checkbox" class="form-check-input" id="{{ $technology->slug }}"
+                                        name="technologies[]" value="{{ $technology->id }}"
+                                        {{ $professionist->technologies->contains($technology) ? 'checked' : '' }}>
+                                @endif
 
-                                    <label class="form-check-label"
-                                        for="{{ $technology->slug }}">{{ $technology->name }}</label>
-                                </div>
-                            @endforeach
-                            @error('technologies')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-
-                        <div class="mb-3">
-                            <label for="linkedin" class="form-label">linkedin</label>
-                            <input type="text" class="form-control @error('linkedin') is-invalid @enderror"
-                                id="linkedin" name="linkedin" value="{{ old('linkedin', $professionist->linkedin) }}">
-                            @error('linkedin')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                            {{-- <div class="form-text">*Minimo 3 caratteri e massimo 15 </div> --}}
-                        </div>
-                        <div class="mb-3">
-                            <label for="github" class="form-label">github</label>
-                            <input type="text" class="form-control @error('github') is-invalid @enderror"
-                                id="github" name="github" value="{{ old('github', $professionist->github) }}">
-                            @error('github')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                            {{-- <div class="form-text">*Minimo 3 caratteri e massimo 15 </div> --}}
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="visible" class="form-label "><strong>*</strong>Scegli la visibilità del tuo
-                                profilo</label>
-                            <select name="visible" id="visible"
-                                class="w-25 form-control @error('visible') is-invalid @enderror" required>
-                                <option value="" selected>Seleziona un opzione</option>
-                                <option value="0"
-                                    {{ $professionist->visible == old('visible', $professionist->visible) ? 'selected' : '' }}>
-                                    Invisibile</option>
-                                <option value="1"
-                                    {{ $professionist->visible == old('visible', $professionist->visible) ? 'selected' : '' }}>
-                                    Visibile</option>
-
-                            </select>
-
-                        </div>
+                                <label class="form-check-label"
+                                    for="{{ $technology->slug }}">{{ $technology->name }}</label>
+                            </div>
+                        @endforeach
+                        @error('technologies')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
 
 
+                    <div class="mb-3">
+                        <label for="linkedin" class="form-label">linkedin</label>
+                        <input type="text" class="form-control @error('linkedin') is-invalid @enderror" id="linkedin"
+                            name="linkedin" value="{{ old('linkedin', $professionist->linkedin) }}">
+                        @error('linkedin')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        {{-- <div class="form-text">*Minimo 3 caratteri e massimo 15 </div> --}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="github" class="form-label">github</label>
+                        <input type="text" class="form-control @error('github') is-invalid @enderror" id="github"
+                            name="github" value="{{ old('github', $professionist->github) }}">
+                        @error('github')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        {{-- <div class="form-text">*Minimo 3 caratteri e massimo 15 </div> --}}
+                    </div>
 
-                        <button type="submit" class="btn dev_btn mt-4">Invia</button>
-                        {{-- <button type="reset" class="btn btn-light border-dark">Reset</button> --}}
+                    <div class="mb-3">
+                        <label for="visible" class="form-label "><strong>*</strong>Scegli la visibilità del tuo
+                            profilo</label>
+                        <select name="visible" id="visible"
+                            class="w-25 form-control @error('visible') is-invalid @enderror" required>
+                            <option value="" selected>Seleziona un opzione</option>
+                            <option value="0"
+                                {{ $professionist->visible == old('visible', $professionist->visible) ? 'selected' : '' }}>
+                                Invisibile</option>
+                            <option value="1"
+                                {{ $professionist->visible == old('visible', $professionist->visible) ? 'selected' : '' }}>
+                                Visibile</option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <button type="submit" class="btn dev_btn mt-4">Invia</button>
+                    {{-- <button type="reset" class="btn btn-light border-dark">Reset</button> --}}
                 </form>
             </div>
         </div>

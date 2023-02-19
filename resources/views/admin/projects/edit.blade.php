@@ -71,13 +71,24 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div> --}}
-                            <div class="position-relative ">
-                                <div class="img_preview mb-3 ">
-                                    <img class="d-block img-fluid " id="uploadPreview"
-                                        src="https://via.placeholder.com/300x200">
+                            @if ($project->cover_image)
+                                <div class="position-relative ">
+                                    <div class="img_preview mb-3 ">
+                                        <img class="d-block img-fluid " id="uploadPreview"
+                                            src="{{ asset('storage/' . $project->cover_image) }}">
+                                    </div>
+                                    <span id="my_reset_btn" class="d-none"><i class="fa-solid fa-circle-xmark"></i></span>
                                 </div>
-                                <span id="my_reset_btn" class="d-none"><i class="fa-solid fa-circle-xmark"></i></span>
-                            </div>
+                            @else
+                                <div class="position-relative ">
+                                    <div class="img_preview mb-3 ">
+                                        <img class="d-block img-fluid " id="uploadPreview"
+                                            src="https://via.placeholder.com/300x200">
+                                    </div>
+                                    <span id="my_reset_btn" class="d-none"><i class="fa-solid fa-circle-xmark"></i></span>
+                                </div>
+                            @endif
+
 
                             <div>
 

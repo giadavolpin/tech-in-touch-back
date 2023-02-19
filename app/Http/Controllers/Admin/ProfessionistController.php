@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Lead;
 use Braintree\Gateway;
 
+use function PHPUnit\Framework\isEmpty;
+
 class ProfessionistController extends Controller
 {
     /**
@@ -184,17 +186,16 @@ class ProfessionistController extends Controller
                 Storage::delete($professionist->profile_image);
             }
 
-            $path = Storage::put('professionist_images', $request->profile_image);
-            $data['profile_image'] = $path;
-        } else {
-            $data['profile_image'] = '';
+            $path_img = Storage::put('professionist_images', $request->profile_image);
+            $data['profile_image'] = $path_img;
         }
         if ($request->hasFile('cv_path')) {
-            $path = Storage::put('professionists_images', $request->cv_path);
-            $data['cv_path'] = $path;
-        } else {
-            $data['cv_path'] = '';
-        }
+            if ($professionist->cv_path) {
+                Storage::delete($professionist->cv_path);
+            }
+            $path_cv = Storage::put('professionist_images', $request->cv_path);
+            $data['cv_path'] = $path_cv;
+        } 
 
 
 
@@ -206,16 +207,18 @@ class ProfessionistController extends Controller
         $professionist->job_address = $data['job_address'];
         $professionist->phone_number = $data['phone_number'];
         $professionist->bio = $data['bio'];
-        $professionist->profile_image = $data['profile_image'];
-        $professionist->cv_path = $data['cv_path'];
+        if(!isEmpty($request->profile_image)){
+            $professionist->profile_image = $data['profile_image'];
+        }
+        if(!isEmpty($request->cv_path)){
+            $professionist->cv_path = $data['cv_path'];
+        }
         $professionist->linkedin = $data['linkedin'];
         $professionist->github = $data['github'];
         $professionist->visible = $data['visible'];
 
-
-
         $professionist->update();
-
+        // dd($professionist);
         if ($request->has('technologies')) {
             $professionist->technologies()->sync($request->technologies);
         } else {

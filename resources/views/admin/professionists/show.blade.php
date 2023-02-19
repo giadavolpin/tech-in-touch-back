@@ -34,10 +34,12 @@
                 @endif
                 @if ($professionist->technologies && count($professionist->technologies) > 0)
                     <div class="d-flex mb-4">
-                        <span>I miei linguaggi:</span>
+                        <h3><span>I miei linguaggi:</span></h3>
                         <ul class="list-unstyled d-flex gap-2 ms-3">
                             @foreach ($professionist->technologies as $technology)
-                                <li>{{ $technology->name }}</li>
+                                <h3>
+                                    <li>/ {{ $technology->name }}</li>
+                                </h3>
                             @endforeach
                         </ul>
                     </div>

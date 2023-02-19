@@ -158,7 +158,7 @@ class ProjectController extends Controller
 
         }
         $project->update($data);
-
+        //dd($project);
 
         return redirect()->route('admin.projects.index')->with('message', "$project->slug è stato caricato con successo");
     }
