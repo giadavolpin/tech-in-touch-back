@@ -114,7 +114,7 @@
                                         <img class="d-block img-fluid " id="uploadPreview"
                                             src="{{ asset('storage/' . $professionist->profile_image) }}">
                                     </div>
-                                    <span id="my_reset_btn" class="d-none"><i class="fa-solid fa-circle-xmark"></i></span>
+                                    <span id="my_reset_btn" class="d-none"></span>
                                 </div>
                             @else
                                 <div class="position-relative ">
@@ -122,7 +122,7 @@
                                         <img class="d-block img-fluid " id="uploadPreview"
                                             src="https://via.placeholder.com/300x200">
                                     </div>
-                                    <span id="my_reset_btn" class="d-none"><i class="fa-solid fa-circle-xmark"></i></span>
+                                    <span id="my_reset_btn" class="d-none"></span>
                                 </div>
                             @endif
 
@@ -169,8 +169,7 @@
                                         <img class="d-block img-fluid " id="CV_Preview"
                                             src="{{ asset('storage/' . $professionist->cv_path) }}">
                                     </div>
-                                    <span id="cv_reset_btn" class="d-none"><i
-                                            class="fa-solid fa-circle-xmark"></i></span>
+                                    <span id="cv_reset_btn" class="d-none"><i class="fa-solid fa-circle-xmark"></i></span>
                                 </div>
                             @else
                                 <div class=" mb-3 w-50">
