@@ -19,7 +19,7 @@
                         <h4>Plus</h4>
                         <h5>5.99€</h5>
                         <p>Compari in Homepage nella sezione dedicata ai nostri professionisti sponsorizzati </p>
-                        <p>48h di Sponsorizzazione</p>
+                        <p>72h di Sponsorizzazione</p>
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -27,7 +27,7 @@
                         <h4>Ultra</h4>
                         <h5>9.99€</h5>
                         <p>Compari in Homepage nella sezione dedicata ai nostri professionisti sponsorizzati </p>
-                        <p>72h di Sponsorizzazione</p>
+                        <p>144h di Sponsorizzazione</p>
                     </div>
                 </div>
 
