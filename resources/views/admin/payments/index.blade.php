@@ -13,7 +13,7 @@
         <h1 class="text-center py-5 backoffice_title">Le mie transazioni</h1>
     </div>
 
-    @if ($professionist == [])
+    @if ($professionist)
         <h2 class="text-center">Non sono presenti pagamenti</h2>
     @else
         <div class="table-responsive mx-3">
