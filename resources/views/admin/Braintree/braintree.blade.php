@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="subscription_plans py-5 container">
+    @if($professionist)
+        <div class="subscription_plans py-5 container">
         <h3 class="text-center">Sponsorizzazioni</h3>
         <h4 class="py-5 text-center">Ecco i piani disponibili</h4>
         <div class="row gap-4 justify-content-center">
@@ -51,6 +52,10 @@
         </div>
     </div>
     </div>
+    @else
+        Il tuo abbonamento non è ancora scaduto, scade il : {{$plans_end}}
+    @endif
+
 
     <script src="https://js.braintreegateway.com/web/dropin/1.33.7/js/dropin.js"></script>
     <script>
@@ -71,7 +76,6 @@
         //         });
         //     });
         // });
-
         const form = document.getElementById('payment-form');
 
         braintree.dropin.create({

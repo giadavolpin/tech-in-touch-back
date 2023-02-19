@@ -13,7 +13,7 @@
         <h1 class="text-center py-5 backoffice_title">Le mie transazioni</h1>
     </div>
 
-    @if (count($professionist->plans) == 0)
+    @if ($professionist == [])
         <h2 class="text-center">Non sono presenti pagamenti</h2>
     @else
         <div class="table-responsive mx-3">
@@ -24,6 +24,7 @@
                         <th scope="col">Piano</th>
                         <th scope="col">Importo</th>
                         <th scope="col">Inzio abbonamento</th>
+                        <th scope="col">Fine abbonamento</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +34,7 @@
                             <td>{{ $plan->name }}</td>
                             <td>{{ $plan->price }} {{ $plan->price_sign }}</td>
                             <td>{{ $plan->pivot->subscription_start }}</td>
+                            <td>{{ $plan->pivot->subscription_end }}</td>
                         </tr>
                     @endforeach
                 </tbody>

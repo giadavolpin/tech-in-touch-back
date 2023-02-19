@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\Plan;
 use Braintree\Gateway;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Nette\Utils\DateTime;
 
 
@@ -17,18 +18,36 @@ class BraintreeController extends Controller
 {
     public function generate(Professionist $professionist, Request $request, Gateway $gateway)
     {
+
         $userId = Auth::id();
         $plans = Plan::all();
         $token = $gateway->clientToken()->generate();
         $professionistID = Professionist::where('user_id', $userId)->value('id');
         $leads = Lead::where('professionist_id', $professionistID)->get();
         $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
-        // if ($professionist->user_id !== Auth::id()) {
-        //     abort(403);
-        // }
-        // $token = $gateway->clientToken()->generate();
 
-        return view('admin.Braintree.braintree', compact('professionist', 'leadUnread', 'plans', 'token'));
+        $professionist = Professionist::with('plans')->findOrFail($professionistID);
+
+        $date_now = new DateTime();
+
+
+
+        $plans_end = DB::table('plan_professionist')
+        ->where('professionist_id', $professionistID)
+        ->orderBy('professionist_id', 'desc')
+        ->value('subscription_end');
+
+        // dd($plans_end <= $date_now);
+
+
+        if($plans_end > $date_now){
+            $professionist = [];
+        }
+
+        //  dd($professionist);
+
+
+        return view('admin.Braintree.braintree', compact('plans_end','professionist', 'leadUnread', 'plans', 'token'));
 
     }
 
