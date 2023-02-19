@@ -16,7 +16,7 @@
         </li> --}}
         <li class="nav-item">
             <a href="{{ route('admin.professionists.index') }}"
-                class="nav-link {{ Route::currentRouteName() == 'admin.professionists.show' ? 'active_li' : '' }}"
+                class="nav-link {{ Route::currentRouteName() == 'admin.professionists.index' ? 'active_li' : '' }}"
                 aria-current="page">
                 <i class="fa-solid fa-user mx-1"></i>
 
