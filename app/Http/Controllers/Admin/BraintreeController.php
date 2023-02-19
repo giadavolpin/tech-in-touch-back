@@ -33,21 +33,21 @@ class BraintreeController extends Controller
 
 
         $plans_end = DB::table('plan_professionist')
-        ->where('professionist_id', $professionistID)
-        ->orderBy('professionist_id', 'desc')
-        ->value('subscription_end');
+            ->where('professionist_id', $professionistID)
+            ->orderBy('professionist_id', 'desc')
+            ->value('subscription_end');
 
         // dd($plans_end <= $date_now);
 
 
-        if($plans_end > $date_now){
+        if ($plans_end > $date_now) {
             $professionist = [];
         }
 
         //  dd($professionist);
 
 
-        return view('admin.Braintree.braintree', compact('plans_end','professionist', 'leadUnread', 'plans', 'token'));
+        return view('admin.Braintree.braintree', compact('plans_end', 'professionist', 'leadUnread', 'plans', 'token'));
 
     }
 
@@ -99,15 +99,15 @@ class BraintreeController extends Controller
 
             $date_start = new DateTime();
 
-            $date_start->add(new DateInterval("P".$durata."D"));
+            $date_start->add(new DateInterval("P" . $durata . "D"));
 
-            $subscription_end = date_format($date_start,"Y-m-d H:i:s");
+            $subscription_end = date_format($date_start, "Y-m-d H:i:s");
 
             // dd($subscription_end);
 
             // $professionist->plans()->attach($subscription_end);
 
-            $professionist->plans()->attach($plan_id, ["subscription_end"=>$subscription_end]);
+            $professionist->plans()->attach($plan_id, ["subscription_end" => $subscription_end]);
 
 
             // dd('Rollo Mattia aveva ragione');

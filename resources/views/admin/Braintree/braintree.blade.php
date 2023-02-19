@@ -53,10 +53,13 @@
         </div>
         </div>
     @else
-        <h2 class="text-center py-5">A quanto pare hai già un abbonamento attivo</h2>
-        <p class="fs-4 text-center">Il tuo abbonamento <span class="dev_btn p-1 rounded-2 fw-bold"></span>
-            scade: <span class="mx-1 backoffice_title">{{ $plans_end }}</span>
-        </p>
+        <div class="subscription_plans py-5 container">
+            <h3 class="text-center">Sponsorizzazioni</h3>
+            <h2 class="text-center py-5">A quanto pare hai già un abbonamento attivo</h2>
+            <p class="fs-4 text-center">Il tuo abbonamento scade: <span
+                    class="mx-1 backoffice_title">{{ $plans_end }}</span>
+            </p>
+        </div>
     @endif
 
 

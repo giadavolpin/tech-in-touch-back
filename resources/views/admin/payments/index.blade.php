@@ -24,6 +24,9 @@
                         <th scope="col">Piano</th>
                         <th scope="col">Importo</th>
                         <th scope="col">Data di pagamento</th>
+                        <th scope="col">Data scadenza sponsorizzazione</th>
+
+
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +36,8 @@
                             <td>{{ $plan->name }}</td>
                             <td>{{ $plan->price }} {{ $plan->price_sign }}</td>
                             <td>{{ $plan->pivot->subscription_start }}</td>
+                            <td>{{ $plan->pivot->subscription_end }}</td>
+
                         </tr>
                     @endforeach
                 </tbody>
