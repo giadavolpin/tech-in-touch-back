@@ -121,7 +121,8 @@ class ProfessionistController extends Controller
 
         $professionist = Professionist::whereHas('plans', function($query){
             $date_now = new DateTime();
-            $query->where('subscription_end','>=', $date_now);
+            $query->where('subscription_end','>=', $date_now)
+            ->where('visible', 1);
         })->with('technologies', 'reviews')->inRandomOrder()->get();
 
         return response()->json([
