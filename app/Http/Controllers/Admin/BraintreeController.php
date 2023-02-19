@@ -34,7 +34,7 @@ class BraintreeController extends Controller
 
         $plans_end = DB::table('plan_professionist')
             ->where('professionist_id', $professionistID)
-            ->orderBy('professionist_id', 'desc')
+            ->orderBy('subscription_end', 'desc')
             ->value('subscription_end');
 
         // dd($plans_end <= $date_now);

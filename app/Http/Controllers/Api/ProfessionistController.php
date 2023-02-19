@@ -10,6 +10,7 @@ use App\Models\Review;
 use App\Models\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Nette\Utils\DateTime;
 
 class ProfessionistController extends Controller
 {
@@ -116,17 +117,11 @@ class ProfessionistController extends Controller
     public function proPlan()
     {
 
-        $proPlan = Professionist::with('plans')->get();
-
-
-        $data = DB::table('professionists')
-        ->join('plan_professionist', 'professionists.id', '=', 'plan_professionist.professionist_id')
-        ->distinct()
-        ->get();
 
 
         $professionist = Professionist::whereHas('plans', function($query){
-            $query->select('professionist_id')->distinct();
+            $date_now = new DateTime();
+            $query->where('subscription_end','>=', $date_now);
         })->with('technologies', 'reviews')->inRandomOrder()->get();
 
         return response()->json([
