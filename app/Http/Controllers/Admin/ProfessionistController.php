@@ -139,7 +139,7 @@ class ProfessionistController extends Controller
         $leads = Lead::where('professionist_id', $professionistID)->get();
         $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
         if ($professionist->user_id !== Auth::id()) {
-            abort(403);
+            abort(404);
         }
         // dd($token);
         return view('admin.professionists.show', compact('professionist', 'leadUnread', 'plans'));
@@ -195,7 +195,7 @@ class ProfessionistController extends Controller
             }
             $path_cv = Storage::put('professionist_images', $request->cv_path);
             $professionist['cv_path'] = $path_cv;
-        } 
+        }
 
 
         $professionist->nickname = $data['nickname'];

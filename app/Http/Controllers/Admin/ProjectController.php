@@ -25,16 +25,16 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         $userId = Auth::id();
-        
+
         $professionistID = Professionist::where('user_id', $userId)->value('id');
         // dd($professionistID);
 
         // dd($session_id);
         $leads = Lead::where('professionist_id', $professionistID)->get();
         // dd($leads);
- 
+
         $leadUnread = Lead::where('professionist_id', $professionistID)->where('read', 0)->get();
- 
+
             $projects = Project::where('professionist_id', $professionistID )->get();
             // dd($projects);
 
@@ -109,7 +109,7 @@ class ProjectController extends Controller
         if($project->professionist_id == $professionistID  && $userId == $session_id){
             return view('admin.projects.show', compact('project','leadUnread'));
         }else{
-            abort(401);
+            abort(404);
         }
 
 

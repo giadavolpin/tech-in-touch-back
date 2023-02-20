@@ -33,7 +33,8 @@ class ProfessionistController extends Controller
         $professionists = Professionist::whereHas('technologies', function ($query) use ($selectedOptionId) {
             $query->where('technology_id', $selectedOptionId)
             ->where('visible', 1);
-        })->get();
+        })
+        ->get();
 
         // return response()->json($professionists);
 
@@ -123,6 +124,7 @@ class ProfessionistController extends Controller
             $date_now = new DateTime();
             $query->where('subscription_end','>=', $date_now)
             ->where('visible', 1);
+
         })->with('technologies', 'reviews')->inRandomOrder()->get();
 
         return response()->json([
